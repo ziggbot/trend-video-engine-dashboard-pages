@@ -1,0 +1,13 @@
+{
+  "region": "SE",
+  "items": [
+    {
+      "rank": 1,
+      "topic": "Example topic",
+      "status": "script_ready",
+      "voice": "queued",
+      "render": "not_started",
+      "publish": "not_started"
+    }
+  ]
+}
