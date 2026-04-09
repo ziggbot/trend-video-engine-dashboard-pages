@@ -1,0 +1,15 @@
+{
+  "region": "SE",
+  "items": [
+    { "rank": 1, "status": "pending" },
+    { "rank": 2, "status": "pending" },
+    { "rank": 3, "status": "pending" },
+    { "rank": 4, "status": "pending" },
+    { "rank": 5, "status": "pending" },
+    { "rank": 6, "status": "pending" },
+    { "rank": 7, "status": "pending" },
+    { "rank": 8, "status": "pending" },
+    { "rank": 9, "status": "pending" },
+    { "rank": 10, "status": "pending" }
+  ]
+}
