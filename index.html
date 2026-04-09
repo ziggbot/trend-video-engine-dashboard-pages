@@ -168,11 +168,10 @@
     }
 
     async function loadRegion(region) {
-      const [trendData, brief, voice, topBriefs, reviewState, productionQueue] = await Promise.all([
+      const [trendData, brief, voice, reviewState, productionQueue] = await Promise.all([
         loadJson(`./trends-${region}.json`),
         loadJson('./latest-content-brief.json'),
         loadJson('./latest-voice-job.json'),
-        loadJson('./top10-briefs.json'),
         loadJson('./review-status.json'),
         loadJson('./production-queue.json')
       ]);
@@ -211,21 +210,20 @@
       document.getElementById('discoveryBody').innerHTML = ranked.map((r, i) => `<tr><td>${i + 1}</td><td>${r.topic}</td><td>${r.approxTraffic || r.trendScoreRaw || '-'}</td><td>${r.whyNow || '-'}</td></tr>`).join('');
       document.getElementById('rankingBody').innerHTML = ranked.map((r, i) => `<tr><td>${i + 1}</td><td>${r.topic}<div class="topic-score"><span style="width:${Math.min(100, Number(String(r.approxTraffic || '').replace(/\D/g,'')) || 30)}%"></span></div></td><td>${r.approxTraffic || r.trendScoreRaw || '-'}</td><td>${scoreReason(r)}</td></tr>`).join('');
 
-      const briefMap = new Map((topBriefs.briefs || []).map(b => [b.rank, b]));
       const reviewMap = new Map((reviewState.items || []).map(item => [item.rank, item.status]));
       document.getElementById('briefList').innerHTML = ranked.map((r, i) => {
         const rank = i + 1;
-        const b = briefMap.get(rank);
         const status = reviewMap.get(rank) || 'pending';
         const badgeClass = status === 'approved' ? 'ok' : status === 'rejected' ? 'todo' : 'wait';
         const badgeText = status === 'approved' ? 'approved' : status === 'rejected' ? 'rejected' : 'pending';
+        const dynamicHook = `Varför trendar ${r.topic} just nu? Här är den snabba förklaringen.`;
         return `
         <div class="brief-item" data-rank="${rank}">
           <h3><span class="number-pill">${rank}</span>${r.topic}</h3>
           <p><strong>Why now:</strong> ${r.whyNow || '-'}</p>
-          <p><strong>Brief / scope:</strong> ${b?.brief || briefText(r, i, regionLabel)}</p>
-          <p><strong>Suggested angle:</strong> ${b?.angle || scoreReason(r)}</p>
-          <p><strong>Hookidé:</strong> ${b?.hookIdea || 'Ingen hook ännu.'}</p>
+          <p><strong>Brief / scope:</strong> ${briefText(r, i, regionLabel)}</p>
+          <p><strong>Suggested angle:</strong> ${scoreReason(r)}</p>
+          <p><strong>Hookidé:</strong> ${dynamicHook}</p>
           <span class="badge ${badgeClass}">${badgeText}</span>
           <div class="review-actions">
             <button class="review-btn approve" data-action="approve" data-rank="${rank}">Approve</button>
