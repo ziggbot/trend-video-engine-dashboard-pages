@@ -198,8 +198,14 @@
       <div class="stack">
         <div class="card">
           <h2>Valt draft</h2>
-          <p class="sub">Senaste contentbrief och manus.</p>
+          <p class="sub">Senaste contentbrief, manus och provlyssning.</p>
           <div class="draft" id="draftBox"></div>
+          <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
+            <button id="playAudioBtn" style="appearance:none; border:0; border-radius:14px; padding:12px 16px; font-weight:700; cursor:pointer; background:linear-gradient(135deg, #66b8ff, #8f84ff); color:white;">▶️ Spela voice sample</button>
+            <audio id="audioPlayer" controls style="max-width:100%; width:100%;">
+              <source src="./sample-audio.mp3" type="audio/mpeg" />
+            </audio>
+          </div>
         </div>
 
         <div class="card">
@@ -293,6 +299,10 @@
       <p><strong>Script:</strong> ${DATA.draft.script}</p>
       <span class="badge wait">review behövs</span>
     `;
+
+    document.getElementById('playAudioBtn').addEventListener('click', () => {
+      document.getElementById('audioPlayer').play();
+    });
 
     const canvas = document.getElementById('runChart');
     const ctx = canvas.getContext('2d');
