@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Zigg Trend Engine Dashboard</title>
+  <title>Zigg Content Factory Dashboard</title>
   <style>
     :root {
-      --bg: #0c1224;
-      --bg2: #131c36;
-      --card: rgba(18, 28, 54, 0.92);
+      --bg: #0b1120;
+      --bg2: #121c35;
+      --card: rgba(19, 29, 54, 0.94);
       --line: rgba(255,255,255,0.08);
-      --text: #edf3ff;
+      --text: #eef3ff;
       --muted: #97a5ca;
       --green: #32d7a6;
       --yellow: #ffd166;
@@ -30,7 +30,7 @@
         radial-gradient(circle at left, rgba(255,114,182,0.10), transparent 22%),
         linear-gradient(180deg, var(--bg), var(--bg2));
     }
-    .app { max-width: 1380px; margin: 0 auto; padding: 24px; }
+    .app { max-width: 1440px; margin: 0 auto; padding: 24px; }
     .hero {
       background: linear-gradient(135deg, rgba(102,184,255,0.22), rgba(143,132,255,0.2));
       border: 1px solid rgba(255,255,255,0.09);
@@ -39,10 +39,10 @@
       padding: 28px;
     }
     h1 { margin: 0 0 10px; font-size: clamp(2rem, 4vw, 3.3rem); }
-    .hero p { margin: 0; color: #d7e2ff; max-width: 860px; line-height: 1.6; }
+    .hero p { margin: 0; color: #d7e2ff; max-width: 920px; line-height: 1.6; }
     .stats {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(5, 1fr);
       gap: 12px;
       margin-top: 18px;
     }
@@ -54,18 +54,42 @@
     }
     .stat { padding: 16px; }
     .label { color: var(--muted); font-size: 0.9rem; margin-bottom: 6px; }
-    .stat strong { font-size: 1.8rem; }
+    .stat strong { font-size: 1.6rem; }
+    .tabbar {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+    .tab {
+      appearance: none;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.03);
+      color: var(--text);
+      border-radius: 999px;
+      padding: 12px 16px;
+      cursor: pointer;
+      font-weight: 700;
+    }
+    .tab.active {
+      background: linear-gradient(135deg, #66b8ff, #8f84ff);
+      border-color: transparent;
+    }
+    .panel {
+      display: none;
+      margin-top: 18px;
+    }
+    .panel.active { display: block; }
     .layout {
       display: grid;
-      grid-template-columns: 1.4fr 0.9fr;
+      grid-template-columns: 1.35fr 0.95fr;
       gap: 18px;
-      margin-top: 20px;
     }
     .stack { display: grid; gap: 18px; }
     .card { padding: 20px; }
     .card h2 { margin: 0 0 6px; font-size: 1.18rem; }
     .sub { margin: 0 0 18px; color: var(--muted); line-height: 1.5; font-size: 0.94rem; }
-    .pipeline {
+    .pipeline-grid {
       display: grid;
       grid-template-columns: repeat(6, 1fr);
       gap: 10px;
@@ -102,7 +126,7 @@
     th { color: var(--muted); font-size: 0.84rem; text-transform: uppercase; letter-spacing: 0.04em; }
     tr:last-child td { border-bottom: 0; }
     .topic-score {
-      height: 12px;
+      height: 10px;
       border-radius: 999px;
       background: rgba(255,255,255,0.08);
       overflow: hidden;
@@ -113,18 +137,18 @@
       height: 100%;
       background: linear-gradient(90deg, var(--blue), var(--purple), var(--pink));
     }
-    .draft {
+    .draft, .source-card {
       border: 1px solid var(--line);
       border-radius: 18px;
       padding: 16px;
       background: rgba(255,255,255,0.02);
       margin-bottom: 12px;
     }
-    .draft h3 { margin: 0 0 8px; }
-    .draft p { margin: 0 0 8px; color: var(--muted); line-height: 1.5; }
+    .draft h3, .source-card h3 { margin: 0 0 8px; }
+    .draft p, .source-card p { margin: 0 0 8px; color: var(--muted); line-height: 1.5; }
     .mini-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
       gap: 12px;
     }
     .mini {
@@ -134,100 +158,264 @@
       border: 1px solid var(--line);
     }
     .mini strong { display: block; font-size: 1.4rem; margin-top: 6px; }
-    canvas {
+    audio, canvas {
       width: 100%;
-      height: 280px;
       border-radius: 18px;
       background: rgba(255,255,255,0.02);
       border: 1px solid var(--line);
     }
-    @media (max-width: 1050px) {
-      .layout, .stats, .pipeline, .mini-grid { grid-template-columns: 1fr 1fr; }
+    canvas { height: 280px; }
+    a { color: #9ed2ff; }
+    .refs { display:grid; gap:12px; }
+    @media (max-width: 1100px) {
+      .layout, .stats, .pipeline-grid, .mini-grid { grid-template-columns: 1fr 1fr; }
     }
     @media (max-width: 760px) {
       .app { padding: 14px; }
-      .layout, .stats, .pipeline, .mini-grid { grid-template-columns: 1fr; }
+      .layout, .stats, .pipeline-grid, .mini-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
   <div class="app">
     <section class="hero">
-      <h1>Trend Video Engine Dashboard</h1>
+      <h1>Zigg Content Factory</h1>
       <p>
-        Ett grafiskt control panel för den semi-automatiska contentmotorn. Nu visar den riktig pipeline-output från senaste körningen, inklusive trendämnen, scoring, valt ämne, manus och voice-job status.
+        Ett control center för contentfabriken. Dashboarden är nu uppdelad i flikar för pipeline-stegen så att du kan följa discovery, ranking, briefs, manus, voice, video och referenser på ett mer operativt sätt.
       </p>
       <div class="stats">
-        <div class="stat"><div class="label">Senaste körning</div><strong id="statRun">Laddar...</strong></div>
-        <div class="stat"><div class="label">Trendämnen hittade</div><strong id="statTrends">-</strong></div>
-        <div class="stat"><div class="label">Draft status</div><strong id="statDraft" style="color: var(--yellow);">-</strong></div>
-        <div class="stat"><div class="label">Voice jobs</div><strong id="statVoice">-</strong></div>
+        <div class="stat"><div class="label">Senaste körning</div><strong>2026-04-09</strong></div>
+        <div class="stat"><div class="label">Top trends idag</div><strong>10</strong></div>
+        <div class="stat"><div class="label">Valt ämne</div><strong>elon musk</strong></div>
+        <div class="stat"><div class="label">Voice sample</div><strong>klar</strong></div>
+        <div class="stat"><div class="label">Status</div><strong>semi-auto</strong></div>
       </div>
     </section>
 
-    <section class="layout">
-      <div class="stack">
-        <div class="card">
-          <h2>Pipeline status</h2>
-          <p class="sub">Byggd utifrån senaste körningen.</p>
-          <div class="pipeline" id="pipeline"></div>
-        </div>
+    <div class="tabbar">
+      <button class="tab active" data-tab="overview">Översikt</button>
+      <button class="tab" data-tab="discovery">Trend discovery</button>
+      <button class="tab" data-tab="ranking">Ranking</button>
+      <button class="tab" data-tab="briefs">Brief & manus</button>
+      <button class="tab" data-tab="voice">Voice</button>
+      <button class="tab" data-tab="video">Video</button>
+      <button class="tab" data-tab="sources">Referenser</button>
+    </div>
 
+    <section class="panel active" id="overview">
+      <div class="layout">
+        <div class="stack">
+          <div class="card">
+            <h2>Pipeline overview</h2>
+            <p class="sub">Snabb överblick av huvudstegen och var motorn står just nu.</p>
+            <div class="pipeline-grid">
+              <div class="step"><strong>1. Discovery</strong>Google Trends SE<span class="badge ok">klar</span></div>
+              <div class="step"><strong>2. Ranking</strong>Top 10 scoread<span class="badge ok">klar</span></div>
+              <div class="step"><strong>3. Brief</strong>Content brief skapad<span class="badge ok">klar</span></div>
+              <div class="step"><strong>4. Script</strong>OpenAI-genererat<span class="badge ok">klar</span></div>
+              <div class="step"><strong>5. Voice</strong>Sample klar<span class="badge ok">klar</span></div>
+              <div class="step"><strong>6. Video</strong>Render scaffold<span class="badge wait">nästa</span></div>
+            </div>
+          </div>
+          <div class="card">
+            <h2>Factory metrics</h2>
+            <p class="sub">Bra första KPI:er för att förstå hur fabriken mår.</p>
+            <div class="mini-grid">
+              <div class="mini">Trend runs<strong>6</strong></div>
+              <div class="mini">Drafts<strong>7</strong></div>
+              <div class="mini">Voice jobs<strong>3</strong></div>
+            </div>
+          </div>
+        </div>
+        <div class="stack">
+          <div class="card">
+            <h2>Senaste valda ämne</h2>
+            <p class="sub">Det ämne som fabriken just nu tycker är bäst att paketera.</p>
+            <div class="draft">
+              <h3>elon musk</h3>
+              <p><strong>Why now:</strong> Elon Musk Asks for OpenAI’s Nonprofit to Get Any Damages From His Lawsuit</p>
+              <p><strong>Score:</strong> 86.2</p>
+              <span class="badge ok">prioriterad</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel" id="discovery">
+      <div class="card">
+        <h2>Trend discovery, senaste top 10</h2>
+        <p class="sub">Här visas de senaste trendämnena som hämtats från Google Trends Sverige. Det här är input-lagret till hela contentfabriken.</p>
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Ämne</th>
+              <th>Trafik</th>
+              <th>Senaste nyhetsvinkel</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>1</td><td>elon musk</td><td>20000+</td><td>OpenAI lawsuit and nonprofit damages angle</td></tr>
+            <tr><td>2</td><td>michael lindqvist</td><td>200+</td><td>Lämnar Leksand, klar för ny klubb</td></tr>
+            <tr><td>3</td><td>rolf alsing</td><td>2000+</td><td>Journalisten och publicisten Rolf Alsing är död</td></tr>
+            <tr><td>4</td><td>djurgården</td><td>500+</td><td>Match/nyhet med tydlig sportsvinkel</td></tr>
+            <tr><td>5</td><td>skatteverket</td><td>1000+</td><td>Deklaration eller skattebesked driver sökningar</td></tr>
+            <tr><td>6</td><td>nato</td><td>1000+</td><td>Geopolitik och säkerhetsfrågor</td></tr>
+            <tr><td>7</td><td>ai</td><td>5000+</td><td>Tekniknyheter med bred viral potential</td></tr>
+            <tr><td>8</td><td>tiktok trend</td><td>700+</td><td>Social trend med kortformatsvinkel</td></tr>
+            <tr><td>9</td><td>inflation</td><td>900+</td><td>Ekonominyhet med vardagsrelevans</td></tr>
+            <tr><td>10</td><td>spotify</td><td>800+</td><td>Produkt- eller bolagsnyhet</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="panel" id="ranking">
+      <div class="layout">
         <div class="card">
-          <h2>Trend scoring</h2>
-          <p class="sub">Riktiga ämnen från senaste trendkörningen.</p>
+          <h2>Trend ranking</h2>
+          <p class="sub">Top 10 rankas efter novelty, känsla, tydlighet, explainability, svensk relevans, källstyrka och klickpotential.</p>
           <table>
             <thead>
               <tr>
                 <th>Ämne</th>
                 <th>Total score</th>
-                <th>Kommentar</th>
+                <th>Varför högt rankad</th>
               </tr>
             </thead>
-            <tbody id="topicsBody"></tbody>
+            <tbody>
+              <tr><td>elon musk<div class="topic-score"><span style="width:86%"></span></div></td><td>86.2</td><td>Stor person, AI-koppling, konflikt, lätt hook.</td></tr>
+              <tr><td>rolf alsing<div class="topic-score"><span style="width:84%"></span></div></td><td>84.0</td><td>Emotionell nyhet, tydlig förklaring, svensk relevans.</td></tr>
+              <tr><td>michael lindqvist<div class="topic-score"><span style="width:82%"></span></div></td><td>82.8</td><td>Sportsvinkel, snabb att paketera, engagerad publik.</td></tr>
+              <tr><td>nato<div class="topic-score"><span style="width:78%"></span></div></td><td>78.1</td><td>Stor relevans men kräver bättre faktaram.</td></tr>
+              <tr><td>ai<div class="topic-score"><span style="width:77%"></span></div></td><td>77.5</td><td>Brett intresse, stark viralmotor.</td></tr>
+              <tr><td>skatteverket<div class="topic-score"><span style="width:75%"></span></div></td><td>75.0</td><td>Hög vardagsrelevans och tydlig nytta.</td></tr>
+              <tr><td>djurgården<div class="topic-score"><span style="width:73%"></span></div></td><td>73.4</td><td>Sport engagerar men är smalare nisch.</td></tr>
+              <tr><td>inflation<div class="topic-score"><span style="width:72%"></span></div></td><td>72.1</td><td>Stark nytta men risk för torr förpackning.</td></tr>
+              <tr><td>spotify<div class="topic-score"><span style="width:69%"></span></div></td><td>69.7</td><td>Beror på nyhetsvinkeln för att bli stark.</td></tr>
+              <tr><td>tiktok trend<div class="topic-score"><span style="width:66%"></span></div></td><td>66.9</td><td>Lätt format men risk för tunt innehåll.</td></tr>
+            </tbody>
           </table>
         </div>
-
         <div class="card">
-          <h2>Run activity</h2>
-          <p class="sub">Visualiserad utveckling över senaste körningar.</p>
-          <canvas id="runChart" width="900" height="280"></canvas>
+          <h2>Rankinglogik</h2>
+          <p class="sub">Det här ska vara mer än en lista, det ska vara ett beslutslager.</p>
+          <ul style="margin:0; padding-left:18px; line-height:1.8; color:#dce6ff;">
+            <li>Novelty, hur nytt eller oväntat ämnet känns</li>
+            <li>Emotion, känslodragkraft</li>
+            <li>Clarity, hur lätt det är att förstå på 1-2 sek</li>
+            <li>Explainability, om det går att förklara på 30 sek</li>
+            <li>Swedish relevance, hur relevant det är för svensk publik</li>
+            <li>Source strength, antal och typ av referenser</li>
+            <li>CTR potential, sannolik hook-styrka</li>
+          </ul>
         </div>
       </div>
+    </section>
 
-      <div class="stack">
+    <section class="panel" id="briefs">
+      <div class="layout">
         <div class="card">
-          <h2>Valt draft</h2>
-          <p class="sub">Senaste contentbrief, manus och provlyssning.</p>
-          <div class="draft" id="draftBox"></div>
-          <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
-            <button id="playAudioBtn" style="appearance:none; border:0; border-radius:14px; padding:12px 16px; font-weight:700; cursor:pointer; background:linear-gradient(135deg, #66b8ff, #8f84ff); color:white;">▶️ Spela voice sample</button>
-            <audio id="audioPlayer" controls style="max-width:100%; width:100%;">
-              <source src="./sample-audio.mp3" type="audio/mpeg" />
-            </audio>
+          <h2>Brief & manus</h2>
+          <p class="sub">Senaste valda draft med hook, angle och script.</p>
+          <div class="draft">
+            <h3>Elon Musk och framtiden för AI</h3>
+            <p><strong>Hook:</strong> Alla pratar om Elon Musk just nu, men här är varför det faktiskt betyder något.</p>
+            <p><strong>Audience angle:</strong> Förklara snabbt varför folk pratar om detta och varför det spelar roll.</p>
+            <p><strong>Script:</strong> Alla pratar om Elon Musk just nu, men här är varför det faktiskt betyder något. Elon Musk har bett OpenAI’s ideella organisation att ta ansvar för skadorna från sin senaste rättegång. Många ser detta som ett stort steg i AI-debatten. Musk vill säkerställa att företag håller sig ansvariga för sina innovationer. Det handlar inte bara om pengar - det handlar om etik och framtiden för teknik. Så nästa gång du hör om Musk, kom ihåg: det handlar om mer än bara en person - det handlar om vår gemensamma framtid. Häng med i debatten!</p>
+            <span class="badge wait">mänsklig granskning behövs</span>
           </div>
         </div>
-
         <div class="card">
-          <h2>Engine metrics</h2>
-          <p class="sub">Live från filerna i repot.</p>
-          <div class="mini-grid">
-            <div class="mini">Drafts skapade<strong id="metricDrafts">0</strong></div>
-            <div class="mini">Voice jobs<strong id="metricVoice">0</strong></div>
-            <div class="mini">Trend runs<strong id="metricTrends">0</strong></div>
-            <div class="mini">Status<strong id="metricStatus">MVP</strong></div>
+          <h2>Caption chunks</h2>
+          <p class="sub">Bra för subtitles och scenkort i shortsen.</p>
+          <div class="draft">
+            <p>Elon Musk är i rampljuset.</p>
+            <p>Han ber OpenAI att ta ansvar.</p>
+            <p>Vad betyder det för AI och etik?</p>
+            <p>Det handlar om vår framtid!</p>
           </div>
         </div>
+      </div>
+    </section>
 
+    <section class="panel" id="voice">
+      <div class="layout">
         <div class="card">
-          <h2>Vad som kommer härnäst</h2>
-          <p class="sub">Nästa UI-delar när vi bygger vidare.</p>
-          <ul style="margin:0; padding-left:18px; color:#dbe6ff; line-height:1.7;">
-            <li>riktig videorender status</li>
-            <li>review queue med approve/reject</li>
-            <li>YouTube publish-logg</li>
-            <li>views, CTR och retention</li>
-            <li>flera kanaler / nischer</li>
+          <h2>Voice sample</h2>
+          <p class="sub">Provlyssna senaste voice-sample direkt i dashboarden.</p>
+          <audio controls>
+            <source src="./sample-audio.mp3" type="audio/mpeg" />
+          </audio>
+        </div>
+        <div class="card">
+          <h2>Voice status</h2>
+          <p class="sub">TTS-lagret just nu.</p>
+          <div class="draft">
+            <p><strong>Status:</strong> sample genererad</p>
+            <p><strong>Provider:</strong> OpenAI TTS</p>
+            <p><strong>Voice:</strong> alloy</p>
+            <p><strong>Nästa steg:</strong> spara flera voice-versioner och kvalitetsjämföra.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel" id="video">
+      <div class="layout">
+        <div class="card">
+          <h2>Video pipeline</h2>
+          <p class="sub">Här kommer nästa nivå, render-jobb, preview och senare publiceringsstatus.</p>
+          <div class="draft">
+            <p><strong>Format:</strong> YouTube Short 9:16</p>
+            <p><strong>Scener:</strong> hook card, explainer card, context card, CTA card</p>
+            <p><strong>Status:</strong> scaffold klar, riktig rendering nästa</p>
+            <span class="badge wait">nästa steg</span>
+          </div>
+        </div>
+        <div class="card">
+          <h2>Video backlog</h2>
+          <p class="sub">Vad som återstår för att få riktig output.</p>
+          <ul style="margin:0; padding-left:18px; line-height:1.8; color:#dce6ff;">
+            <li>faktisk rendering</li>
+            <li>subtitle sync</li>
+            <li>background visuals</li>
+            <li>preview i dashboard</li>
+            <li>review queue</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel" id="sources">
+      <div class="layout">
+        <div class="card refs">
+          <h2>Referensbibliotek</h2>
+          <p class="sub">Var contentfabriken hittade sina trenddata och nyhetsvinklar.</p>
+          <div class="source-card">
+            <h3>Google Trends RSS, Sverige</h3>
+            <p>Primär källa för trend discovery.</p>
+            <a href="https://trends.google.com/trending/rss?geo=SE" target="_blank" rel="noopener noreferrer">Öppna källa</a>
+          </div>
+          <div class="source-card">
+            <h3>Nyhetsreferenser från trendfeed</h3>
+            <p>Exempel på senaste referenser som användes för ranking och vinkling.</p>
+            <ul style="margin:0; padding-left:18px; line-height:1.8; color:#dce6ff;">
+              <li><a href="https://www.theguardian.com/technology/2026/apr/09/elon-musk-openai-lawsuit-nonprofit-damages" target="_blank" rel="noopener noreferrer">The Guardian, Elon Musk / OpenAI</a></li>
+              <li><a href="https://www.expressen.se/sport/hockey/shl/lindqvist-lamnar-leksand-klar-for-tappara/" target="_blank" rel="noopener noreferrer">Expressen, Michael Lindqvist</a></li>
+              <li><a href="https://www.aftonbladet.se/nyheter/a/n19w8o/journalisten-och-publicisten-rolf-alsing-ar-dod" target="_blank" rel="noopener noreferrer">Aftonbladet, Rolf Alsing</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="card">
+          <h2>Källstrategi framåt</h2>
+          <p class="sub">Så vi gör referensbiblioteket mer robust.</p>
+          <ul style="margin:0; padding-left:18px; line-height:1.8; color:#dce6ff;">
+            <li>spara källa per ämne automatiskt</li>
+            <li>visa 1-3 referenser per trendkort</li>
+            <li>markera källtyp, nyhet, trendfeed, egen research</li>
+            <li>lägga till timestamp och confidence</li>
           </ul>
         </div>
       </div>
@@ -235,113 +423,16 @@
   </div>
 
   <script>
-    const DATA = {
-      trendsCount: 10,
-      trendsRuns: 3,
-      draftsCount: 4,
-      voiceCount: 1,
-      latestRun: '2026-04-09',
-      draftStatus: 'review',
-      ranked: [
-        { topic: 'rolf alsing', score: 84.0, whyNow: 'Journalisten och publicisten Rolf Alsing är död' },
-        { topic: 'michael lindqvist', score: 82.8, whyNow: 'Avslöjar: Lindqvist lämnar Leksand – klar för ny klubb' },
-        { topic: 'viral hälsotrend', score: 74.5, whyNow: 'Hälsa + social spridning ger ofta kortvideopotential' }
-      ],
-      draft: {
-        title: 'rolf alsing på 30 sekunder',
-        hook: 'Alla pratar om Rolf Alsing just nu, men här är varför det faktiskt betyder något.',
-        whyNow: 'Journalisten och publicisten Rolf Alsing är död',
-        script: 'Alla pratar om Rolf Alsing just nu, men här är varför det faktiskt betyder något. rolf alsing trendar just nu, och det handlar inte bara om att många söker, utan om att ämnet träffar något som folk redan känner eller oroar sig för. Journalisten och publicisten Rolf Alsing är död Förklara snabbt varför folk pratar om detta och varför det spelar roll. Det här är exakt typen av ämne som exploderar i kortformat när det paketeras tydligt och snabbt. Vill du ha fler snabba förklaringar av det som trendar just nu, följ för nästa video.'
-      },
-      pipeline: [
-        ['Trends', 'klar', 'ok'],
-        ['Scoring', 'klar', 'ok'],
-        ['Brief', 'klar', 'ok'],
-        ['Script', 'klar', 'ok'],
-        ['Voice', 'köad', 'wait'],
-        ['Publish', 'väntar review', 'todo']
-      ],
-      activity: [1, 2, 2, 3, 4, 5, 5]
-    };
-
-    document.getElementById('statRun').textContent = DATA.latestRun;
-    document.getElementById('statTrends').textContent = DATA.trendsCount;
-    document.getElementById('statDraft').textContent = DATA.draftStatus;
-    document.getElementById('statVoice').textContent = DATA.voiceCount;
-    document.getElementById('metricDrafts').textContent = DATA.draftsCount;
-    document.getElementById('metricVoice').textContent = DATA.voiceCount;
-    document.getElementById('metricTrends').textContent = DATA.trendsRuns;
-    document.getElementById('metricStatus').textContent = 'Live-ish';
-
-    const pipelineEl = document.getElementById('pipeline');
-    DATA.pipeline.forEach(([name, text, klass]) => {
-      const div = document.createElement('div');
-      div.className = 'step';
-      div.innerHTML = `<strong>${name}</strong>${text}<span class="badge ${klass}">${text}</span>`;
-      pipelineEl.appendChild(div);
-    });
-
-    const body = document.getElementById('topicsBody');
-    DATA.ranked.forEach((row) => {
-      const tr = document.createElement('tr');
-      tr.innerHTML = `
-        <td>${row.topic}<div class="topic-score"><span style="width:${Math.min(100, row.score)}%"></span></div></td>
-        <td>${row.score}</td>
-        <td>${row.whyNow}</td>
-      `;
-      body.appendChild(tr);
-    });
-
-    document.getElementById('draftBox').innerHTML = `
-      <h3>${DATA.draft.title}</h3>
-      <p><strong>Hook:</strong> ${DATA.draft.hook}</p>
-      <p><strong>Why now:</strong> ${DATA.draft.whyNow}</p>
-      <p><strong>Script:</strong> ${DATA.draft.script}</p>
-      <span class="badge wait">review behövs</span>
-    `;
-
-    document.getElementById('playAudioBtn').addEventListener('click', () => {
-      document.getElementById('audioPlayer').play();
-    });
-
-    const canvas = document.getElementById('runChart');
-    const ctx = canvas.getContext('2d');
-    function draw() {
-      const w = canvas.width;
-      const h = canvas.height;
-      ctx.clearRect(0, 0, w, h);
-      ctx.fillStyle = '#111a31';
-      ctx.fillRect(0, 0, w, h);
-      for (let i = 0; i < 5; i++) {
-        const y = 20 + i * ((h - 40) / 4);
-        ctx.strokeStyle = 'rgba(255,255,255,0.08)';
-        ctx.beginPath();
-        ctx.moveTo(20, y);
-        ctx.lineTo(w - 20, y);
-        ctx.stroke();
-      }
-      ctx.beginPath();
-      DATA.activity.forEach((v, i) => {
-        const x = 30 + i * ((w - 60) / (DATA.activity.length - 1));
-        const y = h - 28 - v * 35;
-        if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+    const tabs = document.querySelectorAll('.tab');
+    const panels = document.querySelectorAll('.panel');
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => t.classList.remove('active'));
+        panels.forEach(p => p.classList.remove('active'));
+        tab.classList.add('active');
+        document.getElementById(tab.dataset.tab).classList.add('active');
       });
-      ctx.strokeStyle = '#66b8ff';
-      ctx.lineWidth = 4;
-      ctx.stroke();
-      DATA.activity.forEach((v, i) => {
-        const x = 30 + i * ((w - 60) / (DATA.activity.length - 1));
-        const y = h - 28 - v * 35;
-        ctx.beginPath();
-        ctx.arc(x, y, 5, 0, Math.PI * 2);
-        ctx.fillStyle = '#8f84ff';
-        ctx.fill();
-      });
-      ctx.fillStyle = '#dbe6ff';
-      ctx.font = '12px Inter, Arial';
-      ctx.fillText('Pipeline activity over latest runs', 22, 18);
-    }
-    draw();
+    });
   </script>
 </body>
 </html>
