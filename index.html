@@ -63,6 +63,8 @@
     .review-btn { appearance:none; border:1px solid var(--line); background:rgba(255,255,255,0.03); color:var(--text); border-radius:12px; padding:8px 12px; cursor:pointer; font-weight:700; }
     .review-btn.approve { border-color: rgba(50,215,166,0.35); color: var(--green); }
     .review-btn.reject { border-color: rgba(255,114,182,0.35); color: var(--pink); }
+    .queue-list { display:grid; gap:10px; }
+    .queue-item { border:1px solid var(--line); border-radius:16px; padding:14px; background:rgba(255,255,255,0.02); }
     .draft h3, .source-card h3, .brief-item h3 { margin:0 0 8px; }
     .draft p, .source-card p, .brief-item p { margin:0 0 8px; color:var(--muted); line-height:1.5; }
     .mini-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px; }
@@ -115,7 +117,7 @@
       <button class="tab" data-tab="sources">Referenser</button>
     </div>
 
-    <section class="panel active" id="overview"><div class="layout"><div class="stack"><div class="card"><h2>Pipeline overview</h2><p class="sub">Snabb överblick av huvudstegen och aktuell status.</p><div class="pipeline-grid" id="pipelineGrid"></div></div><div class="card"><h2>Factory metrics</h2><p class="sub">Bra första KPI:er för att förstå hur fabriken mår.</p><div class="mini-grid"><div class="mini">Top trends<strong id="metricTrends">0</strong></div><div class="mini">Referenser<strong id="metricRefs">0</strong></div><div class="mini">Voice jobs<strong id="metricVoiceJobs">0</strong></div></div></div></div><div class="stack"><div class="card"><h2>Senaste valda ämne</h2><p class="sub">Det ämne som fabriken just nu tycker är bäst att paketera.</p><div class="draft" id="selectedTopicBox"><p class="loading">Laddar...</p></div></div></div></div></section>
+    <section class="panel active" id="overview"><div class="layout"><div class="stack"><div class="card"><h2>Pipeline overview</h2><p class="sub">Snabb överblick av huvudstegen och aktuell status.</p><div class="pipeline-grid" id="pipelineGrid"></div></div><div class="card"><h2>Factory metrics</h2><p class="sub">Bra första KPI:er för att förstå hur fabriken mår.</p><div class="mini-grid"><div class="mini">Top trends<strong id="metricTrends">0</strong></div><div class="mini">Referenser<strong id="metricRefs">0</strong></div><div class="mini">Voice jobs<strong id="metricVoiceJobs">0</strong></div></div></div></div><div class="stack"><div class="card"><h2>Senaste valda ämne</h2><p class="sub">Det ämne som fabriken just nu tycker är bäst att paketera.</p><div class="draft" id="selectedTopicBox"><p class="loading">Laddar...</p></div></div><div class="card"><h2>Production queue</h2><p class="sub">Approved topics som bör gå vidare till nästa steg i fabriken.</p><div id="queueBox" class="queue-list"><p class="loading">Inga approved topics i kön ännu.</p></div></div></div></div></section>
     <section class="panel" id="discovery"><div class="card"><h2>Trend discovery, senaste top 10</h2><p class="sub">Här visas de senaste trendämnena från vald region. Numreringen följer med till ranking och brief-vyn.</p><table><thead><tr><th>#</th><th>Ämne</th><th>Trafik</th><th>Nyhetsvinkel</th></tr></thead><tbody id="discoveryBody"></tbody></table></div></section>
     <section class="panel" id="ranking"><div class="layout"><div class="card"><h2>Trend ranking</h2><p class="sub">Top 10 rankas efter novelty, känsla, tydlighet, explainability, regional relevans, källstyrka och klickpotential.</p><table><thead><tr><th>#</th><th>Ämne</th><th>Total score</th><th>Varför högt rankad</th></tr></thead><tbody id="rankingBody"></tbody></table></div><div class="card"><h2>Rankinglogik</h2><p class="sub">Det här ska vara mer än en lista, det ska vara ett beslutslager.</p><ul style="margin:0; padding-left:18px; line-height:1.8; color:#dce6ff;"><li>Novelty</li><li>Emotion</li><li>Clarity</li><li>Explainability</li><li>Regional relevance</li><li>Source strength</li><li>CTR potential</li></ul></div></div></section>
     <section class="panel" id="briefs"><div class="card"><h2>Brief / scope för top 10</h2><p class="sub">Här får varje ämne en kort brieftext. Samma nummer som i discovery och ranking följer med så det är lätt att orientera sig.</p><div id="briefList"><p class="loading">Laddar...</p></div></div></section>
@@ -166,12 +168,13 @@
     }
 
     async function loadRegion(region) {
-      const [trendData, brief, voice, topBriefs, reviewState] = await Promise.all([
+      const [trendData, brief, voice, topBriefs, reviewState, productionQueue] = await Promise.all([
         loadJson(`./trends-${region}.json`),
         loadJson('./latest-content-brief.json'),
         loadJson('./latest-voice-job.json'),
         loadJson('./top10-briefs.json'),
-        loadJson('./review-status.json')
+        loadJson('./review-status.json'),
+        loadJson('./production-queue.json')
       ]);
 
       const ranked = (trendData.trends || []).map((item) => ({
@@ -192,6 +195,8 @@
       document.getElementById('metricVoiceJobs').textContent = 1;
 
       document.getElementById('selectedTopicBox').innerHTML = `<h3><span class="number-pill">1</span>${top.topic || '-'}</h3><p><strong>Why now:</strong> ${top.whyNow || '-'}</p><p><strong>Trafik:</strong> ${top.approxTraffic || '-'}</p><span class="badge ok">prioriterad</span>`;
+      const queue = productionQueue.queue || [];
+      document.getElementById('queueBox').innerHTML = queue.length ? queue.map(item => `<div class="queue-item"><strong>#${item.rank} ${item.topic}</strong><p>Status: ${item.status}</p><p>Next step: ${item.nextStep}</p></div>`).join('') : '<p class="loading">Inga approved topics i kön ännu.</p>';
 
       const pipelineItems = [
         ['Discovery', `${regionLabel} via Google Trends`, 'ok'],
@@ -231,13 +236,24 @@
 
       document.querySelectorAll('.review-btn').forEach(btn => {
         btn.addEventListener('click', () => {
-          const rank = btn.dataset.rank;
+          const rank = Number(btn.dataset.rank);
           const action = btn.dataset.action;
           const item = btn.closest('.brief-item');
           const badge = item.querySelector('.badge');
+          const titleEl = item.querySelector('h3');
+          const topic = titleEl.textContent.replace(/^\s*\d+\s*/, '').trim();
           if (action === 'approve') {
             badge.className = 'badge ok';
             badge.textContent = 'approved';
+            const queueHtml = document.getElementById('queueBox');
+            const exists = [...queueHtml.querySelectorAll('.queue-item strong')].some(el => el.textContent.includes(`#${rank}`));
+            if (!exists) {
+              const div = document.createElement('div');
+              div.className = 'queue-item';
+              div.innerHTML = `<strong>#${rank} ${topic}</strong><p>Status: approved</p><p>Next step: script/voice/video</p>`;
+              if (queueHtml.querySelector('.loading')) queueHtml.innerHTML = '';
+              queueHtml.appendChild(div);
+            }
           } else {
             badge.className = 'badge todo';
             badge.textContent = 'rejected';
