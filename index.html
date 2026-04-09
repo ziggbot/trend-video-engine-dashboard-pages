@@ -21,25 +21,15 @@
       --radius: 24px;
     }
     * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      color: var(--text);
-      font-family: Inter, Arial, Helvetica, sans-serif;
-      background:
-        radial-gradient(circle at top right, rgba(102,184,255,0.14), transparent 22%),
-        radial-gradient(circle at left, rgba(255,114,182,0.10), transparent 22%),
-        linear-gradient(180deg, var(--bg), var(--bg2));
-    }
+    body { margin: 0; color: var(--text); font-family: Inter, Arial, Helvetica, sans-serif; background: radial-gradient(circle at top right, rgba(102,184,255,0.14), transparent 22%), radial-gradient(circle at left, rgba(255,114,182,0.10), transparent 22%), linear-gradient(180deg, var(--bg), var(--bg2)); }
     .app { max-width: 1440px; margin: 0 auto; padding: 24px; }
-    .hero {
-      background: linear-gradient(135deg, rgba(102,184,255,0.22), rgba(143,132,255,0.2));
-      border: 1px solid rgba(255,255,255,0.09);
-      box-shadow: var(--shadow);
-      border-radius: 30px;
-      padding: 28px;
-    }
+    .hero { background: linear-gradient(135deg, rgba(102,184,255,0.22), rgba(143,132,255,0.2)); border: 1px solid rgba(255,255,255,0.09); box-shadow: var(--shadow); border-radius: 30px; padding: 28px; }
     h1 { margin: 0 0 10px; font-size: clamp(2rem, 4vw, 3.3rem); }
     .hero p { margin: 0; color: #d7e2ff; max-width: 920px; line-height: 1.6; }
+    .toolbar { display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap; margin-top:18px; }
+    .region-picker { display:flex; gap:8px; flex-wrap:wrap; }
+    .region-btn { appearance:none; border:1px solid var(--line); background:rgba(255,255,255,0.03); color:var(--text); border-radius:999px; padding:10px 14px; cursor:pointer; font-weight:700; }
+    .region-btn.active { background:linear-gradient(135deg, #66b8ff, #8f84ff); border-color:transparent; }
     .stats { display:grid; grid-template-columns:repeat(5,1fr); gap:12px; margin-top:18px; }
     .stat, .card { background: var(--card); border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow); }
     .stat { padding:16px; }
@@ -87,14 +77,22 @@
     <section class="hero">
       <h1>Zigg Content Factory</h1>
       <p>
-        Ett control center för contentfabriken. Dashboarden läser nu aktuell pipeline-output från JSON-filer och visar trend discovery, ranking, briefs, manus, voice och referenser med bättre spårbarhet.
+        Ett control center för contentfabriken. Du kan nu välja top 10-trender för Sverige, USA eller globalt läge direkt i dashboarden.
       </p>
+      <div class="toolbar">
+        <div class="region-picker">
+          <button class="region-btn active" data-region="SE">Sverige</button>
+          <button class="region-btn" data-region="US">USA</button>
+          <button class="region-btn" data-region="GLOBAL">Globalt</button>
+        </div>
+        <div class="label">Trendkälla: Google Trends RSS</div>
+      </div>
       <div class="stats">
+        <div class="stat"><div class="label">Region</div><strong id="statRegion">Sverige</strong></div>
         <div class="stat"><div class="label">Senaste körning</div><strong id="statRun">Laddar...</strong></div>
         <div class="stat"><div class="label">Top trends idag</div><strong id="statTop">-</strong></div>
         <div class="stat"><div class="label">Valt ämne</div><strong id="statTopic">-</strong></div>
         <div class="stat"><div class="label">Voice status</div><strong id="statVoice">-</strong></div>
-        <div class="stat"><div class="label">Status</div><strong>semi-auto</strong></div>
       </div>
     </section>
 
@@ -108,105 +106,34 @@
       <button class="tab" data-tab="sources">Referenser</button>
     </div>
 
-    <section class="panel active" id="overview">
-      <div class="layout">
-        <div class="stack">
-          <div class="card">
-            <h2>Pipeline overview</h2>
-            <p class="sub">Snabb överblick av huvudstegen och aktuell status.</p>
-            <div class="pipeline-grid" id="pipelineGrid"></div>
-          </div>
-          <div class="card">
-            <h2>Factory metrics</h2>
-            <p class="sub">Bra första KPI:er för att förstå hur fabriken mår.</p>
-            <div class="mini-grid">
-              <div class="mini">Top trends<strong id="metricTrends">0</strong></div>
-              <div class="mini">Referenser<strong id="metricRefs">0</strong></div>
-              <div class="mini">Voice jobs<strong id="metricVoiceJobs">0</strong></div>
-            </div>
-          </div>
-        </div>
-        <div class="stack">
-          <div class="card">
-            <h2>Senaste valda ämne</h2>
-            <p class="sub">Det ämne som fabriken just nu tycker är bäst att paketera.</p>
-            <div class="draft" id="selectedTopicBox"><p class="loading">Laddar...</p></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="panel" id="discovery">
-      <div class="card">
-        <h2>Trend discovery, senaste top 10</h2>
-        <p class="sub">Här visas de senaste trendämnena från trendfeeden.</p>
-        <table>
-          <thead><tr><th>#</th><th>Ämne</th><th>Score</th><th>Nyhetsvinkel</th></tr></thead>
-          <tbody id="discoveryBody"></tbody>
-        </table>
-      </div>
-    </section>
-
-    <section class="panel" id="ranking">
-      <div class="layout">
-        <div class="card">
-          <h2>Trend ranking</h2>
-          <p class="sub">Top 10 rankas efter novelty, känsla, tydlighet, explainability, svensk relevans, källstyrka och klickpotential.</p>
-          <table>
-            <thead><tr><th>Ämne</th><th>Total score</th><th>Varför högt rankad</th></tr></thead>
-            <tbody id="rankingBody"></tbody>
-          </table>
-        </div>
-        <div class="card">
-          <h2>Rankinglogik</h2>
-          <p class="sub">Det här ska vara mer än en lista, det ska vara ett beslutslager.</p>
-          <ul style="margin:0; padding-left:18px; line-height:1.8; color:#dce6ff;">
-            <li>Novelty</li><li>Emotion</li><li>Clarity</li><li>Explainability</li><li>Swedish relevance</li><li>Source strength</li><li>CTR potential</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section class="panel" id="briefs">
-      <div class="layout">
-        <div class="card"><h2>Brief & manus</h2><p class="sub">Senaste valda draft med hook, angle och script.</p><div class="draft" id="briefBox"><p class="loading">Laddar...</p></div></div>
-        <div class="card"><h2>Caption chunks</h2><p class="sub">Bra för subtitles och scenkort i shortsen.</p><div class="draft" id="captionsBox"><p class="loading">Laddar...</p></div></div>
-      </div>
-    </section>
-
-    <section class="panel" id="voice">
-      <div class="layout">
-        <div class="card"><h2>Voice sample</h2><p class="sub">Provlyssna senaste voice-sample.</p><audio controls><source src="./sample-audio.mp3" type="audio/mpeg" /></audio></div>
-        <div class="card"><h2>Voice status</h2><p class="sub">TTS-lagret just nu.</p><div class="draft" id="voiceBox"><p class="loading">Laddar...</p></div></div>
-      </div>
-    </section>
-
-    <section class="panel" id="video">
-      <div class="layout">
-        <div class="card"><h2>Video pipeline</h2><p class="sub">Här kommer render-jobb, preview och senare publiceringsstatus.</p><div class="draft"><p><strong>Format:</strong> YouTube Short 9:16</p><p><strong>Status:</strong> scaffold klar, riktig rendering nästa</p><span class="badge wait">nästa steg</span></div></div>
-        <div class="card"><h2>Video backlog</h2><p class="sub">Vad som återstår för att få riktig output.</p><ul style="margin:0; padding-left:18px; line-height:1.8; color:#dce6ff;"><li>faktisk rendering</li><li>subtitle sync</li><li>background visuals</li><li>preview i dashboard</li><li>review queue</li></ul></div>
-      </div>
-    </section>
-
-    <section class="panel" id="sources">
-      <div class="layout">
-        <div class="card refs"><h2>Referensbibliotek</h2><p class="sub">Var systemet hittade datan för toppämnena.</p><div id="sourcesBox"><p class="loading">Laddar...</p></div></div>
-        <div class="card"><h2>Källstrategi framåt</h2><p class="sub">Så vi gör referensbiblioteket mer robust.</p><ul style="margin:0; padding-left:18px; line-height:1.8; color:#dce6ff;"><li>spara källa per ämne automatiskt</li><li>visa 1-3 referenser per trendkort</li><li>markera källtyp, nyhet, trendfeed, egen research</li><li>lägga till timestamp och confidence</li></ul></div>
-      </div>
-    </section>
+    <section class="panel active" id="overview"><div class="layout"><div class="stack"><div class="card"><h2>Pipeline overview</h2><p class="sub">Snabb överblick av huvudstegen och aktuell status.</p><div class="pipeline-grid" id="pipelineGrid"></div></div><div class="card"><h2>Factory metrics</h2><p class="sub">Bra första KPI:er för att förstå hur fabriken mår.</p><div class="mini-grid"><div class="mini">Top trends<strong id="metricTrends">0</strong></div><div class="mini">Referenser<strong id="metricRefs">0</strong></div><div class="mini">Voice jobs<strong id="metricVoiceJobs">0</strong></div></div></div></div><div class="stack"><div class="card"><h2>Senaste valda ämne</h2><p class="sub">Det ämne som fabriken just nu tycker är bäst att paketera.</p><div class="draft" id="selectedTopicBox"><p class="loading">Laddar...</p></div></div></div></div></section>
+    <section class="panel" id="discovery"><div class="card"><h2>Trend discovery, senaste top 10</h2><p class="sub">Här visas de senaste trendämnena från vald region.</p><table><thead><tr><th>#</th><th>Ämne</th><th>Trafik</th><th>Nyhetsvinkel</th></tr></thead><tbody id="discoveryBody"></tbody></table></div></section>
+    <section class="panel" id="ranking"><div class="layout"><div class="card"><h2>Trend ranking</h2><p class="sub">Top 10 rankas efter novelty, känsla, tydlighet, explainability, svensk/global relevans, källstyrka och klickpotential.</p><table><thead><tr><th>Ämne</th><th>Total score</th><th>Varför högt rankad</th></tr></thead><tbody id="rankingBody"></tbody></table></div><div class="card"><h2>Rankinglogik</h2><p class="sub">Det här ska vara mer än en lista, det ska vara ett beslutslager.</p><ul style="margin:0; padding-left:18px; line-height:1.8; color:#dce6ff;"><li>Novelty</li><li>Emotion</li><li>Clarity</li><li>Explainability</li><li>Regional relevance</li><li>Source strength</li><li>CTR potential</li></ul></div></div></section>
+    <section class="panel" id="briefs"><div class="layout"><div class="card"><h2>Brief & manus</h2><p class="sub">Senaste valda draft med hook, angle och script.</p><div class="draft" id="briefBox"><p class="loading">Laddar...</p></div></div><div class="card"><h2>Caption chunks</h2><p class="sub">Bra för subtitles och scenkort i shortsen.</p><div class="draft" id="captionsBox"><p class="loading">Laddar...</p></div></div></div></section>
+    <section class="panel" id="voice"><div class="layout"><div class="card"><h2>Voice sample</h2><p class="sub">Provlyssna senaste voice-sample.</p><audio controls><source src="./sample-audio.mp3" type="audio/mpeg" /></audio></div><div class="card"><h2>Voice status</h2><p class="sub">TTS-lagret just nu.</p><div class="draft" id="voiceBox"><p class="loading">Laddar...</p></div></div></div></section>
+    <section class="panel" id="video"><div class="layout"><div class="card"><h2>Video pipeline</h2><p class="sub">Här kommer render-jobb, preview och senare publiceringsstatus.</p><div class="draft"><p><strong>Format:</strong> YouTube Short 9:16</p><p><strong>Status:</strong> scaffold klar, riktig rendering nästa</p><span class="badge wait">nästa steg</span></div></div><div class="card"><h2>Video backlog</h2><p class="sub">Vad som återstår för att få riktig output.</p><ul style="margin:0; padding-left:18px; line-height:1.8; color:#dce6ff;"><li>faktisk rendering</li><li>subtitle sync</li><li>background visuals</li><li>preview i dashboard</li><li>review queue</li></ul></div></div></section>
+    <section class="panel" id="sources"><div class="layout"><div class="card refs"><h2>Referensbibliotek</h2><p class="sub">Var systemet hittade datan för toppämnena i vald region.</p><div id="sourcesBox"><p class="loading">Laddar...</p></div></div><div class="card"><h2>Källstrategi framåt</h2><p class="sub">Så vi gör referensbiblioteket mer robust.</p><ul style="margin:0; padding-left:18px; line-height:1.8; color:#dce6ff;"><li>spara källa per ämne automatiskt</li><li>visa 1-3 referenser per trendkort</li><li>markera källtyp, nyhet, trendfeed, egen research</li><li>lägga till timestamp och confidence</li></ul></div></div></section>
   </div>
 
   <script>
     const tabs = document.querySelectorAll('.tab');
     const panels = document.querySelectorAll('.panel');
-    tabs.forEach(tab => {
-      tab.addEventListener('click', () => {
-        tabs.forEach(t => t.classList.remove('active'));
-        panels.forEach(p => p.classList.remove('active'));
-        tab.classList.add('active');
-        document.getElementById(tab.dataset.tab).classList.add('active');
-      });
-    });
+    tabs.forEach(tab => tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      panels.forEach(p => p.classList.remove('active'));
+      tab.classList.add('active');
+      document.getElementById(tab.dataset.tab).classList.add('active');
+    }));
+
+    const regionButtons = document.querySelectorAll('.region-btn');
+    let currentRegion = 'SE';
+
+    regionButtons.forEach(btn => btn.addEventListener('click', () => {
+      regionButtons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      currentRegion = btn.dataset.region;
+      loadRegion(currentRegion);
+    }));
 
     async function loadJson(path) {
       const res = await fetch(path, { cache: 'no-store' });
@@ -220,14 +147,22 @@
       return 'Bra balans mellan relevans, tydlighet och förklarbarhet.';
     }
 
-    Promise.all([
-      loadJson('./latest-ranked-topics.json'),
-      loadJson('./latest-content-brief.json'),
-      loadJson('./latest-voice-job.json')
-    ]).then(([rankedData, brief, voice]) => {
-      const ranked = rankedData.ranked || [];
+    async function loadRegion(region) {
+      const [trendData, brief, voice] = await Promise.all([
+        loadJson(`./trends-${region}.json`),
+        loadJson('./latest-content-brief.json'),
+        loadJson('./latest-voice-job.json')
+      ]);
+
+      const ranked = (trendData.trends || []).map((item) => ({
+        ...item,
+        totalScore: item.trendScoreRaw || 0,
+        sourceReferences: item.news || []
+      }));
       const top = ranked[0] || {};
-      document.getElementById('statRun').textContent = rankedData.generatedAt?.slice(0, 10) || 'okänd';
+
+      document.getElementById('statRegion').textContent = trendData.regionLabel || region;
+      document.getElementById('statRun').textContent = trendData.fetchedAt?.slice(0, 10) || 'okänd';
       document.getElementById('statTop').textContent = ranked.length;
       document.getElementById('statTopic').textContent = top.topic || '-';
       document.getElementById('statVoice').textContent = voice.status || '-';
@@ -235,16 +170,11 @@
       document.getElementById('metricRefs').textContent = ranked.reduce((sum, r) => sum + (r.sourceReferences?.length || 0), 0);
       document.getElementById('metricVoiceJobs').textContent = 1;
 
-      document.getElementById('selectedTopicBox').innerHTML = `
-        <h3>${top.topic || '-'}</h3>
-        <p><strong>Why now:</strong> ${top.whyNow || '-'}</p>
-        <p><strong>Score:</strong> ${top.totalScore || '-'}</p>
-        <span class="badge ok">prioriterad</span>
-      `;
+      document.getElementById('selectedTopicBox').innerHTML = `<h3>${top.topic || '-'}</h3><p><strong>Why now:</strong> ${top.whyNow || '-'}</p><p><strong>Trafik:</strong> ${top.approxTraffic || '-'}</p><span class="badge ok">prioriterad</span>`;
 
       const pipelineItems = [
-        ['Discovery', 'Google Trends SE', 'ok'],
-        ['Ranking', `${ranked.length} ämnen scoreade`, 'ok'],
+        ['Discovery', `${trendData.regionLabel || region} via Google Trends`, 'ok'],
+        ['Ranking', `${ranked.length} ämnen hämtade`, 'ok'],
         ['Brief', 'brief skapad', 'ok'],
         ['Script', brief.generationMode === 'openai' ? 'OpenAI-genererat' : 'fallback', 'ok'],
         ['Voice', voice.status || 'okänd', voice.status === 'queued' ? 'wait' : 'ok'],
@@ -252,41 +182,17 @@
       ];
       document.getElementById('pipelineGrid').innerHTML = pipelineItems.map(([name, text, klass]) => `<div class="step"><strong>${name}</strong>${text}<span class="badge ${klass}">${text}</span></div>`).join('');
 
-      document.getElementById('discoveryBody').innerHTML = ranked.map((r, i) => `
-        <tr><td>${i + 1}</td><td>${r.topic}</td><td>${r.approxTraffic || r.trendScoreRaw || '-'}</td><td>${r.whyNow || '-'}</td></tr>
-      `).join('');
+      document.getElementById('discoveryBody').innerHTML = ranked.map((r, i) => `<tr><td>${i + 1}</td><td>${r.topic}</td><td>${r.approxTraffic || r.trendScoreRaw || '-'}</td><td>${r.whyNow || '-'}</td></tr>`).join('');
+      document.getElementById('rankingBody').innerHTML = ranked.map((r) => `<tr><td>${r.topic}<div class="topic-score"><span style="width:${Math.min(100, Number(String(r.approxTraffic || '').replace(/\D/g,'')) || 30)}%"></span></div></td><td>${r.approxTraffic || r.trendScoreRaw || '-'}</td><td>${scoreReason(r)}</td></tr>`).join('');
 
-      document.getElementById('rankingBody').innerHTML = ranked.map((r) => `
-        <tr><td>${r.topic}<div class="topic-score"><span style="width:${Math.min(100, r.totalScore || 0)}%"></span></div></td><td>${r.totalScore || '-'}</td><td>${scoreReason(r)}</td></tr>
-      `).join('');
-
-      document.getElementById('briefBox').innerHTML = `
-        <h3>${brief.youtube?.title || brief.title || '-'}</h3>
-        <p><strong>Hook:</strong> ${brief.hook || '-'}</p>
-        <p><strong>Audience angle:</strong> ${brief.audience_angle || '-'}</p>
-        <p><strong>Script:</strong> ${brief.script_30s || '-'}</p>
-        <span class="badge wait">mänsklig granskning behövs</span>
-      `;
-
+      document.getElementById('briefBox').innerHTML = `<h3>${brief.youtube?.title || brief.title || '-'}</h3><p><strong>Hook:</strong> ${brief.hook || '-'}</p><p><strong>Audience angle:</strong> ${brief.audience_angle || '-'}</p><p><strong>Script:</strong> ${brief.script_30s || '-'}</p><span class="badge wait">mänsklig granskning behövs</span>`;
       document.getElementById('captionsBox').innerHTML = (brief.caption_chunks || []).map(c => `<p>${c}</p>`).join('') || '<p>Inga captions ännu.</p>';
+      document.getElementById('voiceBox').innerHTML = `<p><strong>Status:</strong> ${voice.status || '-'}</p><p><strong>Provider:</strong> ${voice.provider || '-'}</p><p><strong>Voice:</strong> ${voice.voiceId || voice.voice || '-'}</p><p><strong>Next action:</strong> ${voice.nextAction || voice.note || '-'}</p>`;
 
-      document.getElementById('voiceBox').innerHTML = `
-        <p><strong>Status:</strong> ${voice.status || '-'}</p>
-        <p><strong>Provider:</strong> ${voice.provider || '-'}</p>
-        <p><strong>Voice:</strong> ${voice.voiceId || voice.voice || '-'}</p>
-        <p><strong>Next action:</strong> ${voice.nextAction || voice.note || '-'}</p>
-      `;
+      document.getElementById('sourcesBox').innerHTML = ranked.slice(0, 5).map((r) => `<div class="source-card"><h3>${r.topic}</h3><p>Trafik: ${r.approxTraffic || '-'} | Region: ${trendData.regionLabel || region}</p>${(r.sourceReferences || []).slice(0,3).map(ref => `<p><a href="${ref.url}" target="_blank" rel="noopener noreferrer">${ref.source}: ${ref.title}</a></p>`).join('') || '<p>Inga referenser sparade.</p>'}</div>`).join('');
+    }
 
-      document.getElementById('sourcesBox').innerHTML = ranked.slice(0, 5).map((r) => `
-        <div class="source-card">
-          <h3>${r.topic}</h3>
-          <p>Score: ${r.totalScore || '-'} | Källa: Google Trends SE + nyhetsreferenser</p>
-          ${(r.sourceReferences || []).map(ref => `<p><a href="${ref.url}" target="_blank" rel="noopener noreferrer">${ref.source}: ${ref.title}</a></p>`).join('') || '<p>Inga referenser sparade.</p>'}
-        </div>
-      `).join('');
-    }).catch((err) => {
-      console.error(err);
-    });
+    loadRegion(currentRegion).catch(console.error);
   </script>
 </body>
 </html>
