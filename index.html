@@ -168,99 +168,104 @@
     }
 
     async function loadRegion(region) {
-      const [trendData, voice, reviewState, productionQueue] = await Promise.all([
-        loadJson(`./trends-${region}.json`),
-        loadJson('./latest-voice-job.json'),
-        loadJson('./review-status.json'),
-        loadJson('./production-queue.json')
-      ]);
+      try {
+        const [trendData, voice, reviewState, productionQueue] = await Promise.all([
+          loadJson(`./trends-${region}.json`),
+          loadJson('./latest-voice-job.json'),
+          loadJson('./review-status.json'),
+          loadJson('./production-queue.json')
+        ]);
 
-      const ranked = (trendData.trends || []).map((item) => ({
-        ...item,
-        totalScore: item.trendScoreRaw || 0,
-        sourceReferences: item.news || []
-      }));
-      const top = ranked[0] || {};
-      const regionLabel = trendData.regionLabel || region;
+        const ranked = (trendData.trends || []).map((item) => ({
+          ...item,
+          totalScore: item.trendScoreRaw || 0,
+          sourceReferences: item.news || []
+        }));
+        const top = ranked[0] || {};
+        const regionLabel = trendData.regionLabel || region;
 
-      document.getElementById('statRegion').textContent = regionLabel;
-      document.getElementById('statRun').textContent = trendData.fetchedAt?.slice(0, 10) || 'okänd';
-      document.getElementById('statTop').textContent = ranked.length;
-      document.getElementById('statTopic').textContent = top.topic || '-';
-      document.getElementById('statVoice').textContent = voice.status || '-';
-      document.getElementById('metricTrends').textContent = ranked.length;
-      document.getElementById('metricRefs').textContent = ranked.reduce((sum, r) => sum + (r.sourceReferences?.length || 0), 0);
-      document.getElementById('metricVoiceJobs').textContent = 1;
+        document.getElementById('statRegion').textContent = regionLabel;
+        document.getElementById('statRun').textContent = trendData.fetchedAt?.slice(0, 10) || 'okänd';
+        document.getElementById('statTop').textContent = ranked.length;
+        document.getElementById('statTopic').textContent = top.topic || '-';
+        document.getElementById('statVoice').textContent = voice.status || '-';
+        document.getElementById('metricTrends').textContent = ranked.length;
+        document.getElementById('metricRefs').textContent = ranked.reduce((sum, r) => sum + (r.sourceReferences?.length || 0), 0);
+        document.getElementById('metricVoiceJobs').textContent = 1;
 
-      document.getElementById('selectedTopicBox').innerHTML = `<h3><span class="number-pill">1</span>${top.topic || '-'}</h3><p><strong>Why now:</strong> ${top.whyNow || '-'}</p><p><strong>Trafik:</strong> ${top.approxTraffic || '-'}</p><span class="badge ok">prioriterad</span>`;
-      const queue = productionQueue.queue || [];
-      document.getElementById('queueBox').innerHTML = queue.length ? queue.map(item => `<div class="queue-item"><strong>#${item.rank} ${item.topic}</strong><p>Status: ${item.status}</p><p>Next step: ${item.nextStep}</p></div>`).join('') : '<p class="loading">Inga approved topics i kön ännu.</p>';
+        document.getElementById('selectedTopicBox').innerHTML = `<h3><span class="number-pill">1</span>${top.topic || '-'}</h3><p><strong>Why now:</strong> ${top.whyNow || '-'}</p><p><strong>Trafik:</strong> ${top.approxTraffic || '-'}</p><span class="badge ok">prioriterad</span>`;
+        const queue = productionQueue.queue || [];
+        document.getElementById('queueBox').innerHTML = queue.length ? queue.map(item => `<div class="queue-item"><strong>#${item.rank} ${item.topic}</strong><p>Status: ${item.status}</p><p>Next step: ${item.nextStep}</p></div>`).join('') : '<p class="loading">Inga approved topics i kön ännu.</p>';
 
-      const pipelineItems = [
-        ['Discovery', `${regionLabel} via Google Trends`, 'ok'],
-        ['Ranking', `${ranked.length} ämnen hämtade`, 'ok'],
-        ['Brief', 'brief skapad', 'ok'],
-        ['Script', 'script generation ready', 'ok'],
-        ['Voice', voice.status || 'okänd', voice.status === 'queued' ? 'wait' : 'ok'],
-        ['Video', 'render scaffold', 'wait']
-      ];
-      document.getElementById('pipelineGrid').innerHTML = pipelineItems.map(([name, text, klass]) => `<div class="step"><strong>${name}</strong>${text}<span class="badge ${klass}">${text}</span></div>`).join('');
+        const pipelineItems = [
+          ['Discovery', `${regionLabel} via Google Trends`, 'ok'],
+          ['Ranking', `${ranked.length} ämnen hämtade`, 'ok'],
+          ['Brief', 'brief skapad', 'ok'],
+          ['Script', 'script generation ready', 'ok'],
+          ['Voice', voice.status || 'okänd', voice.status === 'queued' ? 'wait' : 'ok'],
+          ['Video', 'render scaffold', 'wait']
+        ];
+        document.getElementById('pipelineGrid').innerHTML = pipelineItems.map(([name, text, klass]) => `<div class="step"><strong>${name}</strong>${text}<span class="badge ${klass}">${text}</span></div>`).join('');
 
-      document.getElementById('discoveryBody').innerHTML = ranked.map((r, i) => `<tr><td>${i + 1}</td><td>${r.topic}</td><td>${r.approxTraffic || r.trendScoreRaw || '-'}</td><td>${r.whyNow || '-'}</td></tr>`).join('');
-      document.getElementById('rankingBody').innerHTML = ranked.map((r, i) => `<tr><td>${i + 1}</td><td>${r.topic}<div class="topic-score"><span style="width:${Math.min(100, Number(String(r.approxTraffic || '').replace(/\D/g,'')) || 30)}%"></span></div></td><td>${r.approxTraffic || r.trendScoreRaw || '-'}</td><td>${scoreReason(r)}</td></tr>`).join('');
+        document.getElementById('discoveryBody').innerHTML = ranked.map((r, i) => `<tr><td>${i + 1}</td><td>${r.topic}</td><td>${r.approxTraffic || r.trendScoreRaw || '-'}</td><td>${r.whyNow || '-'}</td></tr>`).join('');
+        document.getElementById('rankingBody').innerHTML = ranked.map((r, i) => `<tr><td>${i + 1}</td><td>${r.topic}<div class="topic-score"><span style="width:${Math.min(100, Number(String(r.approxTraffic || '').replace(/\D/g,'')) || 30)}%"></span></div></td><td>${r.approxTraffic || r.trendScoreRaw || '-'}</td><td>${scoreReason(r)}</td></tr>`).join('');
 
-      const reviewMap = new Map((reviewState.items || []).map(item => [item.rank, item.status]));
-      document.getElementById('briefList').innerHTML = ranked.map((r, i) => {
-        const rank = i + 1;
-        const status = reviewMap.get(rank) || 'pending';
-        const badgeClass = status === 'approved' ? 'ok' : status === 'rejected' ? 'todo' : 'wait';
-        const badgeText = status === 'approved' ? 'approved' : status === 'rejected' ? 'rejected' : 'pending';
-        const dynamicHook = `Varför trendar ${r.topic} just nu? Här är den snabba förklaringen.`;
-        return `
-        <div class="brief-item" data-rank="${rank}">
-          <h3><span class="number-pill">${rank}</span>${r.topic}</h3>
-          <p><strong>Why now:</strong> ${r.whyNow || '-'}</p>
-          <p><strong>Brief / scope:</strong> ${briefText(r, i, regionLabel)}</p>
-          <p><strong>Suggested angle:</strong> ${scoreReason(r)}</p>
-          <p><strong>Hookidé:</strong> ${dynamicHook}</p>
-          <span class="badge ${badgeClass}">${badgeText}</span>
-          <div class="review-actions">
-            <button class="review-btn approve" data-action="approve" data-rank="${rank}">Approve</button>
-            <button class="review-btn reject" data-action="reject" data-rank="${rank}">Reject</button>
+        const reviewMap = new Map((reviewState.items || []).map(item => [item.rank, item.status]));
+        document.getElementById('briefList').innerHTML = ranked.map((r, i) => {
+          const rank = i + 1;
+          const status = reviewMap.get(rank) || 'pending';
+          const badgeClass = status === 'approved' ? 'ok' : status === 'rejected' ? 'todo' : 'wait';
+          const badgeText = status === 'approved' ? 'approved' : status === 'rejected' ? 'rejected' : 'pending';
+          const dynamicHook = `Varför trendar ${r.topic} just nu? Här är den snabba förklaringen.`;
+          return `
+          <div class="brief-item" data-rank="${rank}">
+            <h3><span class="number-pill">${rank}</span>${r.topic}</h3>
+            <p><strong>Why now:</strong> ${r.whyNow || '-'}</p>
+            <p><strong>Brief / scope:</strong> ${briefText(r, i, regionLabel)}</p>
+            <p><strong>Suggested angle:</strong> ${scoreReason(r)}</p>
+            <p><strong>Hookidé:</strong> ${dynamicHook}</p>
+            <span class="badge ${badgeClass}">${badgeText}</span>
+            <div class="review-actions">
+              <button class="review-btn approve" data-action="approve" data-rank="${rank}">Approve</button>
+              <button class="review-btn reject" data-action="reject" data-rank="${rank}">Reject</button>
+            </div>
           </div>
-        </div>
-      `}).join('');
+        `}).join('');
 
-      document.querySelectorAll('.review-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-          const rank = Number(btn.dataset.rank);
-          const action = btn.dataset.action;
-          const item = btn.closest('.brief-item');
-          const badge = item.querySelector('.badge');
-          const titleEl = item.querySelector('h3');
-          const topic = titleEl.textContent.replace(/^\s*\d+\s*/, '').trim();
-          if (action === 'approve') {
-            badge.className = 'badge ok';
-            badge.textContent = 'approved';
-            const queueHtml = document.getElementById('queueBox');
-            const exists = [...queueHtml.querySelectorAll('.queue-item strong')].some(el => el.textContent.includes(`#${rank}`));
-            if (!exists) {
-              const div = document.createElement('div');
-              div.className = 'queue-item';
-              div.innerHTML = `<strong>#${rank} ${topic}</strong><p>Status: approved</p><p>Next step: script/voice/video</p>`;
-              if (queueHtml.querySelector('.loading')) queueHtml.innerHTML = '';
-              queueHtml.appendChild(div);
+        document.querySelectorAll('.review-btn').forEach(btn => {
+          btn.addEventListener('click', () => {
+            const rank = Number(btn.dataset.rank);
+            const action = btn.dataset.action;
+            const item = btn.closest('.brief-item');
+            const badge = item.querySelector('.badge');
+            const titleEl = item.querySelector('h3');
+            const topic = titleEl.textContent.replace(/^\s*\d+\s*/, '').trim();
+            if (action === 'approve') {
+              badge.className = 'badge ok';
+              badge.textContent = 'approved';
+              const queueHtml = document.getElementById('queueBox');
+              const exists = [...queueHtml.querySelectorAll('.queue-item strong')].some(el => el.textContent.includes(`#${rank}`));
+              if (!exists) {
+                const div = document.createElement('div');
+                div.className = 'queue-item';
+                div.innerHTML = `<strong>#${rank} ${topic}</strong><p>Status: approved</p><p>Next step: script/voice/video</p>`;
+                if (queueHtml.querySelector('.loading')) queueHtml.innerHTML = '';
+                queueHtml.appendChild(div);
+              }
+            } else {
+              badge.className = 'badge todo';
+              badge.textContent = 'rejected';
             }
-          } else {
-            badge.className = 'badge todo';
-            badge.textContent = 'rejected';
-          }
+          });
         });
-      });
 
-      document.getElementById('voiceBox').innerHTML = `<p><strong>Status:</strong> ${voice.status || '-'}</p><p><strong>Provider:</strong> ${voice.provider || '-'}</p><p><strong>Voice:</strong> ${voice.voiceId || voice.voice || '-'}</p><p><strong>Next action:</strong> ${voice.nextAction || voice.note || '-'}</p>`;
+        document.getElementById('voiceBox').innerHTML = `<p><strong>Status:</strong> ${voice.status || '-'}</p><p><strong>Provider:</strong> ${voice.provider || '-'}</p><p><strong>Voice:</strong> ${voice.voiceId || voice.voice || '-'}</p><p><strong>Next action:</strong> ${voice.nextAction || voice.note || '-'}</p>`;
 
-      document.getElementById('sourcesBox').innerHTML = ranked.slice(0, 10).map((r, i) => `<div class="source-card"><h3><span class="number-pill">${i + 1}</span>${r.topic}</h3><p>Trafik: ${r.approxTraffic || '-'} | Region: ${regionLabel}</p>${(r.sourceReferences || []).slice(0,3).map(ref => `<p><a href="${ref.url}" target="_blank" rel="noopener noreferrer">${ref.source}: ${ref.title}</a></p>`).join('') || '<p>Inga referenser sparade.</p>'}</div>`).join('');
+        document.getElementById('sourcesBox').innerHTML = ranked.slice(0, 10).map((r, i) => `<div class="source-card"><h3><span class="number-pill">${i + 1}</span>${r.topic}</h3><p>Trafik: ${r.approxTraffic || '-'} | Region: ${regionLabel}</p>${(r.sourceReferences || []).slice(0,3).map(ref => `<p><a href="${ref.url}" target="_blank" rel="noopener noreferrer">${ref.source}: ${ref.title}</a></p>`).join('') || '<p>Inga referenser sparade.</p>'}</div>`).join('');
+      } catch (err) {
+        console.error(err);
+        document.getElementById('runHint').textContent = `Dashboard error: ${err.message}`;
+      }
     }
 
     loadRegion(currentRegion).catch(console.error);
