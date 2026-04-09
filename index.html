@@ -168,9 +168,8 @@
     }
 
     async function loadRegion(region) {
-      const [trendData, brief, voice, reviewState, productionQueue] = await Promise.all([
+      const [trendData, voice, reviewState, productionQueue] = await Promise.all([
         loadJson(`./trends-${region}.json`),
-        loadJson('./latest-content-brief.json'),
         loadJson('./latest-voice-job.json'),
         loadJson('./review-status.json'),
         loadJson('./production-queue.json')
