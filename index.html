@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zigg Trend Engine Dashboard</title>
+  <style>
+    :root {
+      --bg: #0c1224;
+      --bg2: #131c36;
+      --card: rgba(18, 28, 54, 0.92);
+      --line: rgba(255,255,255,0.08);
+      --text: #edf3ff;
+      --muted: #97a5ca;
+      --green: #32d7a6;
+      --yellow: #ffd166;
+      --pink: #ff72b6;
+      --blue: #66b8ff;
+      --purple: #8f84ff;
+      --shadow: 0 18px 50px rgba(0,0,0,0.35);
+      --radius: 24px;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--text);
+      font-family: Inter, Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at top right, rgba(102,184,255,0.14), transparent 22%),
+        radial-gradient(circle at left, rgba(255,114,182,0.10), transparent 22%),
+        linear-gradient(180deg, var(--bg), var(--bg2));
+    }
+
+    .app { max-width: 1380px; margin: 0 auto; padding: 24px; }
+    .hero {
+      background: linear-gradient(135deg, rgba(102,184,255,0.22), rgba(143,132,255,0.2));
+      border: 1px solid rgba(255,255,255,0.09);
+      box-shadow: var(--shadow);
+      border-radius: 30px;
+      padding: 28px;
+    }
+    h1 { margin: 0 0 10px; font-size: clamp(2rem, 4vw, 3.3rem); }
+    .hero p { margin: 0; color: #d7e2ff; max-width: 860px; line-height: 1.6; }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-top: 18px;
+    }
+    .stat, .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    .stat { padding: 16px; }
+    .label { color: var(--muted); font-size: 0.9rem; margin-bottom: 6px; }
+    .stat strong { font-size: 1.8rem; }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 1.4fr 0.9fr;
+      gap: 18px;
+      margin-top: 20px;
+    }
+    .stack { display: grid; gap: 18px; }
+    .card { padding: 20px; }
+    .card h2 { margin: 0 0 6px; font-size: 1.18rem; }
+    .sub { margin: 0 0 18px; color: var(--muted); line-height: 1.5; font-size: 0.94rem; }
+
+    .pipeline {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 10px;
+    }
+    .step {
+      padding: 14px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.02);
+    }
+    .step strong { display: block; margin-bottom: 6px; }
+    .badge {
+      display: inline-block;
+      margin-top: 6px;
+      padding: 5px 9px;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 700;
+    }
+    .ok { background: rgba(50,215,166,0.14); color: var(--green); }
+    .wait { background: rgba(255,209,102,0.14); color: var(--yellow); }
+    .todo { background: rgba(102,184,255,0.14); color: var(--blue); }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.94rem;
+    }
+    th, td {
+      text-align: left;
+      padding: 12px 10px;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+    }
+    th { color: var(--muted); font-size: 0.84rem; text-transform: uppercase; letter-spacing: 0.04em; }
+    tr:last-child td { border-bottom: 0; }
+
+    .topic-score {
+      height: 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.08);
+      overflow: hidden;
+      margin-top: 6px;
+    }
+    .topic-score span {
+      display: block;
+      height: 100%;
+      background: linear-gradient(90deg, var(--blue), var(--purple), var(--pink));
+    }
+
+    .draft {
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 16px;
+      background: rgba(255,255,255,0.02);
+      margin-bottom: 12px;
+    }
+    .draft h3 { margin: 0 0 8px; }
+    .draft p { margin: 0 0 8px; color: var(--muted); line-height: 1.5; }
+
+    .mini-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .mini {
+      border-radius: 18px;
+      padding: 16px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--line);
+    }
+    .mini strong { display: block; font-size: 1.4rem; margin-top: 6px; }
+
+    canvas {
+      width: 100%;
+      height: 280px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid var(--line);
+    }
+
+    @media (max-width: 1050px) {
+      .layout, .stats, .pipeline, .mini-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 760px) {
+      .app { padding: 14px; }
+      .layout, .stats, .pipeline, .mini-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <section class="hero">
+      <h1>Trend Video Engine Dashboard</h1>
+      <p>
+        Ett grafiskt control panel för den semi-automatiska contentmotorn. Här ser du trendämnen, score, valt ämne, manusutkast, pipeline-status och senare även publicerade videos och performance.
+      </p>
+      <div class="stats">
+        <div class="stat"><div class="label">Senaste körning</div><strong>Idag</strong></div>
+        <div class="stat"><div class="label">Trendämnen hittade</div><strong>3</strong></div>
+        <div class="stat"><div class="label">Draft status</div><strong style="color: var(--yellow);">Review</strong></div>
+        <div class="stat"><div class="label">Publicerade videos</div><strong>0</strong></div>
+      </div>
+    </section>
+
+    <section class="layout">
+      <div class="stack">
+        <div class="card">
+          <h2>Pipeline status</h2>
+          <p class="sub">Snabb översikt av var i processen systemet befinner sig just nu.</p>
+          <div class="pipeline">
+            <div class="step"><strong>1. Trends</strong>Mockdata skapad<span class="badge ok">klar</span></div>
+            <div class="step"><strong>2. Scoring</strong>Ämnen rankade<span class="badge ok">klar</span></div>
+            <div class="step"><strong>3. Brief</strong>Content brief skapad<span class="badge ok">klar</span></div>
+            <div class="step"><strong>4. Script</strong>30s manus klart<span class="badge ok">klar</span></div>
+            <div class="step"><strong>5. Voice</strong>Väntar på implementation<span class="badge wait">nästa</span></div>
+            <div class="step"><strong>6. Publish</strong>Kräver human review<span class="badge todo">senare</span></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>Trend scoring</h2>
+          <p class="sub">Så här ser den senaste ämnesrankingen ut just nu.</p>
+          <table>
+            <thead>
+              <tr>
+                <th>Ämne</th>
+                <th>Total score</th>
+                <th>Kommentar</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Ny AI-funktion i sociala medier<div class="topic-score"><span style="width: 92%"></span></div></td>
+                <td>92</td>
+                <td>Hög klickpotential och lätt att förklara snabbt.</td>
+              </tr>
+              <tr>
+                <td>Svenska bolag satsar på kärnkraft igen<div class="topic-score"><span style="width: 84%"></span></div></td>
+                <td>84</td>
+                <td>Stark opinionsdrivare men kräver tydlig framing.</td>
+              </tr>
+              <tr>
+                <td>Ny viral hälsotrend på TikTok<div class="topic-score"><span style="width: 80%"></span></div></td>
+                <td>80</td>
+                <td>Bra short-format, men risk för innehåll som känns tunt.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="card">
+          <h2>Run activity</h2>
+          <p class="sub">Visuell översikt av pipeline-runs över tid.</p>
+          <canvas id="runChart" width="900" height="280"></canvas>
+        </div>
+      </div>
+
+      <div class="stack">
+        <div class="card">
+          <h2>Valt draft</h2>
+          <p class="sub">Det contentbrief och manus som motorn just nu föreslår.</p>
+          <div class="draft">
+            <h3>Ny AI-funktion i sociala medier, förklarat på 30 sekunder</h3>
+            <p><strong>Hook:</strong> Alla pratar om ny AI-funktion i sociala medier just nu, men här är varför det faktiskt betyder något.</p>
+            <p><strong>Why now:</strong> Många pratar om hur AI ändrar vardagsappar just nu.</p>
+            <p><strong>Script:</strong> Alla pratar om ny AI-funktion i sociala medier just nu, men här är varför det faktiskt betyder något. Ny AI-funktion i sociala medier trendar eftersom det kombinerar nyhet, känsla och tydliga konsekvenser som folk direkt förstår. Det gör ämnet perfekt för kortvideo, eftersom man kan ge publikens hjärna en snabb aha-känsla på under 30 sekunder. Vill du att jag gör fler såna här snabba förklaringar, följ för nästa trend.</p>
+            <span class="badge wait">review behövs</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>Engine metrics</h2>
+          <p class="sub">Vad dashboarden kommer hjälpa dig följa över tid.</p>
+          <div class="mini-grid">
+            <div class="mini">Drafts skapade<strong>1</strong></div>
+            <div class="mini">Godkända<strong>0</strong></div>
+            <div class="mini">Videos renderade<strong>0</strong></div>
+            <div class="mini">Publicerade<strong>0</strong></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>Vad som kommer härnäst</h2>
+          <p class="sub">Nästa UI-delar när vi bygger vidare.</p>
+          <ul style="margin:0; padding-left:18px; color:#dbe6ff; line-height:1.7;">
+            <li>riktig trendfeed</li>
+            <li>voiceover status</li>
+            <li>videopreview</li>
+            <li>review queue med approve/reject</li>
+            <li>YouTube publish-logg</li>
+            <li>views, CTR och retention</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    const canvas = document.getElementById('runChart');
+    const ctx = canvas.getContext('2d');
+    const values = [1, 2, 2, 3, 4, 4, 5];
+
+    function draw() {
+      const w = canvas.width;
+      const h = canvas.height;
+      ctx.clearRect(0, 0, w, h);
+      ctx.fillStyle = '#111a31';
+      ctx.fillRect(0, 0, w, h);
+
+      for (let i = 0; i < 5; i++) {
+        const y = 20 + i * ((h - 40) / 4);
+        ctx.strokeStyle = 'rgba(255,255,255,0.08)';
+        ctx.beginPath();
+        ctx.moveTo(20, y);
+        ctx.lineTo(w - 20, y);
+        ctx.stroke();
+      }
+
+      ctx.beginPath();
+      values.forEach((v, i) => {
+        const x = 30 + i * ((w - 60) / (values.length - 1));
+        const y = h - 28 - v * 35;
+        if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+      });
+      ctx.strokeStyle = '#66b8ff';
+      ctx.lineWidth = 4;
+      ctx.stroke();
+
+      values.forEach((v, i) => {
+        const x = 30 + i * ((w - 60) / (values.length - 1));
+        const y = h - 28 - v * 35;
+        ctx.beginPath();
+        ctx.arc(x, y, 5, 0, Math.PI * 2);
+        ctx.fillStyle = '#8f84ff';
+        ctx.fill();
+      });
+
+      ctx.fillStyle = '#dbe6ff';
+      ctx.font = '12px Inter, Arial';
+      ctx.fillText('Pipeline activity over latest runs', 22, 18);
+    }
+
+    draw();
+  </script>
+</body>
+</html>
