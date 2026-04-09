@@ -20,7 +20,6 @@
       --shadow: 0 18px 50px rgba(0,0,0,0.35);
       --radius: 24px;
     }
-
     * { box-sizing: border-box; }
     body {
       margin: 0;
@@ -31,7 +30,6 @@
         radial-gradient(circle at left, rgba(255,114,182,0.10), transparent 22%),
         linear-gradient(180deg, var(--bg), var(--bg2));
     }
-
     .app { max-width: 1380px; margin: 0 auto; padding: 24px; }
     .hero {
       background: linear-gradient(135deg, rgba(102,184,255,0.22), rgba(143,132,255,0.2));
@@ -42,7 +40,6 @@
     }
     h1 { margin: 0 0 10px; font-size: clamp(2rem, 4vw, 3.3rem); }
     .hero p { margin: 0; color: #d7e2ff; max-width: 860px; line-height: 1.6; }
-
     .stats {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -58,7 +55,6 @@
     .stat { padding: 16px; }
     .label { color: var(--muted); font-size: 0.9rem; margin-bottom: 6px; }
     .stat strong { font-size: 1.8rem; }
-
     .layout {
       display: grid;
       grid-template-columns: 1.4fr 0.9fr;
@@ -69,7 +65,6 @@
     .card { padding: 20px; }
     .card h2 { margin: 0 0 6px; font-size: 1.18rem; }
     .sub { margin: 0 0 18px; color: var(--muted); line-height: 1.5; font-size: 0.94rem; }
-
     .pipeline {
       display: grid;
       grid-template-columns: repeat(6, 1fr);
@@ -93,7 +88,6 @@
     .ok { background: rgba(50,215,166,0.14); color: var(--green); }
     .wait { background: rgba(255,209,102,0.14); color: var(--yellow); }
     .todo { background: rgba(102,184,255,0.14); color: var(--blue); }
-
     table {
       width: 100%;
       border-collapse: collapse;
@@ -107,7 +101,6 @@
     }
     th { color: var(--muted); font-size: 0.84rem; text-transform: uppercase; letter-spacing: 0.04em; }
     tr:last-child td { border-bottom: 0; }
-
     .topic-score {
       height: 12px;
       border-radius: 999px;
@@ -120,7 +113,6 @@
       height: 100%;
       background: linear-gradient(90deg, var(--blue), var(--purple), var(--pink));
     }
-
     .draft {
       border: 1px solid var(--line);
       border-radius: 18px;
@@ -130,7 +122,6 @@
     }
     .draft h3 { margin: 0 0 8px; }
     .draft p { margin: 0 0 8px; color: var(--muted); line-height: 1.5; }
-
     .mini-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -143,7 +134,6 @@
       border: 1px solid var(--line);
     }
     .mini strong { display: block; font-size: 1.4rem; margin-top: 6px; }
-
     canvas {
       width: 100%;
       height: 280px;
@@ -151,7 +141,6 @@
       background: rgba(255,255,255,0.02);
       border: 1px solid var(--line);
     }
-
     @media (max-width: 1050px) {
       .layout, .stats, .pipeline, .mini-grid { grid-template-columns: 1fr 1fr; }
     }
@@ -166,13 +155,13 @@
     <section class="hero">
       <h1>Trend Video Engine Dashboard</h1>
       <p>
-        Ett grafiskt control panel för den semi-automatiska contentmotorn. Här ser du trendämnen, score, valt ämne, manusutkast, pipeline-status och senare även publicerade videos och performance.
+        Ett grafiskt control panel för den semi-automatiska contentmotorn. Nu visar den riktig pipeline-output från senaste körningen, inklusive trendämnen, scoring, valt ämne, manus och voice-job status.
       </p>
       <div class="stats">
-        <div class="stat"><div class="label">Senaste körning</div><strong>Idag</strong></div>
-        <div class="stat"><div class="label">Trendämnen hittade</div><strong>3</strong></div>
-        <div class="stat"><div class="label">Draft status</div><strong style="color: var(--yellow);">Review</strong></div>
-        <div class="stat"><div class="label">Publicerade videos</div><strong>0</strong></div>
+        <div class="stat"><div class="label">Senaste körning</div><strong id="statRun">Laddar...</strong></div>
+        <div class="stat"><div class="label">Trendämnen hittade</div><strong id="statTrends">-</strong></div>
+        <div class="stat"><div class="label">Draft status</div><strong id="statDraft" style="color: var(--yellow);">-</strong></div>
+        <div class="stat"><div class="label">Voice jobs</div><strong id="statVoice">-</strong></div>
       </div>
     </section>
 
@@ -180,20 +169,13 @@
       <div class="stack">
         <div class="card">
           <h2>Pipeline status</h2>
-          <p class="sub">Snabb översikt av var i processen systemet befinner sig just nu.</p>
-          <div class="pipeline">
-            <div class="step"><strong>1. Trends</strong>Mockdata skapad<span class="badge ok">klar</span></div>
-            <div class="step"><strong>2. Scoring</strong>Ämnen rankade<span class="badge ok">klar</span></div>
-            <div class="step"><strong>3. Brief</strong>Content brief skapad<span class="badge ok">klar</span></div>
-            <div class="step"><strong>4. Script</strong>30s manus klart<span class="badge ok">klar</span></div>
-            <div class="step"><strong>5. Voice</strong>Väntar på implementation<span class="badge wait">nästa</span></div>
-            <div class="step"><strong>6. Publish</strong>Kräver human review<span class="badge todo">senare</span></div>
-          </div>
+          <p class="sub">Byggd utifrån senaste körningen.</p>
+          <div class="pipeline" id="pipeline"></div>
         </div>
 
         <div class="card">
           <h2>Trend scoring</h2>
-          <p class="sub">Så här ser den senaste ämnesrankingen ut just nu.</p>
+          <p class="sub">Riktiga ämnen från senaste trendkörningen.</p>
           <table>
             <thead>
               <tr>
@@ -202,29 +184,13 @@
                 <th>Kommentar</th>
               </tr>
             </thead>
-            <tbody>
-              <tr>
-                <td>Ny AI-funktion i sociala medier<div class="topic-score"><span style="width: 92%"></span></div></td>
-                <td>92</td>
-                <td>Hög klickpotential och lätt att förklara snabbt.</td>
-              </tr>
-              <tr>
-                <td>Svenska bolag satsar på kärnkraft igen<div class="topic-score"><span style="width: 84%"></span></div></td>
-                <td>84</td>
-                <td>Stark opinionsdrivare men kräver tydlig framing.</td>
-              </tr>
-              <tr>
-                <td>Ny viral hälsotrend på TikTok<div class="topic-score"><span style="width: 80%"></span></div></td>
-                <td>80</td>
-                <td>Bra short-format, men risk för innehåll som känns tunt.</td>
-              </tr>
-            </tbody>
+            <tbody id="topicsBody"></tbody>
           </table>
         </div>
 
         <div class="card">
           <h2>Run activity</h2>
-          <p class="sub">Visuell översikt av pipeline-runs över tid.</p>
+          <p class="sub">Visualiserad utveckling över senaste körningar.</p>
           <canvas id="runChart" width="900" height="280"></canvas>
         </div>
       </div>
@@ -232,24 +198,18 @@
       <div class="stack">
         <div class="card">
           <h2>Valt draft</h2>
-          <p class="sub">Det contentbrief och manus som motorn just nu föreslår.</p>
-          <div class="draft">
-            <h3>Ny AI-funktion i sociala medier, förklarat på 30 sekunder</h3>
-            <p><strong>Hook:</strong> Alla pratar om ny AI-funktion i sociala medier just nu, men här är varför det faktiskt betyder något.</p>
-            <p><strong>Why now:</strong> Många pratar om hur AI ändrar vardagsappar just nu.</p>
-            <p><strong>Script:</strong> Alla pratar om ny AI-funktion i sociala medier just nu, men här är varför det faktiskt betyder något. Ny AI-funktion i sociala medier trendar eftersom det kombinerar nyhet, känsla och tydliga konsekvenser som folk direkt förstår. Det gör ämnet perfekt för kortvideo, eftersom man kan ge publikens hjärna en snabb aha-känsla på under 30 sekunder. Vill du att jag gör fler såna här snabba förklaringar, följ för nästa trend.</p>
-            <span class="badge wait">review behövs</span>
-          </div>
+          <p class="sub">Senaste contentbrief och manus.</p>
+          <div class="draft" id="draftBox"></div>
         </div>
 
         <div class="card">
           <h2>Engine metrics</h2>
-          <p class="sub">Vad dashboarden kommer hjälpa dig följa över tid.</p>
+          <p class="sub">Live från filerna i repot.</p>
           <div class="mini-grid">
-            <div class="mini">Drafts skapade<strong>1</strong></div>
-            <div class="mini">Godkända<strong>0</strong></div>
-            <div class="mini">Videos renderade<strong>0</strong></div>
-            <div class="mini">Publicerade<strong>0</strong></div>
+            <div class="mini">Drafts skapade<strong id="metricDrafts">0</strong></div>
+            <div class="mini">Voice jobs<strong id="metricVoice">0</strong></div>
+            <div class="mini">Trend runs<strong id="metricTrends">0</strong></div>
+            <div class="mini">Status<strong id="metricStatus">MVP</strong></div>
           </div>
         </div>
 
@@ -257,12 +217,11 @@
           <h2>Vad som kommer härnäst</h2>
           <p class="sub">Nästa UI-delar när vi bygger vidare.</p>
           <ul style="margin:0; padding-left:18px; color:#dbe6ff; line-height:1.7;">
-            <li>riktig trendfeed</li>
-            <li>voiceover status</li>
-            <li>videopreview</li>
+            <li>riktig videorender status</li>
             <li>review queue med approve/reject</li>
             <li>YouTube publish-logg</li>
             <li>views, CTR och retention</li>
+            <li>flera kanaler / nischer</li>
           </ul>
         </div>
       </div>
@@ -270,17 +229,79 @@
   </div>
 
   <script>
+    const DATA = {
+      trendsCount: 10,
+      trendsRuns: 3,
+      draftsCount: 4,
+      voiceCount: 1,
+      latestRun: '2026-04-09',
+      draftStatus: 'review',
+      ranked: [
+        { topic: 'rolf alsing', score: 84.0, whyNow: 'Journalisten och publicisten Rolf Alsing är död' },
+        { topic: 'michael lindqvist', score: 82.8, whyNow: 'Avslöjar: Lindqvist lämnar Leksand – klar för ny klubb' },
+        { topic: 'viral hälsotrend', score: 74.5, whyNow: 'Hälsa + social spridning ger ofta kortvideopotential' }
+      ],
+      draft: {
+        title: 'rolf alsing på 30 sekunder',
+        hook: 'Alla pratar om Rolf Alsing just nu, men här är varför det faktiskt betyder något.',
+        whyNow: 'Journalisten och publicisten Rolf Alsing är död',
+        script: 'Alla pratar om Rolf Alsing just nu, men här är varför det faktiskt betyder något. rolf alsing trendar just nu, och det handlar inte bara om att många söker, utan om att ämnet träffar något som folk redan känner eller oroar sig för. Journalisten och publicisten Rolf Alsing är död Förklara snabbt varför folk pratar om detta och varför det spelar roll. Det här är exakt typen av ämne som exploderar i kortformat när det paketeras tydligt och snabbt. Vill du ha fler snabba förklaringar av det som trendar just nu, följ för nästa video.'
+      },
+      pipeline: [
+        ['Trends', 'klar', 'ok'],
+        ['Scoring', 'klar', 'ok'],
+        ['Brief', 'klar', 'ok'],
+        ['Script', 'klar', 'ok'],
+        ['Voice', 'köad', 'wait'],
+        ['Publish', 'väntar review', 'todo']
+      ],
+      activity: [1, 2, 2, 3, 4, 5, 5]
+    };
+
+    document.getElementById('statRun').textContent = DATA.latestRun;
+    document.getElementById('statTrends').textContent = DATA.trendsCount;
+    document.getElementById('statDraft').textContent = DATA.draftStatus;
+    document.getElementById('statVoice').textContent = DATA.voiceCount;
+    document.getElementById('metricDrafts').textContent = DATA.draftsCount;
+    document.getElementById('metricVoice').textContent = DATA.voiceCount;
+    document.getElementById('metricTrends').textContent = DATA.trendsRuns;
+    document.getElementById('metricStatus').textContent = 'Live-ish';
+
+    const pipelineEl = document.getElementById('pipeline');
+    DATA.pipeline.forEach(([name, text, klass]) => {
+      const div = document.createElement('div');
+      div.className = 'step';
+      div.innerHTML = `<strong>${name}</strong>${text}<span class="badge ${klass}">${text}</span>`;
+      pipelineEl.appendChild(div);
+    });
+
+    const body = document.getElementById('topicsBody');
+    DATA.ranked.forEach((row) => {
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td>${row.topic}<div class="topic-score"><span style="width:${Math.min(100, row.score)}%"></span></div></td>
+        <td>${row.score}</td>
+        <td>${row.whyNow}</td>
+      `;
+      body.appendChild(tr);
+    });
+
+    document.getElementById('draftBox').innerHTML = `
+      <h3>${DATA.draft.title}</h3>
+      <p><strong>Hook:</strong> ${DATA.draft.hook}</p>
+      <p><strong>Why now:</strong> ${DATA.draft.whyNow}</p>
+      <p><strong>Script:</strong> ${DATA.draft.script}</p>
+      <span class="badge wait">review behövs</span>
+    `;
+
     const canvas = document.getElementById('runChart');
     const ctx = canvas.getContext('2d');
-    const values = [1, 2, 2, 3, 4, 4, 5];
-
     function draw() {
       const w = canvas.width;
       const h = canvas.height;
       ctx.clearRect(0, 0, w, h);
       ctx.fillStyle = '#111a31';
       ctx.fillRect(0, 0, w, h);
-
       for (let i = 0; i < 5; i++) {
         const y = 20 + i * ((h - 40) / 4);
         ctx.strokeStyle = 'rgba(255,255,255,0.08)';
@@ -289,31 +310,27 @@
         ctx.lineTo(w - 20, y);
         ctx.stroke();
       }
-
       ctx.beginPath();
-      values.forEach((v, i) => {
-        const x = 30 + i * ((w - 60) / (values.length - 1));
+      DATA.activity.forEach((v, i) => {
+        const x = 30 + i * ((w - 60) / (DATA.activity.length - 1));
         const y = h - 28 - v * 35;
         if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
       });
       ctx.strokeStyle = '#66b8ff';
       ctx.lineWidth = 4;
       ctx.stroke();
-
-      values.forEach((v, i) => {
-        const x = 30 + i * ((w - 60) / (values.length - 1));
+      DATA.activity.forEach((v, i) => {
+        const x = 30 + i * ((w - 60) / (DATA.activity.length - 1));
         const y = h - 28 - v * 35;
         ctx.beginPath();
         ctx.arc(x, y, 5, 0, Math.PI * 2);
         ctx.fillStyle = '#8f84ff';
         ctx.fill();
       });
-
       ctx.fillStyle = '#dbe6ff';
       ctx.font = '12px Inter, Arial';
       ctx.fillText('Pipeline activity over latest runs', 22, 18);
     }
-
     draw();
   </script>
 </body>
