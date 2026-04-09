@@ -85,7 +85,10 @@
           <button class="region-btn" data-region="US">USA</button>
           <button class="region-btn" data-region="GLOBAL">Globalt</button>
         </div>
-        <div class="label">Trendkälla: Google Trends RSS</div>
+        <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
+          <button id="runPipelineBtn" class="region-btn">Kör pipeline för vald region</button>
+          <div class="label">Trendkälla: Google Trends RSS</div>
+        </div>
       </div>
       <div class="stats">
         <div class="stat"><div class="label">Region</div><strong id="statRegion">Sverige</strong></div>
@@ -94,6 +97,7 @@
         <div class="stat"><div class="label">Valt ämne</div><strong id="statTopic">-</strong></div>
         <div class="stat"><div class="label">Voice status</div><strong id="statVoice">-</strong></div>
       </div>
+      <div class="label" id="runHint" style="margin-top:10px;">Välj region och använd den som aktuell pipeline-vy.</div>
     </section>
 
     <div class="tabbar">
@@ -132,8 +136,13 @@
       regionButtons.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
       currentRegion = btn.dataset.region;
+      document.getElementById('runHint').textContent = `Vald region: ${currentRegion}. Körningen i dashboarden visar nu denna region.`;
       loadRegion(currentRegion);
     }));
+
+    document.getElementById('runPipelineBtn').addEventListener('click', () => {
+      document.getElementById('runHint').textContent = `Pipeline-view switched to ${currentRegion}. För riktig omkörning från dashboarden behövs ett backend/API senare, men dashboarden är nu regionsstyrd.`;
+    });
 
     async function loadJson(path) {
       const res = await fetch(path, { cache: 'no-store' });
