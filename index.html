@@ -162,10 +162,11 @@
     }
 
     async function loadRegion(region) {
-      const [trendData, brief, voice] = await Promise.all([
+      const [trendData, brief, voice, topBriefs] = await Promise.all([
         loadJson(`./trends-${region}.json`),
         loadJson('./latest-content-brief.json'),
-        loadJson('./latest-voice-job.json')
+        loadJson('./latest-voice-job.json'),
+        loadJson('./top10-briefs.json')
       ]);
 
       const ranked = (trendData.trends || []).map((item) => ({
@@ -200,14 +201,18 @@
       document.getElementById('discoveryBody').innerHTML = ranked.map((r, i) => `<tr><td>${i + 1}</td><td>${r.topic}</td><td>${r.approxTraffic || r.trendScoreRaw || '-'}</td><td>${r.whyNow || '-'}</td></tr>`).join('');
       document.getElementById('rankingBody').innerHTML = ranked.map((r, i) => `<tr><td>${i + 1}</td><td>${r.topic}<div class="topic-score"><span style="width:${Math.min(100, Number(String(r.approxTraffic || '').replace(/\D/g,'')) || 30)}%"></span></div></td><td>${r.approxTraffic || r.trendScoreRaw || '-'}</td><td>${scoreReason(r)}</td></tr>`).join('');
 
-      document.getElementById('briefList').innerHTML = ranked.map((r, i) => `
+      const briefMap = new Map((topBriefs.briefs || []).map(b => [b.rank, b]));
+      document.getElementById('briefList').innerHTML = ranked.map((r, i) => {
+        const b = briefMap.get(i + 1);
+        return `
         <div class="brief-item">
           <h3><span class="number-pill">${i + 1}</span>${r.topic}</h3>
           <p><strong>Why now:</strong> ${r.whyNow || '-'}</p>
-          <p><strong>Brief / scope:</strong> ${briefText(r, i, regionLabel)}</p>
-          <p><strong>Suggested angle:</strong> ${scoreReason(r)}</p>
+          <p><strong>Brief / scope:</strong> ${b?.brief || briefText(r, i, regionLabel)}</p>
+          <p><strong>Suggested angle:</strong> ${b?.angle || scoreReason(r)}</p>
+          <p><strong>Hookidé:</strong> ${b?.hookIdea || 'Ingen hook ännu.'}</p>
         </div>
-      `).join('');
+      `}).join('');
 
       document.getElementById('voiceBox').innerHTML = `<p><strong>Status:</strong> ${voice.status || '-'}</p><p><strong>Provider:</strong> ${voice.provider || '-'}</p><p><strong>Voice:</strong> ${voice.voiceId || voice.voice || '-'}</p><p><strong>Next action:</strong> ${voice.nextAction || voice.note || '-'}</p>`;
 
