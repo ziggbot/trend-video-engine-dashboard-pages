@@ -1,0 +1,14 @@
+{
+  "region": "SE",
+  "items": [
+    {
+      "rank": 1,
+      "topic": "Example topic",
+      "platforms": {
+        "youtube": { "status": "queued", "url": "" },
+        "tiktok": { "status": "planned", "url": "" },
+        "instagram": { "status": "planned", "url": "" }
+      }
+    }
+  ]
+}
