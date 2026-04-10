@@ -177,6 +177,17 @@
       return `${item.topic} är ett av de ämnen som trendar mest i ${regionLabel} just nu, och det finns en tydlig anledning till att folk pratar om det här överallt. ${item.whyNow || 'Det finns ett starkt nyhetsläge eller ett tydligt publikintresse som driver uppmärksamheten.'} Det gör ämnet extra starkt för kort video, eftersom det både går snabbt att förstå och känns relevant direkt. Om du följer vad som händer just nu är det här ett av casen du verkligen ska ha koll på, eftersom det kombinerar nyhetsvärde, publikintresse och hög delningspotential på väldigt kort tid.`;
     }
 
+    let dashboardState = {
+      trendData: null,
+      voice: null,
+      reviewState: { items: [] },
+      productionQueue: { queue: [] },
+      videoStatus: { items: [] },
+      publishLog: { items: [] },
+      latestRenderJob: null,
+      regionLabel: null
+    };
+
     function bindVoiceButtons() {
       document.querySelectorAll('.generate-voice-btn').forEach(btn => {
         btn.addEventListener('click', () => {
@@ -188,18 +199,39 @@
       });
     }
 
-    function renderVoiceListFromQueue() {
-      const items = [...document.querySelectorAll('.brief-item')].map(item => {
-        const rank = Number(item.dataset.rank);
-        const topic = item.querySelector('h3').textContent.replace(/^\s*\d+\s*/, '').trim();
-        const status = item.querySelector('.badge')?.textContent?.trim() || 'pending';
-        return { rank, topic, status };
-      }).filter(item => item.status === 'approved' || item.status === 'rejected');
+    function upsertByRank(items, nextItem) {
+      const idx = items.findIndex(item => item.rank === nextItem.rank);
+      if (idx >= 0) items[idx] = { ...items[idx], ...nextItem };
+      else items.push(nextItem);
+      items.sort((a, b) => a.rank - b.rank);
+      return items;
+    }
 
-      document.getElementById('voiceList').innerHTML = items.length ? items.map(item => {
-        const isRejected = item.status === 'rejected';
-        return `<div class="video-item ${isRejected ? 'rejected' : ''}"><h3><span class="number-pill">${item.rank}</span>${item.topic}</h3><p>Voice status: ${isRejected ? 'disabled' : 'queued'}</p><div class="status-row"><span class="badge ${isRejected ? 'todo' : 'wait'}">${item.status}</span>${isRejected ? '<span class="badge todo">rejected</span>' : `<button class="action-btn primary generate-voice-btn" data-rank="${item.rank}" data-topic="${item.topic}">Generate voice</button>`}</div></div>`;
+    function renderPersistentViews() {
+      const reviewMap = new Map((dashboardState.reviewState.items || []).map(item => [item.rank, item.status]));
+      const queueItems = dashboardState.productionQueue.queue || [];
+      const videoItems = dashboardState.videoStatus.items || [];
+      const publishItems = dashboardState.publishLog.items || [];
+
+      document.getElementById('queueBox').innerHTML = queueItems.length ? queueItems.map(item => `<div class="queue-item ${reviewMap.get(item.rank) === 'rejected' ? 'rejected' : ''}"><strong>#${item.rank} ${item.topic}</strong><p>Status: ${reviewMap.get(item.rank) || item.status}</p><p>Next step: ${reviewMap.get(item.rank) === 'rejected' ? 'stopped' : item.nextStep}</p></div>`).join('') : '<p class="loading">Inga approved topics i kön ännu.</p>';
+
+      document.getElementById('voiceList').innerHTML = queueItems.length ? queueItems.map(item => {
+        const reviewStatus = reviewMap.get(item.rank) || 'approved';
+        const vid = videoItems.find(v => v.rank === item.rank) || { voice: 'queued' };
+        const isRejected = reviewStatus === 'rejected';
+        return `<div class="video-item ${isRejected ? 'rejected' : ''}"><h3><span class="number-pill">${item.rank}</span>${item.topic}</h3><p>Voice status: ${isRejected ? 'disabled' : vid.voice}</p><div class="status-row"><span class="badge ${isRejected ? 'todo' : 'wait'}">${reviewStatus}</span>${isRejected ? '<span class="badge todo">rejected</span>' : `<button class="action-btn primary generate-voice-btn" data-rank="${item.rank}" data-topic="${item.topic}">Generate voice</button>`}</div></div>`;
       }).join('') : '<p class="loading">Inga approved topics i voice-kön ännu.</p>';
+
+      document.getElementById('videoList').innerHTML = queueItems.length ? queueItems.map(item => {
+        const vid = videoItems.find(v => v.rank === item.rank) || { status: 'queued', voice: 'queued', render: 'not_started', publish: 'not_started' };
+        const rejected = reviewMap.get(item.rank) === 'rejected';
+        return `<div class="video-item ${rejected ? 'rejected' : ''}"><h3><span class="number-pill">${item.rank}</span>${item.topic}</h3><p>Production status: ${rejected ? 'disabled' : vid.status}</p><div class="status-row"><span class="badge ${rejected ? 'todo' : (vid.voice === 'ready' ? 'ok' : 'wait')}">voice: ${rejected ? 'disabled' : vid.voice}</span><span class="badge ${rejected ? 'todo' : (vid.render === 'ready' ? 'ok' : 'wait')}">render: ${rejected ? 'disabled' : vid.render}</span><span class="badge ${rejected ? 'todo' : (vid.publish === 'published' ? 'ok' : 'todo')}">publish: ${rejected ? 'blocked' : vid.publish}</span></div><div class="status-row"><span class="badge ${rejected ? 'todo' : 'ok'}">${rejected ? 'Rejected' : 'YouTube'}</span><span class="badge ${rejected ? 'todo' : 'wait'}">${rejected ? 'Not advancing' : 'TikTok'}</span><span class="badge ${rejected ? 'todo' : 'wait'}">${rejected ? 'Not advancing' : 'Instagram'}</span></div></div>`;
+      }).join('') : '<p class="loading">Inga approved topics i videokön ännu.</p>';
+
+      document.getElementById('publishList').innerHTML = publishItems.length ? publishItems.map(item => {
+        const rejected = reviewMap.get(item.rank) === 'rejected';
+        return `<div class="video-item ${rejected ? 'rejected' : ''}"><h3><span class="number-pill">${item.rank}</span>${item.topic}</h3><div class="status-row"><span class="badge ${rejected ? 'todo' : (item.platforms.youtube.status === 'published' ? 'ok' : 'wait')}">YouTube: ${rejected ? 'blocked' : item.platforms.youtube.status}</span><span class="badge ${rejected ? 'todo' : (item.platforms.tiktok.status === 'published' ? 'ok' : 'todo')}">TikTok: ${rejected ? 'blocked' : item.platforms.tiktok.status}</span><span class="badge ${rejected ? 'todo' : (item.platforms.instagram.status === 'published' ? 'ok' : 'todo')}">Instagram: ${rejected ? 'blocked' : item.platforms.instagram.status}</span></div><div class="status-row">${rejected ? '<span class="badge todo">rejected</span><span class="badge todo">Not advancing</span>' : '<span class="badge ok">eligible for publishing</span>'}</div></div>`;
+      }).join('') : '<p class="loading">Inga publiceringsposter ännu.</p>';
 
       bindVoiceButtons();
     }
@@ -223,6 +255,7 @@
         }));
         const top = ranked[0] || {};
         const regionLabel = trendData.regionLabel || region;
+        dashboardState = { trendData, voice, reviewState, productionQueue, videoStatus, publishLog, latestRenderJob, regionLabel };
 
         document.getElementById('statRegion').textContent = regionLabel;
         document.getElementById('statRun').textContent = trendData.fetchedAt?.slice(0, 10) || 'okänd';
@@ -240,7 +273,6 @@
 
         document.getElementById('selectedTopicBox').innerHTML = `<h3><span class="number-pill">1</span>${top.topic || '-'}</h3><p><strong>Why now:</strong> ${top.whyNow || '-'}</p><p><strong>Trafik:</strong> ${top.approxTraffic || '-'}</p><span class="badge ok">prioriterad</span>`;
         const queue = productionQueue.queue || [];
-        document.getElementById('queueBox').innerHTML = queue.length ? queue.map(item => `<div class="queue-item"><strong>#${item.rank} ${item.topic}</strong><p>Status: ${item.status}</p><p>Next step: ${item.nextStep}</p></div>`).join('') : '<p class="loading">Inga approved topics i kön ännu.</p>';
 
         const pipelineItems = [
           ['Discovery', `${regionLabel} via Google Trends`, 'ok'],
@@ -305,20 +337,16 @@
             if (action === 'approve') {
               badge.className = 'badge ok';
               badge.textContent = 'approved';
-              const queueHtml = document.getElementById('queueBox');
-              const exists = [...queueHtml.querySelectorAll('.queue-item strong')].some(el => el.textContent.includes(`#${rank}`));
-              if (!exists) {
-                const div = document.createElement('div');
-                div.className = 'queue-item';
-                div.innerHTML = `<strong>#${rank} ${topic}</strong><p>Status: approved</p><p>Next step: script/voice/video</p>`;
-                if (queueHtml.querySelector('.loading')) queueHtml.innerHTML = '';
-                queueHtml.appendChild(div);
-              }
-              renderVoiceListFromQueue();
+              upsertByRank(dashboardState.reviewState.items, { rank, status: 'approved' });
+              upsertByRank(dashboardState.productionQueue.queue, { rank, topic, status: 'approved', nextStep: 'script/voice/video' });
+              upsertByRank(dashboardState.videoStatus.items, { rank, topic, status: 'script_ready', voice: 'queued', render: 'not_started', publish: 'not_started' });
+              upsertByRank(dashboardState.publishLog.items, { rank, topic, platforms: { youtube: { status: 'queued', url: '' }, tiktok: { status: 'planned', url: '' }, instagram: { status: 'planned', url: '' } } });
+              renderPersistentViews();
             } else {
               badge.className = 'badge todo';
               badge.textContent = 'rejected';
-              renderVoiceListFromQueue();
+              upsertByRank(dashboardState.reviewState.items, { rank, status: 'rejected' });
+              renderPersistentViews();
             }
           });
         });
@@ -342,16 +370,7 @@
 
         document.getElementById('videoMetaBox').innerHTML = latestRenderJob?.outputVideoName ? `<p><strong>Status:</strong> ${latestRenderJob.status || '-'}</p><p><strong>Video file:</strong> ${latestRenderJob.outputVideoName}</p><p><strong>Title:</strong> ${latestRenderJob.title || '-'}</p><p><strong>Note:</strong> ${latestRenderJob.note || '-'}</p>` : '<p class="loading">Ingen video renderad ännu.</p>';
 
-        const publishItems = publishLog.items || [];
-        document.getElementById('publishList').innerHTML = publishItems.length ? publishItems.map(item => {
-          const rejected = reviewMap.get(item.rank) === 'rejected';
-          return `<div class="video-item ${rejected ? 'rejected' : ''}"><h3><span class="number-pill">${item.rank}</span>${item.topic}</h3><div class="status-row"><span class="badge ${rejected ? 'todo' : (item.platforms.youtube.status === 'published' ? 'ok' : 'wait')}">YouTube: ${rejected ? 'blocked' : item.platforms.youtube.status}</span><span class="badge ${rejected ? 'todo' : (item.platforms.tiktok.status === 'published' ? 'ok' : 'todo')}">TikTok: ${rejected ? 'blocked' : item.platforms.tiktok.status}</span><span class="badge ${rejected ? 'todo' : (item.platforms.instagram.status === 'published' ? 'ok' : 'todo')}">Instagram: ${rejected ? 'blocked' : item.platforms.instagram.status}</span></div><div class="status-row">${rejected ? '<span class="badge todo">rejected</span><span class="badge todo">Not advancing</span>' : '<span class="badge ok">eligible for publishing</span>'}</div></div>`;
-        }).join('') : '<p class="loading">Inga publiceringsposter ännu.</p>';
-
-        document.getElementById('voiceList').innerHTML = queueItems.length ? queueItems.map(item => {
-          const vid = (videoStatus.items || []).find(v => v.rank === item.rank) || { voice: 'queued' };
-          return `<div class="video-item"><h3><span class="number-pill">${item.rank}</span>${item.topic}</h3><p>Voice status: ${vid.voice}</p><div class="status-row"><span class="badge ${vid.voice === 'ready' ? 'ok' : 'wait'}">${vid.voice}</span><button class="action-btn primary generate-voice-btn" data-rank="${item.rank}" data-topic="${item.topic}">Generate voice</button></div></div>`;
-        }).join('') : '<p class="loading">Inga approved topics i voice-kön ännu.</p>';
+        renderPersistentViews();
       } catch (err) {
         console.error(err);
         document.getElementById('runHint').textContent = `Dashboard error: ${err.message}`;
