@@ -177,6 +177,7 @@
       videoStatus: { items: [] },
       publishLog: { items: [] },
       latestRenderJob: null,
+      topicScripts: { items: [] },
       regionLabel: null
     };
 
@@ -230,25 +231,26 @@
 
     async function loadRegion(region) {
       try {
-        const [trendData, voice, reviewState, productionQueue, videoStatus, publishLog, latestRenderJob] = await Promise.all([
+        const [trendData, voice, reviewState, productionQueue, videoStatus, publishLog, latestRenderJob, topicScripts] = await Promise.all([
           loadJson(`./trends-${region}.json`),
           loadJson('./latest-voice-job.json'),
           loadJson('./review-status.json'),
           loadJson('./production-queue.json'),
           loadJson('./video-status.json'),
           loadJson('./publish-log.json'),
-          loadJson('./latest-render-job.json')
+          loadJson('./latest-render-job.json'),
+          loadJson('./topic-scripts.json')
         ]);
 
         const ranked = (trendData.trends || []).map((item, index) => ({
           ...item,
           totalScore: item.trendScoreRaw || 0,
           sourceReferences: item.news || [],
-          canonicalScript: index === 0 && voice.script ? voice.script : null
+          canonicalScript: (topicScripts.items || []).find(s => s.rank === index + 1)?.script || null
         }));
         const top = ranked[0] || {};
         const regionLabel = trendData.regionLabel || region;
-        dashboardState = { trendData, voice, reviewState, productionQueue, videoStatus, publishLog, latestRenderJob, regionLabel };
+        dashboardState = { trendData, voice, reviewState, productionQueue, videoStatus, publishLog, latestRenderJob, topicScripts, regionLabel };
 
         const fetchedAt = trendData.fetchedAt ? new Date(trendData.fetchedAt) : null;
         const now = new Date();
@@ -326,7 +328,7 @@
             if (action === 'approve') {
               badge.className = 'badge ok';
               badge.textContent = 'approved';
-              const canonicalScript = rank === 1 && dashboardState.voice?.script ? dashboardState.voice.script : canonicalTopicScript({ topic, whyNow: item.querySelector('p strong') ? (item.querySelectorAll('p')[0]?.textContent.replace('Why now:', '').trim() || '') : '' }, rank, dashboardState.regionLabel || currentRegion);
+              const canonicalScript = dashboardState.topicScripts.items.find(s => s.rank === rank)?.script || canonicalTopicScript({ topic, whyNow: item.querySelector('p strong') ? (item.querySelectorAll('p')[0]?.textContent.replace('Why now:', '').trim() || '') : '' }, rank, dashboardState.regionLabel || currentRegion);
               upsertByRank(dashboardState.reviewState.items, { rank, status: 'approved' });
               upsertByRank(dashboardState.productionQueue.queue, { rank, topic, status: 'approved', nextStep: 'script/voice/video', script: canonicalScript });
               upsertByRank(dashboardState.videoStatus.items, { rank, topic, status: 'script_ready', voice: 'queued', render: 'not_started', publish: 'not_started', script: canonicalScript });
