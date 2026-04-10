@@ -1,10 +1,10 @@
 {
-  "topic": "the punisher one last kill",
-  "why_now": "‘The Punisher: One Last Kill’ Trailer Promises Many Kills, Actually",
+  "topic": "crwv stock",
+  "why_now": "Tech stocks today: Big Tech stocks point to strong open, AI industry seeks to allay fears",
   "audience_angle": "Förklara snabbt varför folk pratar om detta och varför det spelar roll.",
-  "hook": "Alla pratar om the punisher one last kill just nu, men här är varför det faktiskt betyder något.",
-  "title": "the punisher one last kill, förklarat på 30 sekunder",
-  "script_30s": "Alla pratar om The Punisher: One Last Kill just nu, men här är varför det faktiskt betyder något. Den senaste trailern lovar en hel del action och grymma dödsfall. För många fans är Punisher mer än bara en superhjälte; han är en symbol för rättvisa på sitt eget sätt. Serien utforskar komplexiteten av hämnd och vad som driver en människa till att bli en mördare. Med det sagt, kan vi förvänta oss en djupare berättelse, inte bara brutala scener. Den här gången kanske vi får se Frank Castle konfrontera sina egna demoner. Missa inte chansen att se vad som verkligen ligger bakom alla dessa dödande! ",
+  "hook": "Alla pratar om crwv stock just nu, men här är varför det faktiskt betyder något.",
+  "title": "crwv stock, förklarat på 30 sekunder",
+  "script_30s": "Alla pratar om crwv stock just nu, men här är varför det faktiskt betyder något. crwv stock trendar just nu, och det handlar inte bara om att många söker, utan om att ämnet träffar något som folk redan känner eller oroar sig för. Tech stocks today: Big Tech stocks point to strong open, AI industry seeks to allay fears Förklara snabbt varför folk pratar om detta och varför det spelar roll. Det här är exakt typen av ämne som exploderar i kortformat när det paketeras tydligt och snabbt. Vill du ha fler snabba förklaringar av det som trendar just nu, följ för nästa video.",
   "voice_style": "clear, energetic, credible",
   "visual_direction": [
     "big hook text first 2 seconds",
@@ -13,8 +13,8 @@
     "end with a curiosity CTA"
   ],
   "youtube": {
-    "title": "Varför alla pratar om The Punisher: One Last Kill",
-    "description": "Kort förklaring av varför the punisher one last kill trendar just nu.",
+    "title": "crwv stock på 30 sekunder",
+    "description": "Kort förklaring av varför crwv stock trendar just nu.",
     "tags": [
       "trending",
       "nyheter",
@@ -24,14 +24,14 @@
   },
   "review": {
     "status": "draft",
-    "notes": "Script generated with OpenAI. Needs human check for factual accuracy and tone before publishing."
+    "notes": "Fallback script generated locally. Needs human check for factual accuracy and tone before publishing."
   },
-  "generationMode": "openai",
+  "generationMode": "fallback",
   "caption_chunks": [
-    "The Punisher: One Last Kill - vad handlar det om?",
-    "Trailern lovar action och dödsfall!",
-    "Punisher är mer än en superhjälte.",
-    "Hämnd och komplexitet är centralt.",
-    "Se Frank Castle konfrontera sina demoner!"
+    "Alla pratar om crwv stock just nu, men här är varför det faktiskt betyder något.",
+    "crwv stock trendar just nu",
+    "Tech stocks today: Big Tech stocks point to strong open, AI industry seeks to allay fears",
+    "Det här exploderar i kortformat",
+    "Följ för nästa trend"
   ]
 }

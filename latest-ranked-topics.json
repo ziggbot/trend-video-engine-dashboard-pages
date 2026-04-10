@@ -1,556 +1,544 @@
 {
-  "generatedAt": "2026-04-09T16:58:06.698Z",
-  "sourceFeed": "https://trends.google.com/trending/rss?geo=SE",
+  "generatedAt": "2026-04-10T12:31:43.228Z",
+  "sourceFeed": "https://trends.google.com/trending/rss?geo=US",
   "ranked": [
     {
-      "topic": "elon musk",
+      "topic": "crwv stock",
       "source": "google-trends-rss",
-      "region": "SE",
-      "trendScoreRaw": 500,
-      "approxTraffic": "500+",
-      "timestamp": "2026-04-09T16:58:06.400Z",
-      "publishedAt": "Thu, 9 Apr 2026 08:10:00 -0700",
-      "picture": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQ9ronqxlWRED1040n9iMZox9K1e9gL6k255hibmJMZTz2IZmYIMaED4p1aBLc",
-      "pictureSource": "Not a Tesla App",
-      "news": [
-        {
-          "title": "2026.2.9.6 (FSD 14.3) Official Tesla Release Notes - Software Updates",
-          "url": "https://www.notateslaapp.com/software-updates/version/2026.2.9.6/release-notes",
-          "source": "Not a Tesla App"
-        },
-        {
-          "title": "Ross Gerber Demands $10K Refund If Tesla&apos;s New FSD Doesn&apos;t Work &apos;Unsupervised&apos;—Says Google Has &apos;Solved&apos; A",
-          "url": "https://www.benzinga.com/markets/tech/26/04/51722603/ross-gerber-demands-10k-refund-if-teslas-new-fsd-doesnt-work-unsupervised-says-google-has-solved-autonomy-with-waymo",
-          "source": "Benzinga"
-        },
-        {
-          "title": "Tesla’s Autonomy Leap: Unsupervised FSD Pilots Authorized for London and Berlin",
-          "url": "https://markets.financialcontent.com/stocks/article/marketminute-2026-4-8-teslas-autonomy-leap-unsupervised-fsd-pilots-authorized-for-london-and-berlin",
-          "source": "FinancialContent"
-        }
-      ],
-      "whyNow": "2026.2.9.6 (FSD 14.3) Official Tesla Release Notes - Software Updates",
-      "scoring": {
-        "novelty": 8,
-        "emotion": 9,
-        "clarity": 9,
-        "explainability": 8,
-        "swedishRelevance": 9,
-        "sourceStrength": 8,
-        "ctrPotential": 9
-      },
-      "sourceReferences": [
-        {
-          "title": "2026.2.9.6 (FSD 14.3) Official Tesla Release Notes - Software Updates",
-          "url": "https://www.notateslaapp.com/software-updates/version/2026.2.9.6/release-notes",
-          "source": "Not a Tesla App"
-        },
-        {
-          "title": "Ross Gerber Demands $10K Refund If Tesla&apos;s New FSD Doesn&apos;t Work &apos;Unsupervised&apos;—Says Google Has &apos;Solved&apos; A",
-          "url": "https://www.benzinga.com/markets/tech/26/04/51722603/ross-gerber-demands-10k-refund-if-teslas-new-fsd-doesnt-work-unsupervised-says-google-has-solved-autonomy-with-waymo",
-          "source": "Benzinga"
-        },
-        {
-          "title": "Tesla’s Autonomy Leap: Unsupervised FSD Pilots Authorized for London and Berlin",
-          "url": "https://markets.financialcontent.com/stocks/article/marketminute-2026-4-8-teslas-autonomy-leap-unsupervised-fsd-pilots-authorized-for-london-and-berlin",
-          "source": "FinancialContent"
-        }
-      ],
-      "totalScore": 86
-    },
-    {
-      "topic": "nanna olasdotter hallberg",
-      "source": "google-trends-rss",
-      "region": "SE",
+      "region": "US",
+      "regionLabel": "USA",
       "trendScoreRaw": 200,
       "approxTraffic": "200+",
-      "timestamp": "2026-04-09T16:58:06.398Z",
-      "publishedAt": "Thu, 9 Apr 2026 09:40:00 -0700",
-      "picture": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQiWX-POcQgZdheDZ080DDC7tizv9qYuHehaMiUS_BQYfxzNsIA-jV8w8hED2s",
-      "pictureSource": "Aftonbladet",
+      "timestamp": "2026-04-10T12:31:42.829Z",
+      "publishedAt": "Fri, 10 Apr 2026 05:10:00 -0700",
+      "picture": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRgbB0oPn8ZT5t1idKvadba2HbjMuEm0NWWvVdmW0VhAvoRQPNYwfKFJo2p1cQ",
+      "pictureSource": "Yahoo Finance UK",
       "news": [
         {
-          "title": "Chattskandalen i Alingsås blir teater",
-          "url": "https://www.aftonbladet.se/nojesbladet/a/e7GKAQ/chattskandalen-i-alingsas-blir-teater",
-          "source": "Aftonbladet"
+          "title": "Tech stocks today: Big Tech stocks point to strong open, AI industry seeks to allay fears",
+          "url": "https://uk.finance.yahoo.com/news/tech-stocks-today-nvidias-huang-kicks-of-gtc-monday-adobe-ceo-stepping-down-144220195.html",
+          "source": "Yahoo Finance UK"
         },
         {
-          "title": "Nanna Olasdotter Hallberg gör teater av Alingsåschatten",
-          "url": "https://via.tt.se/pressmeddelande/4321896/nanna-olasdotter-hallberg-gor-teater-av-alingsaschatten?publisherId=3237061&lang=sv",
-          "source": "Via TT"
+          "title": "Meta commits to spending additional $21 billion with CoreWeave as AI costs keep rising",
+          "url": "https://www.cnbc.com/2026/04/09/meta-commits-to-spending-additional-21-billion-with-coreweave-.html",
+          "source": "CNBC"
         },
         {
-          "title": "Chattskandalen blir teaterpjäs i Stockholm",
-          "url": "https://www.alingsastidning.se/nyheter/alingsas/chattskandalen-i-alingsas-blir-teater-i-stockholm.02b41689-e6f0-4d55-8657-ed2a8f9e5490",
-          "source": "Alingsås Tidning"
+          "title": "CoreWeave’s stock bounces back. Why investors are cheering the new Meta deal.",
+          "url": "https://www.marketwatch.com/story/coreweaves-stock-dips-as-the-hype-around-new-meta-deal-quickly-subsides-5208fa9c",
+          "source": "MarketWatch"
         }
       ],
-      "whyNow": "Chattskandalen i Alingsås blir teater",
+      "whyNow": "Tech stocks today: Big Tech stocks point to strong open, AI industry seeks to allay fears",
       "scoring": {
         "novelty": 7,
         "emotion": 9,
         "clarity": 9,
         "explainability": 8,
-        "swedishRelevance": 9,
+        "swedishRelevance": 6,
         "sourceStrength": 8,
         "ctrPotential": 8
       },
       "sourceReferences": [
         {
-          "title": "Chattskandalen i Alingsås blir teater",
-          "url": "https://www.aftonbladet.se/nojesbladet/a/e7GKAQ/chattskandalen-i-alingsas-blir-teater",
-          "source": "Aftonbladet"
+          "title": "Tech stocks today: Big Tech stocks point to strong open, AI industry seeks to allay fears",
+          "url": "https://uk.finance.yahoo.com/news/tech-stocks-today-nvidias-huang-kicks-of-gtc-monday-adobe-ceo-stepping-down-144220195.html",
+          "source": "Yahoo Finance UK"
         },
         {
-          "title": "Nanna Olasdotter Hallberg gör teater av Alingsåschatten",
-          "url": "https://via.tt.se/pressmeddelande/4321896/nanna-olasdotter-hallberg-gor-teater-av-alingsaschatten?publisherId=3237061&lang=sv",
-          "source": "Via TT"
+          "title": "Meta commits to spending additional $21 billion with CoreWeave as AI costs keep rising",
+          "url": "https://www.cnbc.com/2026/04/09/meta-commits-to-spending-additional-21-billion-with-coreweave-.html",
+          "source": "CNBC"
         },
         {
-          "title": "Chattskandalen blir teaterpjäs i Stockholm",
-          "url": "https://www.alingsastidning.se/nyheter/alingsas/chattskandalen-i-alingsas-blir-teater-i-stockholm.02b41689-e6f0-4d55-8657-ed2a8f9e5490",
-          "source": "Alingsås Tidning"
+          "title": "CoreWeave’s stock bounces back. Why investors are cheering the new Meta deal.",
+          "url": "https://www.marketwatch.com/story/coreweaves-stock-dips-as-the-hype-around-new-meta-deal-quickly-subsides-5208fa9c",
+          "source": "MarketWatch"
         }
       ],
-      "totalScore": 83.2
+      "totalScore": 79.6
     },
     {
-      "topic": "svenska fotbollförbundet",
+      "topic": "satoshi",
       "source": "google-trends-rss",
-      "region": "SE",
-      "trendScoreRaw": 500,
-      "approxTraffic": "500+",
-      "timestamp": "2026-04-09T16:58:06.400Z",
-      "publishedAt": "Thu, 9 Apr 2026 08:30:00 -0700",
-      "picture": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQmlI7Jh_WNzI6SIrSOjtwfJQtcxBYrrh2MoqncDTv8ZExcb-cUY31tam_SN8Q",
-      "pictureSource": "Aftonbladet",
+      "region": "US",
+      "regionLabel": "USA",
+      "trendScoreRaw": 1000,
+      "approxTraffic": "1000+",
+      "timestamp": "2026-04-10T12:31:42.830Z",
+      "publishedAt": "Fri, 10 Apr 2026 05:00:00 -0700",
+      "picture": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQyuC6kJsmorrQBQuV4jpa4yHuCTDMSGbqrcx8GIoYRfkCvrOPM_0QQwz2hKyU",
+      "pictureSource": "Yahoo Finance",
       "news": [
         {
-          "title": "SvFF:s varning till fansen: ”Åk inte hit!”",
-          "url": "https://www.aftonbladet.se/sportbladet/fotboll/a/5p8nw1/svenska-varningen-infor-fotbolls-vm-ak-inte-hit",
-          "source": "Aftonbladet"
+          "title": "The New York Times may have found bitcoin founder Satoshi Nakamoto. Here&apos;s what you need to know.",
+          "url": "https://finance.yahoo.com/markets/crypto/article/the-new-york-times-may-have-found-bitcoin-founder-satoshi-nakamoto-heres-what-you-need-to-know-193426720.html",
+          "source": "Yahoo Finance"
         },
         {
-          "title": "Olof Lundh: Svettig jakt på nya intäkter",
-          "url": "https://www.di.se/nyheter/svettig-jakt-pa-nya-intakter/",
-          "source": "DI"
+          "title": "Adam Back Denies He Is Satoshi Nakamoto in Response to Times Investigation",
+          "url": "https://www.nytimes.com/2026/04/08/business/adam-back-satoshi-nakamoto-bitcoin.html",
+          "source": "The New York Times"
         },
         {
-          "title": "Rusning efter biljetter till Sveriges VM-matcher",
-          "url": "https://www.gp.se/sport/fotboll/rusning-efter-svenska-vm-biljetter-fler-ansokningar-an-platser.f5c12f31-6aab-4dd9-9bf5-70e4ef169aff",
-          "source": "GP"
+          "title": "Did The NYT Identify Bitcoin&apos;s Creator? Morgan Stanley Launches ETF, Cryptos Rally.",
+          "url": "https://www.investors.com/news/bitcoin-price-satoshi-nakamoto-identity-nyt-investigation-adam-back-morgan-stanley-bitcoin-etf/",
+          "source": "Investor&apos;s Business Daily"
         }
       ],
-      "whyNow": "SvFF:s varning till fansen: ”Åk inte hit!”",
+      "whyNow": "The New York Times may have found bitcoin founder Satoshi Nakamoto. Here&apos;s what you need to know.",
+      "scoring": {
+        "novelty": 9,
+        "emotion": 6,
+        "clarity": 9,
+        "explainability": 8,
+        "swedishRelevance": 6,
+        "sourceStrength": 8,
+        "ctrPotential": 8
+      },
+      "sourceReferences": [
+        {
+          "title": "The New York Times may have found bitcoin founder Satoshi Nakamoto. Here&apos;s what you need to know.",
+          "url": "https://finance.yahoo.com/markets/crypto/article/the-new-york-times-may-have-found-bitcoin-founder-satoshi-nakamoto-heres-what-you-need-to-know-193426720.html",
+          "source": "Yahoo Finance"
+        },
+        {
+          "title": "Adam Back Denies He Is Satoshi Nakamoto in Response to Times Investigation",
+          "url": "https://www.nytimes.com/2026/04/08/business/adam-back-satoshi-nakamoto-bitcoin.html",
+          "source": "The New York Times"
+        },
+        {
+          "title": "Did The NYT Identify Bitcoin&apos;s Creator? Morgan Stanley Launches ETF, Cryptos Rally.",
+          "url": "https://www.investors.com/news/bitcoin-price-satoshi-nakamoto-identity-nyt-investigation-adam-back-morgan-stanley-bitcoin-etf/",
+          "source": "Investor&apos;s Business Daily"
+        }
+      ],
+      "totalScore": 77.2
+    },
+    {
+      "topic": "cpi",
+      "source": "google-trends-rss",
+      "region": "US",
+      "regionLabel": "USA",
+      "trendScoreRaw": 1000,
+      "approxTraffic": "1000+",
+      "timestamp": "2026-04-10T12:31:42.830Z",
+      "publishedAt": "Fri, 10 Apr 2026 04:50:00 -0700",
+      "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5StqJqDgj_19VACmahmdinEyIdJ9MxwQYfd4v6Rt0y9j2VJ18_Fu8vkCr6Fo",
+      "pictureSource": "The New York Times",
+      "news": [
+        {
+          "title": "CPI Report Live Updates: Inflation Data to Show Price Effects of Iran War",
+          "url": "https://www.nytimes.com/live/2026/04/10/business/inflation-cpi-report",
+          "source": "The New York Times"
+        },
+        {
+          "title": "Trump’s war with Iran likely tripled US inflation last month",
+          "url": "https://www.cnn.com/2026/04/10/business/live-news/us-cpi-march-inflation-iran",
+          "source": "CNN"
+        },
+        {
+          "title": "CPI Report Today: Dow Futures Waver as Investors Await Inflation Data — Live Updates",
+          "url": "https://www.wsj.com/livecoverage/cpi-inflation-data-stock-market-04-10-2026",
+          "source": "WSJ"
+        }
+      ],
+      "whyNow": "CPI Report Live Updates: Inflation Data to Show Price Effects of Iran War",
+      "scoring": {
+        "novelty": 9,
+        "emotion": 6,
+        "clarity": 9,
+        "explainability": 8,
+        "swedishRelevance": 6,
+        "sourceStrength": 8,
+        "ctrPotential": 8
+      },
+      "sourceReferences": [
+        {
+          "title": "CPI Report Live Updates: Inflation Data to Show Price Effects of Iran War",
+          "url": "https://www.nytimes.com/live/2026/04/10/business/inflation-cpi-report",
+          "source": "The New York Times"
+        },
+        {
+          "title": "Trump’s war with Iran likely tripled US inflation last month",
+          "url": "https://www.cnn.com/2026/04/10/business/live-news/us-cpi-march-inflation-iran",
+          "source": "CNN"
+        },
+        {
+          "title": "CPI Report Today: Dow Futures Waver as Investors Await Inflation Data — Live Updates",
+          "url": "https://www.wsj.com/livecoverage/cpi-inflation-data-stock-market-04-10-2026",
+          "source": "WSJ"
+        }
+      ],
+      "totalScore": 77.2
+    },
+    {
+      "topic": "houston weather",
+      "source": "google-trends-rss",
+      "region": "US",
+      "regionLabel": "USA",
+      "trendScoreRaw": 500,
+      "approxTraffic": "500+",
+      "timestamp": "2026-04-10T12:31:42.830Z",
+      "publishedAt": "Fri, 10 Apr 2026 05:00:00 -0700",
+      "picture": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRKFnrMa0XfRaoub2zAhCcs2-Rp6mJyxbY2iBJmBeJi_2M18oUyyw6nnaBceuE",
+      "pictureSource": "KHOU",
+      "news": [
+        {
+          "title": "Weather Impact Alert issued for Friday as downpours across town are expected",
+          "url": "https://www.khou.com/article/weather/forecast/houston-texas-weather-impact/285-336bc012-0818-4fea-8861-72a040b77b59",
+          "source": "KHOU"
+        },
+        {
+          "title": "Houston weather: Downpours possible for Friday",
+          "url": "https://www.fox26houston.com/weather/houston-weather-downpours-possible-friday",
+          "source": "FOX 26 Houston"
+        },
+        {
+          "title": "LIVE RADAR: Heavy rain falling in areas SW of Houston",
+          "url": "https://www.click2houston.com/news/2026/04/09/live-radar-heavy-rain-falling-in-areas-sw-of-houston/",
+          "source": "Click2Houston"
+        }
+      ],
+      "whyNow": "Weather Impact Alert issued for Friday as downpours across town are expected",
       "scoring": {
         "novelty": 8,
         "emotion": 6,
         "clarity": 9,
         "explainability": 8,
-        "swedishRelevance": 9,
+        "swedishRelevance": 6,
         "sourceStrength": 8,
-        "ctrPotential": 8
+        "ctrPotential": 7
       },
       "sourceReferences": [
         {
-          "title": "SvFF:s varning till fansen: ”Åk inte hit!”",
-          "url": "https://www.aftonbladet.se/sportbladet/fotboll/a/5p8nw1/svenska-varningen-infor-fotbolls-vm-ak-inte-hit",
-          "source": "Aftonbladet"
+          "title": "Weather Impact Alert issued for Friday as downpours across town are expected",
+          "url": "https://www.khou.com/article/weather/forecast/houston-texas-weather-impact/285-336bc012-0818-4fea-8861-72a040b77b59",
+          "source": "KHOU"
         },
         {
-          "title": "Olof Lundh: Svettig jakt på nya intäkter",
-          "url": "https://www.di.se/nyheter/svettig-jakt-pa-nya-intakter/",
-          "source": "DI"
+          "title": "Houston weather: Downpours possible for Friday",
+          "url": "https://www.fox26houston.com/weather/houston-weather-downpours-possible-friday",
+          "source": "FOX 26 Houston"
         },
         {
-          "title": "Rusning efter biljetter till Sveriges VM-matcher",
-          "url": "https://www.gp.se/sport/fotboll/rusning-efter-svenska-vm-biljetter-fler-ansokningar-an-platser.f5c12f31-6aab-4dd9-9bf5-70e4ef169aff",
-          "source": "GP"
+          "title": "LIVE RADAR: Heavy rain falling in areas SW of Houston",
+          "url": "https://www.click2houston.com/news/2026/04/09/live-radar-heavy-rain-falling-in-areas-sw-of-houston/",
+          "source": "Click2Houston"
         }
       ],
-      "totalScore": 79
+      "totalScore": 74.4
     },
     {
-      "topic": "tommy fleetwood",
+      "topic": "devil wears prada 2",
       "source": "google-trends-rss",
-      "region": "SE",
+      "region": "US",
+      "regionLabel": "USA",
       "trendScoreRaw": 500,
       "approxTraffic": "500+",
-      "timestamp": "2026-04-09T16:58:06.400Z",
-      "publishedAt": "Thu, 9 Apr 2026 08:20:00 -0700",
-      "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7u-LjpY9eY9s1qspU4I0NtsKqCckN1a8cAsI7TiwLFrC_OjWh4kXuLE9LJ1s",
-      "pictureSource": "Yahoo Sports",
+      "timestamp": "2026-04-10T12:31:42.830Z",
+      "publishedAt": "Fri, 10 Apr 2026 05:00:00 -0700",
+      "picture": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcS4sGY1FmKc7Ibko_lib7dH4QBY-EIZ9j9Ulr5juQ8QniGmIbm-_sFlnj-_-hI",
+      "pictureSource": "Deadline",
       "news": [
         {
-          "title": "Masters 2026: The shot everyone wanted to see — would 8-year-old Frankie Fleetwood clear the water?",
-          "url": "https://sports.yahoo.com/golf/article/masters-2026-the-shot-everyone-wanted-to-see--would-8-year-old-frankie-fleetwood-clear-the-water-213913195.html",
-          "source": "Yahoo Sports"
+          "title": "‘The Devil Wears Prada 2’ Hits Tracking With Runway To $66M U.S. Opening – Box Office Early Look",
+          "url": "https://deadline.com/2026/04/devil-wears-prada-2-box-office-projection-1236786100/",
+          "source": "Deadline"
         },
         {
-          "title": "Aaron Rai Wins as Young Fleetwood Steals Masters Spotlight",
-          "url": "https://streamlinefeed.co.ke/news/rai-wins-young-fleetwood-steals-show-at-par-3",
-          "source": "https://streamlinefeed.co.ke/"
+          "title": "Calling All Vogue Book Club Members: We’re Hosting a Special Screening of The Devil Wears Prada 2",
+          "url": "https://www.vogue.com/article/the-devil-wears-prada-2-screening-announcement",
+          "source": "Vogue"
         },
         {
-          "title": "Why Frankie Fleetwood Is Stealing The Show At The Masters With His Par 3 Contest Challenge",
-          "url": "https://www.inkl.com/news/why-frankie-fleetwood-is-stealing-the-show-at-the-masters-with-his-par-3-contest-challenge",
-          "source": "inkl"
+          "title": "Lady Gaga and Doechii Release New Single, ‘Runway’",
+          "url": "https://variety.com/2026/film/news/lady-gaga-doechii-single-runway-devil-wears-prada-1236713028/",
+          "source": "Variety"
         }
       ],
-      "whyNow": "Masters 2026: The shot everyone wanted to see — would 8-year-old Frankie Fleetwood clear the water?",
+      "whyNow": "‘The Devil Wears Prada 2’ Hits Tracking With Runway To $66M U.S. Opening – Box Office Early Look",
       "scoring": {
         "novelty": 8,
         "emotion": 6,
         "clarity": 9,
         "explainability": 8,
-        "swedishRelevance": 9,
+        "swedishRelevance": 6,
         "sourceStrength": 8,
-        "ctrPotential": 8
+        "ctrPotential": 7
       },
       "sourceReferences": [
         {
-          "title": "Masters 2026: The shot everyone wanted to see — would 8-year-old Frankie Fleetwood clear the water?",
-          "url": "https://sports.yahoo.com/golf/article/masters-2026-the-shot-everyone-wanted-to-see--would-8-year-old-frankie-fleetwood-clear-the-water-213913195.html",
-          "source": "Yahoo Sports"
+          "title": "‘The Devil Wears Prada 2’ Hits Tracking With Runway To $66M U.S. Opening – Box Office Early Look",
+          "url": "https://deadline.com/2026/04/devil-wears-prada-2-box-office-projection-1236786100/",
+          "source": "Deadline"
         },
         {
-          "title": "Aaron Rai Wins as Young Fleetwood Steals Masters Spotlight",
-          "url": "https://streamlinefeed.co.ke/news/rai-wins-young-fleetwood-steals-show-at-par-3",
-          "source": "https://streamlinefeed.co.ke/"
+          "title": "Calling All Vogue Book Club Members: We’re Hosting a Special Screening of The Devil Wears Prada 2",
+          "url": "https://www.vogue.com/article/the-devil-wears-prada-2-screening-announcement",
+          "source": "Vogue"
         },
         {
-          "title": "Why Frankie Fleetwood Is Stealing The Show At The Masters With His Par 3 Contest Challenge",
-          "url": "https://www.inkl.com/news/why-frankie-fleetwood-is-stealing-the-show-at-the-masters-with-his-par-3-contest-challenge",
-          "source": "inkl"
+          "title": "Lady Gaga and Doechii Release New Single, ‘Runway’",
+          "url": "https://variety.com/2026/film/news/lady-gaga-doechii-single-runway-devil-wears-prada-1236713028/",
+          "source": "Variety"
         }
       ],
-      "totalScore": 79
+      "totalScore": 74.4
     },
     {
-      "topic": "inflation",
+      "topic": "eva longoria",
       "source": "google-trends-rss",
-      "region": "SE",
-      "trendScoreRaw": 200,
-      "approxTraffic": "200+",
-      "timestamp": "2026-04-09T16:58:06.400Z",
-      "publishedAt": "Thu, 9 Apr 2026 09:10:00 -0700",
-      "picture": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSolObNmEsVkRE94w5MflE10ouvocAAuWbcVZLu6p4obMfobmxXcPT7wjmLL-o",
-      "pictureSource": "DI",
+      "region": "US",
+      "regionLabel": "USA",
+      "trendScoreRaw": 500,
+      "approxTraffic": "500+",
+      "timestamp": "2026-04-10T12:31:42.830Z",
+      "publishedAt": "Fri, 10 Apr 2026 04:50:00 -0700",
+      "picture": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRFoVB32aT-0h23UDnnxnieTs22GWfCvs7-8sbj9TMMBntU6uF8qzfXRK3mLl4",
+      "pictureSource": "AsatuNews.co.id",
       "news": [
         {
-          "title": "Amerikansk inflationssiffra i linje med förväntningarna",
-          "url": "https://www.di.se/live/amerikansk-inflationssiffra-i-linje-med-forvantningarna/",
-          "source": "DI"
+          "title": "Eva Longoria Balanced Headhunting with Early Acting Career",
+          "url": "https://www.asatunews.co.id/en/eva-longoria-headhunting-acting-career",
+          "source": "AsatuNews.co.id"
         },
         {
-          "title": "USA: Inflation föll som väntat",
-          "url": "https://www.aftonbladet.se/minekonomi/a/JOrxGX/usa-inflation-foll-som-vantat",
-          "source": "Aftonbladet"
+          "title": "Eva Longoria says she refused to be a ‘struggling actor’—so she worked part time as a headhunter",
+          "url": "https://fortune.com/2026/04/10/actress-eva-longoria-worked-headhunter-wendys-gen-z-career-advice/",
+          "source": "Fortune"
         },
         {
-          "title": "Nils Åkesson: Het USA-inflation redan före krigets oljechock",
-          "url": "https://www.di.se/nyheter/het-usa-inflation-redan-fore-krigets-oljechock/",
-          "source": "DI"
+          "title": "Eva Longoria says she refused to be a ‘struggling actor’—so she worked part time as a headhunter, closing deals from her soap opera dressing room",
+          "url": "https://www.aol.com/articles/eva-longoria-says-she-refused-070900640.html",
+          "source": "AOL.com"
         }
       ],
-      "whyNow": "Amerikansk inflationssiffra i linje med förväntningarna",
+      "whyNow": "Eva Longoria Balanced Headhunting with Early Acting Career",
+      "scoring": {
+        "novelty": 8,
+        "emotion": 6,
+        "clarity": 9,
+        "explainability": 8,
+        "swedishRelevance": 6,
+        "sourceStrength": 8,
+        "ctrPotential": 7
+      },
+      "sourceReferences": [
+        {
+          "title": "Eva Longoria Balanced Headhunting with Early Acting Career",
+          "url": "https://www.asatunews.co.id/en/eva-longoria-headhunting-acting-career",
+          "source": "AsatuNews.co.id"
+        },
+        {
+          "title": "Eva Longoria says she refused to be a ‘struggling actor’—so she worked part time as a headhunter",
+          "url": "https://fortune.com/2026/04/10/actress-eva-longoria-worked-headhunter-wendys-gen-z-career-advice/",
+          "source": "Fortune"
+        },
+        {
+          "title": "Eva Longoria says she refused to be a ‘struggling actor’—so she worked part time as a headhunter, closing deals from her soap opera dressing room",
+          "url": "https://www.aol.com/articles/eva-longoria-says-she-refused-070900640.html",
+          "source": "AOL.com"
+        }
+      ],
+      "totalScore": 74.4
+    },
+    {
+      "topic": "oksana selekhmeteva",
+      "source": "google-trends-rss",
+      "region": "US",
+      "regionLabel": "USA",
+      "trendScoreRaw": 200,
+      "approxTraffic": "200+",
+      "timestamp": "2026-04-10T12:31:42.830Z",
+      "publishedAt": "Fri, 10 Apr 2026 05:10:00 -0700",
+      "picture": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSEccE5aALE1Q6n-g7i2cQEqDoUdOdFHQ9ISXFQmKTXgEzsyqodW8EO-_vipg",
+      "pictureSource": "Flashscore.com",
+      "news": [
+        {
+          "title": "Oksana Selekhmeteva v Polina Kudermetova (10/04/2026)",
+          "url": "https://www.flashscore.com/match/tennis/kudermetova-polina-8O9jYpK8/selekhmeteva-oksana-v7vDWRvO/",
+          "source": "Flashscore.com"
+        },
+        {
+          "title": "West Expands Dublin Facility to Support High-Volume Injectable Therapies, Including Diabetes and Obesity",
+          "url": "https://www.prnewswire.com/news-releases/west-expands-dublin-facility-to-support-high-volume-injectable-therapies-including-diabetes-and-obesity-302730303.html",
+          "source": "PR Newswire"
+        },
+        {
+          "title": "A Look At West Pharmaceutical Services (WST) Valuation After New Dublin Expansion For Injectable Treatments",
+          "url": "https://simplywall.st/stocks/us/pharmaceuticals-biotech/nyse-wst/west-pharmaceutical-services/news/a-look-at-west-pharmaceutical-services-wst-valuation-after-n",
+          "source": "Simply Wall Street"
+        }
+      ],
+      "whyNow": "Oksana Selekhmeteva v Polina Kudermetova (10/04/2026)",
       "scoring": {
         "novelty": 7,
         "emotion": 6,
         "clarity": 9,
         "explainability": 8,
-        "swedishRelevance": 9,
+        "swedishRelevance": 6,
         "sourceStrength": 8,
-        "ctrPotential": 8
+        "ctrPotential": 7
       },
       "sourceReferences": [
         {
-          "title": "Amerikansk inflationssiffra i linje med förväntningarna",
-          "url": "https://www.di.se/live/amerikansk-inflationssiffra-i-linje-med-forvantningarna/",
-          "source": "DI"
+          "title": "Oksana Selekhmeteva v Polina Kudermetova (10/04/2026)",
+          "url": "https://www.flashscore.com/match/tennis/kudermetova-polina-8O9jYpK8/selekhmeteva-oksana-v7vDWRvO/",
+          "source": "Flashscore.com"
         },
         {
-          "title": "USA: Inflation föll som väntat",
-          "url": "https://www.aftonbladet.se/minekonomi/a/JOrxGX/usa-inflation-foll-som-vantat",
-          "source": "Aftonbladet"
+          "title": "West Expands Dublin Facility to Support High-Volume Injectable Therapies, Including Diabetes and Obesity",
+          "url": "https://www.prnewswire.com/news-releases/west-expands-dublin-facility-to-support-high-volume-injectable-therapies-including-diabetes-and-obesity-302730303.html",
+          "source": "PR Newswire"
         },
         {
-          "title": "Nils Åkesson: Het USA-inflation redan före krigets oljechock",
-          "url": "https://www.di.se/nyheter/het-usa-inflation-redan-fore-krigets-oljechock/",
-          "source": "DI"
+          "title": "A Look At West Pharmaceutical Services (WST) Valuation After New Dublin Expansion For Injectable Treatments",
+          "url": "https://simplywall.st/stocks/us/pharmaceuticals-biotech/nyse-wst/west-pharmaceutical-services/news/a-look-at-west-pharmaceutical-services-wst-valuation-after-n",
+          "source": "Simply Wall Street"
         }
       ],
-      "totalScore": 77.2
+      "totalScore": 72.6
     },
     {
-      "topic": "sydöstran",
+      "topic": "sandisk stock",
       "source": "google-trends-rss",
-      "region": "SE",
+      "region": "US",
+      "regionLabel": "USA",
       "trendScoreRaw": 200,
       "approxTraffic": "200+",
-      "timestamp": "2026-04-09T16:58:06.400Z",
-      "publishedAt": "Thu, 9 Apr 2026 08:50:00 -0700",
-      "picture": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcT_AoXX4mGT6Idfw7KeXnprAea_GFexc7GNaBj1uYd5g7nTrlyYvmalGHz2hkw",
-      "pictureSource": "SVT Nyheter",
+      "timestamp": "2026-04-10T12:31:42.830Z",
+      "publishedAt": "Fri, 10 Apr 2026 05:10:00 -0700",
+      "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbeEhd4-ELJ3F2kqBgG2tX2okU8d4FUp4wCc5sp5jsm07A26A4raKRRxHf6BU",
+      "pictureSource": "Yahoo Finance",
       "news": [
         {
-          "title": "Kollapsen i regionstyret – alla samarbeten avbrutna",
-          "url": "https://www.svt.se/nyheter/lokalt/blekinge/kollapsen-i-regionstyret-alla-samarbeten-avbrutna",
-          "source": "SVT Nyheter"
+          "title": "A Look At Sandisk (SNDK) Valuation After A Sharp Multi Month Share Price Move",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/look-sandisk-sndk-valuation-sharp-021517843.html",
+          "source": "Yahoo Finance"
         },
         {
-          "title": "Ingen ny akut före valet – politiker bryter flera löften",
-          "url": "https://www.sverigesradio.se/artikel/ingen-ny-akut-fore-valet-politiker-bryter-flera-loften",
-          "source": "Sveriges Radio"
+          "title": "Sandisk’s stock is up 2,000% in a year — and this analyst says it’s still being underestimated",
+          "url": "https://www.marketwatch.com/story/sandisks-stock-is-up-2-000-in-a-year-and-this-analyst-says-its-still-being-underestimated-01240893",
+          "source": "MarketWatch"
         },
         {
-          "title": "Efter sprickan i regionen: M och SD i Karlshamn bekänner färg",
-          "url": "https://www.sydostran.se/karlshamn/efter-sprickan-i-regionen-m-och-sd-i-karlshamn-bekanner-farg/",
-          "source": "Sydöstran"
+          "title": "Sandisk: I&apos;m Not Chasing This Cycle - Not Here (NASDAQ:SNDK)",
+          "url": "https://seekingalpha.com/article/4889388-sandisk-stock-not-chasing-this-cycle-not-here",
+          "source": "Seeking Alpha"
         }
       ],
-      "whyNow": "Kollapsen i regionstyret – alla samarbeten avbrutna",
+      "whyNow": "A Look At Sandisk (SNDK) Valuation After A Sharp Multi Month Share Price Move",
       "scoring": {
         "novelty": 7,
         "emotion": 6,
         "clarity": 9,
         "explainability": 8,
-        "swedishRelevance": 9,
+        "swedishRelevance": 6,
         "sourceStrength": 8,
-        "ctrPotential": 8
+        "ctrPotential": 7
       },
       "sourceReferences": [
         {
-          "title": "Kollapsen i regionstyret – alla samarbeten avbrutna",
-          "url": "https://www.svt.se/nyheter/lokalt/blekinge/kollapsen-i-regionstyret-alla-samarbeten-avbrutna",
-          "source": "SVT Nyheter"
+          "title": "A Look At Sandisk (SNDK) Valuation After A Sharp Multi Month Share Price Move",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/look-sandisk-sndk-valuation-sharp-021517843.html",
+          "source": "Yahoo Finance"
         },
         {
-          "title": "Ingen ny akut före valet – politiker bryter flera löften",
-          "url": "https://www.sverigesradio.se/artikel/ingen-ny-akut-fore-valet-politiker-bryter-flera-loften",
-          "source": "Sveriges Radio"
+          "title": "Sandisk’s stock is up 2,000% in a year — and this analyst says it’s still being underestimated",
+          "url": "https://www.marketwatch.com/story/sandisks-stock-is-up-2-000-in-a-year-and-this-analyst-says-its-still-being-underestimated-01240893",
+          "source": "MarketWatch"
         },
         {
-          "title": "Efter sprickan i regionen: M och SD i Karlshamn bekänner färg",
-          "url": "https://www.sydostran.se/karlshamn/efter-sprickan-i-regionen-m-och-sd-i-karlshamn-bekanner-farg/",
-          "source": "Sydöstran"
+          "title": "Sandisk: I&apos;m Not Chasing This Cycle - Not Here (NASDAQ:SNDK)",
+          "url": "https://seekingalpha.com/article/4889388-sandisk-stock-not-chasing-this-cycle-not-here",
+          "source": "Seeking Alpha"
         }
       ],
-      "totalScore": 77.2
+      "totalScore": 72.6
     },
     {
-      "topic": "emil bemström",
+      "topic": "mandy moore",
       "source": "google-trends-rss",
-      "region": "SE",
+      "region": "US",
+      "regionLabel": "USA",
       "trendScoreRaw": 200,
       "approxTraffic": "200+",
-      "timestamp": "2026-04-09T16:58:06.400Z",
-      "publishedAt": "Thu, 9 Apr 2026 08:40:00 -0700",
-      "picture": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQb26JCRRjH3A3y3DReYRTekV77U9zOddDOCJoMTHVOwhyOd5NbW35cufI2Tdw",
-      "pictureSource": "Expressen",
+      "timestamp": "2026-04-10T12:31:42.830Z",
+      "publishedAt": "Fri, 10 Apr 2026 05:00:00 -0700",
+      "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXV0JzQijww6DFhQb_Z-i_84cWzvBzi0pPuPyDzWc4dD6ng7tMChuOeJmKhmA",
+      "pictureSource": "People.com",
       "news": [
         {
-          "title": "✓ Bemströms val ✓ Kovacs jagas i Tjeckien ✓ Målvakten lämnar ✓ Ljunghs klubbval",
-          "url": "https://www.expressen.se/sport/hockey/shl/sillyrummet-nobbar-shl-for-schweiz--jagar-lhc-stjarnan--han-lamnar-hv71/",
-          "source": "Expressen"
+          "title": "Mandy Moore Shares Candid Footage from Her and Hilary Duff&apos;s Double Date at a Bruce Springsteen Concert",
+          "url": "https://people.com/mandy-moore-shares-double-date-video-hilary-duff-bruce-springsteen-concert-11947162",
+          "source": "People.com"
         },
         {
-          "title": "Uppgifter: Stjärnforwarden nobbar återkomst till DIF",
-          "url": "https://hockeysverige.se/shl/uppgifter-stjarnforwarden-emil-bemstrom-nobbar-aterkomst-till-djurgarden/",
-          "source": "hockeysverige.se"
+          "title": "Bruce Springsteen concert: Mandy Moore and Hilary Duff enjoy a double date night with a musical twist",
+          "url": "https://timesofindia.indiatimes.com/entertainment/english/hollywood/news/bruce-springsteen-concert-mandy-moore-and-hilary-duff-enjoya-double-date-night-with-a-musical-twist/articleshow/130163454.cms",
+          "source": "The Times of India"
         },
         {
-          "title": "Bemström to stay, HCAP&apos;s Dario Wüthrich on SCB&apos;s wish list?",
-          "url": "https://swisshockeynews.ch/en/shn/men/swiss-hockey/nl/bemstroem-to-stay-hcaps-dario-wuethrich-on-scbs-wish-list",
-          "source": "swisshockeynews.ch"
+          "title": "Famous birthdays for April 10: David Harbour, Sofia Carson",
+          "url": "https://www.yahoo.com/entertainment/celebrity/articles/famous-birthdays-april-10-david-070007628.html",
+          "source": "Yahoo"
         }
       ],
-      "whyNow": "✓ Bemströms val ✓ Kovacs jagas i Tjeckien ✓ Målvakten lämnar ✓ Ljunghs klubbval",
+      "whyNow": "Mandy Moore Shares Candid Footage from Her and Hilary Duff&apos;s Double Date at a Bruce Springsteen Concert",
       "scoring": {
         "novelty": 7,
         "emotion": 6,
         "clarity": 9,
         "explainability": 8,
-        "swedishRelevance": 9,
+        "swedishRelevance": 6,
         "sourceStrength": 8,
-        "ctrPotential": 8
+        "ctrPotential": 7
       },
       "sourceReferences": [
         {
-          "title": "✓ Bemströms val ✓ Kovacs jagas i Tjeckien ✓ Målvakten lämnar ✓ Ljunghs klubbval",
-          "url": "https://www.expressen.se/sport/hockey/shl/sillyrummet-nobbar-shl-for-schweiz--jagar-lhc-stjarnan--han-lamnar-hv71/",
-          "source": "Expressen"
+          "title": "Mandy Moore Shares Candid Footage from Her and Hilary Duff&apos;s Double Date at a Bruce Springsteen Concert",
+          "url": "https://people.com/mandy-moore-shares-double-date-video-hilary-duff-bruce-springsteen-concert-11947162",
+          "source": "People.com"
         },
         {
-          "title": "Uppgifter: Stjärnforwarden nobbar återkomst till DIF",
-          "url": "https://hockeysverige.se/shl/uppgifter-stjarnforwarden-emil-bemstrom-nobbar-aterkomst-till-djurgarden/",
-          "source": "hockeysverige.se"
+          "title": "Bruce Springsteen concert: Mandy Moore and Hilary Duff enjoy a double date night with a musical twist",
+          "url": "https://timesofindia.indiatimes.com/entertainment/english/hollywood/news/bruce-springsteen-concert-mandy-moore-and-hilary-duff-enjoya-double-date-night-with-a-musical-twist/articleshow/130163454.cms",
+          "source": "The Times of India"
         },
         {
-          "title": "Bemström to stay, HCAP&apos;s Dario Wüthrich on SCB&apos;s wish list?",
-          "url": "https://swisshockeynews.ch/en/shn/men/swiss-hockey/nl/bemstroem-to-stay-hcaps-dario-wuethrich-on-scbs-wish-list",
-          "source": "swisshockeynews.ch"
+          "title": "Famous birthdays for April 10: David Harbour, Sofia Carson",
+          "url": "https://www.yahoo.com/entertainment/celebrity/articles/famous-birthdays-april-10-david-070007628.html",
+          "source": "Yahoo"
         }
       ],
-      "totalScore": 77.2
+      "totalScore": 72.6
     },
     {
-      "topic": "jack berglund",
+      "topic": "rob rausch",
       "source": "google-trends-rss",
-      "region": "SE",
-      "trendScoreRaw": 200,
-      "approxTraffic": "200+",
-      "timestamp": "2026-04-09T16:58:06.400Z",
-      "publishedAt": "Thu, 9 Apr 2026 08:20:00 -0700",
-      "picture": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQXaaXQzHb0Orsxfc3mPmMCMH9wAZFKVuvNHlgoi53aaDFv6ZpTOyTc6gjmfpk",
-      "pictureSource": "Expressen",
-      "news": [
-        {
-          "title": "Beskedet: Skriver ett NHL-kontrakt",
-          "url": "https://www.expressen.se/sport/hockey/nhl/jack-berglund-skriver-nhl-kontrakt/",
-          "source": "Expressen"
-        },
-        {
-          "title": "Jack Berglund har skrivit på för Flyers",
-          "url": "https://www.farjestadbk.se/article/77aatd8-23h01/view",
-          "source": "Färjestad BK"
-        },
-        {
-          "title": "JUST NU: Talangen skriver NHL-kontrakt – öppnar för FBK: ”Ett alternativ”",
-          "url": "https://www.nwt.se/2026/04/09/talangen-skriver-nhl-kontrakt-oppnar-for-fbk-ett-alternativ-3c69c/",
-          "source": "NWT"
-        }
-      ],
-      "whyNow": "Beskedet: Skriver ett NHL-kontrakt",
+      "region": "US",
+      "regionLabel": "USA",
+      "trendScoreRaw": 500,
+      "approxTraffic": "500+",
+      "timestamp": "2026-04-10T12:31:42.828Z",
+      "publishedAt": "Fri, 10 Apr 2026 05:10:00 -0700",
+      "picture": "",
+      "pictureSource": "",
+      "news": [],
+      "whyNow": "Trending on Google USA right now.",
       "scoring": {
-        "novelty": 7,
+        "novelty": 8,
         "emotion": 6,
         "clarity": 9,
-        "explainability": 8,
-        "swedishRelevance": 9,
-        "sourceStrength": 8,
-        "ctrPotential": 8
+        "explainability": 6,
+        "swedishRelevance": 6,
+        "sourceStrength": 5,
+        "ctrPotential": 7
       },
-      "sourceReferences": [
-        {
-          "title": "Beskedet: Skriver ett NHL-kontrakt",
-          "url": "https://www.expressen.se/sport/hockey/nhl/jack-berglund-skriver-nhl-kontrakt/",
-          "source": "Expressen"
-        },
-        {
-          "title": "Jack Berglund har skrivit på för Flyers",
-          "url": "https://www.farjestadbk.se/article/77aatd8-23h01/view",
-          "source": "Färjestad BK"
-        },
-        {
-          "title": "JUST NU: Talangen skriver NHL-kontrakt – öppnar för FBK: ”Ett alternativ”",
-          "url": "https://www.nwt.se/2026/04/09/talangen-skriver-nhl-kontrakt-oppnar-for-fbk-ett-alternativ-3c69c/",
-          "source": "NWT"
-        }
-      ],
-      "totalScore": 77.2
-    },
-    {
-      "topic": "scooter braun",
-      "source": "google-trends-rss",
-      "region": "SE",
-      "trendScoreRaw": 100,
-      "approxTraffic": "100+",
-      "timestamp": "2026-04-09T16:58:06.400Z",
-      "publishedAt": "Thu, 9 Apr 2026 08:40:00 -0700",
-      "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRg6eVR-a8s69jJVBI4khx_vTLVR1yhXk3kql-bNG5g0AXca9yIn76a-nVP8Rw",
-      "pictureSource": "InStyle",
-      "news": [
-        {
-          "title": "Sydney Sweeney Ditches Signature Loose Waves for Tight Shirley Temple Curls for Scooter Braun Easter Date",
-          "url": "https://www.instyle.com/sydney-sweeney-tight-curls-baseball-cap-scooter-braun-easter-dinner-date-11943953",
-          "source": "InStyle"
-        },
-        {
-          "title": "Scooter Braun Supports Sydney Sweeney at &apos;Euphoria&apos; Premiere, Seen Walking Hand-in-Hand in New Photos",
-          "url": "https://www.imdb.com/fr/news/ni65787146/?ref_=nwc_art_perm",
-          "source": "IMDb"
-        },
-        {
-          "title": "Rare details of Sydney Sweeney and Scooter Braun&apos;s relationship revealed, as she meets kids",
-          "url": "https://thetab.com/2026/04/09/rare-details-of-sydney-sweeney-and-scooter-brauns-relationship-revealed-as-she-meets-kids",
-          "source": "The Tab"
-        }
-      ],
-      "whyNow": "Sydney Sweeney Ditches Signature Loose Waves for Tight Shirley Temple Curls for Scooter Braun Easter Date",
-      "scoring": {
-        "novelty": 6,
-        "emotion": 6,
-        "clarity": 9,
-        "explainability": 8,
-        "swedishRelevance": 9,
-        "sourceStrength": 8,
-        "ctrPotential": 8
-      },
-      "sourceReferences": [
-        {
-          "title": "Sydney Sweeney Ditches Signature Loose Waves for Tight Shirley Temple Curls for Scooter Braun Easter Date",
-          "url": "https://www.instyle.com/sydney-sweeney-tight-curls-baseball-cap-scooter-braun-easter-dinner-date-11943953",
-          "source": "InStyle"
-        },
-        {
-          "title": "Scooter Braun Supports Sydney Sweeney at &apos;Euphoria&apos; Premiere, Seen Walking Hand-in-Hand in New Photos",
-          "url": "https://www.imdb.com/fr/news/ni65787146/?ref_=nwc_art_perm",
-          "source": "IMDb"
-        },
-        {
-          "title": "Rare details of Sydney Sweeney and Scooter Braun&apos;s relationship revealed, as she meets kids",
-          "url": "https://thetab.com/2026/04/09/rare-details-of-sydney-sweeney-and-scooter-brauns-relationship-revealed-as-she-meets-kids",
-          "source": "The Tab"
-        }
-      ],
-      "totalScore": 75.4
-    },
-    {
-      "topic": "warner hahn",
-      "source": "google-trends-rss",
-      "region": "SE",
-      "trendScoreRaw": 100,
-      "approxTraffic": "100+",
-      "timestamp": "2026-04-09T16:58:06.400Z",
-      "publishedAt": "Thu, 9 Apr 2026 09:30:00 -0700",
-      "picture": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQY3dxerXoehLrOzn-28D_raDp2YDXbGS1rnFn7ckePyL4FNHV0WRfeA0_PEto",
-      "pictureSource": "Fotbollskanalen",
-      "news": [
-        {
-          "title": "Hahns VM-dröm krossad: \"Det är skit\"",
-          "url": "https://www.fotbollskanalen.se/artiklar/landslag/hahns-vm-drom-krossad-det-ar-skit",
-          "source": "Fotbollskanalen"
-        },
-        {
-          "title": "Warner Hahn om Surinams VM-miss: ”Som ett superettan-lag i allsvenskan”",
-          "url": "https://bollsvenskan.se/warner-hahn-om-surinams-vm-miss-som-ett-superettan-lag-i-allsvenskan/",
-          "source": "Bollsvenskan"
-        }
-      ],
-      "whyNow": "Hahns VM-dröm krossad: \"Det är skit\"",
-      "scoring": {
-        "novelty": 6,
-        "emotion": 6,
-        "clarity": 9,
-        "explainability": 8,
-        "swedishRelevance": 9,
-        "sourceStrength": 7,
-        "ctrPotential": 8
-      },
-      "sourceReferences": [
-        {
-          "title": "Hahns VM-dröm krossad: \"Det är skit\"",
-          "url": "https://www.fotbollskanalen.se/artiklar/landslag/hahns-vm-drom-krossad-det-ar-skit",
-          "source": "Fotbollskanalen"
-        },
-        {
-          "title": "Warner Hahn om Surinams VM-miss: ”Som ett superettan-lag i allsvenskan”",
-          "url": "https://bollsvenskan.se/warner-hahn-om-surinams-vm-miss-som-ett-superettan-lag-i-allsvenskan/",
-          "source": "Bollsvenskan"
-        }
-      ],
-      "totalScore": 74.8
+      "sourceReferences": [],
+      "totalScore": 69.4
     }
   ]
 }

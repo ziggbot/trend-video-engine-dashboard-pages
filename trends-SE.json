@@ -2,307 +2,297 @@
   "source": "https://trends.google.com/trending/rss?geo=SE",
   "region": "SE",
   "regionLabel": "Sweden",
-  "fetchedAt": "2026-04-09T17:07:18.967Z",
+  "fetchedAt": "2026-04-10T12:31:42.453Z",
   "trends": [
     {
-      "topic": "fred couples",
+      "topic": "sveriges radio",
       "source": "google-trends-rss",
       "region": "SE",
       "regionLabel": "Sweden",
       "trendScoreRaw": 200,
       "approxTraffic": "200+",
-      "timestamp": "2026-04-09T17:07:18.964Z",
-      "publishedAt": "Thu, 9 Apr 2026 09:50:00 -0700",
-      "picture": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRC45ttNko1huK1pk6dxD-3GrGa7zp8tz4xHWmKCLw7t6JHrP8JoN7aT9uE4Ns",
-      "pictureSource": "PGA Tour",
+      "timestamp": "2026-04-10T12:31:42.452Z",
+      "publishedAt": "Fri, 10 Apr 2026 04:40:00 -0700",
+      "picture": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQ99Tb2fsLzm1T8jzHjTcVK0G-7kbKTp3aZ5egTzVtlwdDiwl6Mqvdi-exefek",
+      "pictureSource": "Sveriges Radio",
       "news": [
         {
-          "title": "Fred Couples betting profile: Masters Tournament",
-          "url": "https://www.pgatour.com/article/news/betting-profile/2026/masters-tournament/fred-couples-pga-tour-betting-stats-masters-tournament-2026",
-          "source": "PGA Tour"
-        },
-        {
-          "title": "Oldest Masters player, 66, vows not to embarrass himself on Augusta return",
-          "url": "https://www.aol.com/entertainment/oldest-masters-player-66-vows-084300682.html",
-          "source": "AOL.com"
-        },
-        {
-          "title": "Fred Couples’ hopes of making Masters cut after laying Tiger Woods feelings on the line",
-          "url": "https://www.themirror.com/sport/golf/fred-couples-masters-cut-odds-1779710",
-          "source": "The Mirror US"
-        }
-      ],
-      "whyNow": "Fred Couples betting profile: Masters Tournament"
-    },
-    {
-      "topic": "nanna olasdotter hallberg",
-      "source": "google-trends-rss",
-      "region": "SE",
-      "regionLabel": "Sweden",
-      "trendScoreRaw": 200,
-      "approxTraffic": "200+",
-      "timestamp": "2026-04-09T17:07:18.965Z",
-      "publishedAt": "Thu, 9 Apr 2026 09:40:00 -0700",
-      "picture": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQiWX-POcQgZdheDZ080DDC7tizv9qYuHehaMiUS_BQYfxzNsIA-jV8w8hED2s",
-      "pictureSource": "Aftonbladet",
-      "news": [
-        {
-          "title": "Chattskandalen i Alingsås blir teater",
-          "url": "https://www.aftonbladet.se/nojesbladet/a/e7GKAQ/chattskandalen-i-alingsas-blir-teater",
-          "source": "Aftonbladet"
-        },
-        {
-          "title": "Nanna Olasdotter Hallberg gör teater av Alingsåschatten",
-          "url": "https://via.tt.se/pressmeddelande/4321896/nanna-olasdotter-hallberg-gor-teater-av-alingsaschatten?publisherId=3237061&lang=sv",
-          "source": "Via TT"
-        },
-        {
-          "title": "Chattskandalen blir teaterpjäs i Stockholm",
-          "url": "https://www.alingsastidning.se/nyheter/alingsas/chattskandalen-i-alingsas-blir-teater-i-stockholm.02b41689-e6f0-4d55-8657-ed2a8f9e5490",
-          "source": "Alingsås Tidning"
-        }
-      ],
-      "whyNow": "Chattskandalen i Alingsås blir teater"
-    },
-    {
-      "topic": "warner hahn",
-      "source": "google-trends-rss",
-      "region": "SE",
-      "regionLabel": "Sweden",
-      "trendScoreRaw": 100,
-      "approxTraffic": "100+",
-      "timestamp": "2026-04-09T17:07:18.965Z",
-      "publishedAt": "Thu, 9 Apr 2026 09:30:00 -0700",
-      "picture": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQY3dxerXoehLrOzn-28D_raDp2YDXbGS1rnFn7ckePyL4FNHV0WRfeA0_PEto",
-      "pictureSource": "Fotbollskanalen",
-      "news": [
-        {
-          "title": "Hahns VM-dröm krossad: \"Det är skit\"",
-          "url": "https://www.fotbollskanalen.se/artiklar/landslag/hahns-vm-drom-krossad-det-ar-skit",
-          "source": "Fotbollskanalen"
-        },
-        {
-          "title": "Warner Hahn: \"Det är en dröm mindre\"",
-          "url": "https://fotbolltransfers.com/nyheter/warner-hahn-det-ar-en-drom-mindre/214954",
-          "source": "Fotbolltransfers"
-        },
-        {
-          "title": "Warner Hahn om Surinams VM-miss: ”Som ett superettan-lag i allsvenskan”",
-          "url": "https://bollsvenskan.se/warner-hahn-om-surinams-vm-miss-som-ett-superettan-lag-i-allsvenskan/",
-          "source": "Bollsvenskan"
-        }
-      ],
-      "whyNow": "Hahns VM-dröm krossad: \"Det är skit\""
-    },
-    {
-      "topic": "patrick reed",
-      "source": "google-trends-rss",
-      "region": "SE",
-      "regionLabel": "Sweden",
-      "trendScoreRaw": 200,
-      "approxTraffic": "200+",
-      "timestamp": "2026-04-09T17:07:18.966Z",
-      "publishedAt": "Thu, 9 Apr 2026 09:10:00 -0700",
-      "picture": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQMNdAfxXEpaIdJ2DJK7WTImfm_oStK0v3u89pVUMXHe4fgrLs07n0Daniv7vg",
-      "pictureSource": "Skratch Golf",
-      "news": [
-        {
-          "title": "Patrick Reed Came Out the Gates Hot at Augusta National",
-          "url": "https://www.skratch.golf/news/news/masters-patrick-reed-hot-start-scores-augusta-national",
-          "source": "Skratch Golf"
-        },
-        {
-          "title": "Masters winner gushes over PGA Tour after quitting it for LIV Golf",
-          "url": "https://www.msn.com/en-us/sports/golf/masters-winner-gushes-over-pga-tour-after-quitting-it-for-liv-golf/vi-AA20q1FR",
-          "source": "MSN"
-        },
-        {
-          "title": "Patrick Reed odds to win the 2026 Masters Tournament",
-          "url": "https://golfweek.usatoday.com/story/sports/golf/2026/04/08/patrick-reed-odds-to-win-masters-tournament-betting-props/89521607007/",
-          "source": "Golfweek"
-        }
-      ],
-      "whyNow": "Patrick Reed Came Out the Gates Hot at Augusta National"
-    },
-    {
-      "topic": "inflation",
-      "source": "google-trends-rss",
-      "region": "SE",
-      "regionLabel": "Sweden",
-      "trendScoreRaw": 200,
-      "approxTraffic": "200+",
-      "timestamp": "2026-04-09T17:07:18.966Z",
-      "publishedAt": "Thu, 9 Apr 2026 09:10:00 -0700",
-      "picture": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSolObNmEsVkRE94w5MflE10ouvocAAuWbcVZLu6p4obMfobmxXcPT7wjmLL-o",
-      "pictureSource": "DI",
-      "news": [
-        {
-          "title": "Amerikansk inflationssiffra i linje med förväntningarna",
-          "url": "https://www.di.se/live/amerikansk-inflationssiffra-i-linje-med-forvantningarna/",
-          "source": "DI"
-        },
-        {
-          "title": "USA: Inflation föll som väntat",
-          "url": "https://www.aftonbladet.se/minekonomi/a/JOrxGX/usa-inflation-foll-som-vantat",
-          "source": "Aftonbladet"
-        },
-        {
-          "title": "Nils Åkesson: Het USA-inflation redan före krigets oljechock",
-          "url": "https://www.di.se/nyheter/het-usa-inflation-redan-fore-krigets-oljechock/",
-          "source": "DI"
-        }
-      ],
-      "whyNow": "Amerikansk inflationssiffra i linje med förväntningarna"
-    },
-    {
-      "topic": "us masters 2026",
-      "source": "google-trends-rss",
-      "region": "SE",
-      "regionLabel": "Sweden",
-      "trendScoreRaw": 500,
-      "approxTraffic": "500+",
-      "timestamp": "2026-04-09T17:07:18.966Z",
-      "publishedAt": "Thu, 9 Apr 2026 08:50:00 -0700",
-      "picture": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQOKkYoSH876Tx7zsO4tucSkIEfaseDG_3iEPuHwy_RzVcJmEkBE7wrT12EnmM",
-      "pictureSource": "Sky Sports",
-      "news": [
-        {
-          "title": "The Masters 2026 leaderboard: Latest golf scores from Augusta National and tee times for opening major of the year",
-          "url": "https://www.skysports.com/golf/news/12176/13529496/the-masters-2026-leaderboard-latest-golf-scores-from-augusta-national-and-tee-times-for-opening-major-of-the-year",
-          "source": "Sky Sports"
-        },
-        {
-          "title": "Expert Picks: Masters Tournament",
-          "url": "https://www.pgatour.com/article/news/expert-picks/2026/04/07/who-are-experts-picking-for-the-masters-2026-major-augusta-national-scottie-scheffler-rory-mcilroy",
-          "source": "PGA Tour"
-        },
-        {
-          "title": "The Masters 2026 tee-times: McIlroy, Rahm, Scheffler, DeChambeau & Fleetwood at Augusta",
-          "url": "https://www.bbc.com/sport/golf/articles/crl12d8520eo",
-          "source": "BBC"
-        }
-      ],
-      "whyNow": "The Masters 2026 leaderboard: Latest golf scores from Augusta National and tee times for opening major of the year"
-    },
-    {
-      "topic": "sydöstran",
-      "source": "google-trends-rss",
-      "region": "SE",
-      "regionLabel": "Sweden",
-      "trendScoreRaw": 200,
-      "approxTraffic": "200+",
-      "timestamp": "2026-04-09T17:07:18.966Z",
-      "publishedAt": "Thu, 9 Apr 2026 08:50:00 -0700",
-      "picture": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcT_AoXX4mGT6Idfw7KeXnprAea_GFexc7GNaBj1uYd5g7nTrlyYvmalGHz2hkw",
-      "pictureSource": "SVT Nyheter",
-      "news": [
-        {
-          "title": "Kollapsen i regionstyret – alla samarbeten avbrutna",
-          "url": "https://www.svt.se/nyheter/lokalt/blekinge/kollapsen-i-regionstyret-alla-samarbeten-avbrutna",
-          "source": "SVT Nyheter"
-        },
-        {
-          "title": "Ingen ny akut före valet – politiker bryter flera löften",
-          "url": "https://www.sverigesradio.se/artikel/ingen-ny-akut-fore-valet-politiker-bryter-flera-loften",
+          "title": "Spårvagn och buss i krock vid Åkareplatsen",
+          "url": "https://www.sverigesradio.se/artikel/sparvagn-och-buss-i-krock-vid-akareplatsen",
           "source": "Sveriges Radio"
         },
         {
-          "title": "Efter sprickan i regionen: M och SD i Karlshamn bekänner färg",
-          "url": "https://www.sydostran.se/karlshamn/efter-sprickan-i-regionen-m-och-sd-i-karlshamn-bekanner-farg/",
-          "source": "Sydöstran"
+          "title": "INSÄNDARE: ”Bespara oss fjolårets usla sommarradio”",
+          "url": "https://www.helagotland.se/insandare/artikel/bespara-oss-fjolarets-usla-sommarradio/re73q6yj",
+          "source": "Helagotland"
         }
       ],
-      "whyNow": "Kollapsen i regionstyret – alla samarbeten avbrutna"
+      "whyNow": "Spårvagn och buss i krock vid Åkareplatsen"
     },
     {
-      "topic": "emil bemström",
-      "source": "google-trends-rss",
-      "region": "SE",
-      "regionLabel": "Sweden",
-      "trendScoreRaw": 200,
-      "approxTraffic": "200+",
-      "timestamp": "2026-04-09T17:07:18.966Z",
-      "publishedAt": "Thu, 9 Apr 2026 08:40:00 -0700",
-      "picture": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQb26JCRRjH3A3y3DReYRTekV77U9zOddDOCJoMTHVOwhyOd5NbW35cufI2Tdw",
-      "pictureSource": "Expressen",
-      "news": [
-        {
-          "title": "✓ Bemströms val ✓ Kovacs jagas i Tjeckien ✓ Målvakten lämnar ✓ Ljunghs klubbval",
-          "url": "https://www.expressen.se/sport/hockey/shl/sillyrummet-nobbar-shl-for-schweiz--jagar-lhc-stjarnan--han-lamnar-hv71/",
-          "source": "Expressen"
-        },
-        {
-          "title": "Uppgifter: Stjärnforwarden nobbar återkomst till DIF",
-          "url": "https://hockeysverige.se/shl/uppgifter-stjarnforwarden-emil-bemstrom-nobbar-aterkomst-till-djurgarden/",
-          "source": "hockeysverige.se"
-        },
-        {
-          "title": "Bemström to stay, HCAP&apos;s Dario Wüthrich on SCB&apos;s wish list?",
-          "url": "https://swisshockeynews.ch/en/shn/men/swiss-hockey/nl/bemstroem-to-stay-hcaps-dario-wuethrich-on-scbs-wish-list",
-          "source": "swisshockeynews.ch"
-        }
-      ],
-      "whyNow": "✓ Bemströms val ✓ Kovacs jagas i Tjeckien ✓ Målvakten lämnar ✓ Ljunghs klubbval"
-    },
-    {
-      "topic": "scooter braun",
-      "source": "google-trends-rss",
-      "region": "SE",
-      "regionLabel": "Sweden",
-      "trendScoreRaw": 100,
-      "approxTraffic": "100+",
-      "timestamp": "2026-04-09T17:07:18.966Z",
-      "publishedAt": "Thu, 9 Apr 2026 08:40:00 -0700",
-      "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRg6eVR-a8s69jJVBI4khx_vTLVR1yhXk3kql-bNG5g0AXca9yIn76a-nVP8Rw",
-      "pictureSource": "InStyle",
-      "news": [
-        {
-          "title": "Sydney Sweeney Ditches Signature Loose Waves for Tight Shirley Temple Curls for Scooter Braun Easter Date",
-          "url": "https://www.instyle.com/sydney-sweeney-tight-curls-baseball-cap-scooter-braun-easter-dinner-date-11943953",
-          "source": "InStyle"
-        },
-        {
-          "title": "Scooter Braun Supports Sydney Sweeney at &apos;Euphoria&apos; Premiere, Seen Walking Hand-in-Hand in New Photos",
-          "url": "https://www.imdb.com/fr/news/ni65787146/?ref_=nwc_art_perm",
-          "source": "IMDb"
-        },
-        {
-          "title": "Rare details of Sydney Sweeney and Scooter Braun&apos;s relationship revealed, as she meets kids",
-          "url": "https://thetab.com/2026/04/09/rare-details-of-sydney-sweeney-and-scooter-brauns-relationship-revealed-as-she-meets-kids",
-          "source": "The Tab"
-        }
-      ],
-      "whyNow": "Sydney Sweeney Ditches Signature Loose Waves for Tight Shirley Temple Curls for Scooter Braun Easter Date"
-    },
-    {
-      "topic": "svenska fotbollförbundet",
+      "topic": "stockholm",
       "source": "google-trends-rss",
       "region": "SE",
       "regionLabel": "Sweden",
       "trendScoreRaw": 500,
       "approxTraffic": "500+",
-      "timestamp": "2026-04-09T17:07:18.966Z",
-      "publishedAt": "Thu, 9 Apr 2026 08:30:00 -0700",
-      "picture": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQmlI7Jh_WNzI6SIrSOjtwfJQtcxBYrrh2MoqncDTv8ZExcb-cUY31tam_SN8Q",
+      "timestamp": "2026-04-10T12:31:42.452Z",
+      "publishedAt": "Fri, 10 Apr 2026 04:30:00 -0700",
+      "picture": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQNaJzr6sKouZGrwSuCnQIljxcxq3FKT7QIr3lLP199LdfLBmTszP4mqJ9WOAs",
       "pictureSource": "Aftonbladet",
       "news": [
         {
-          "title": "SvFF:s varning till fansen: ”Åk inte hit!”",
-          "url": "https://www.aftonbladet.se/sportbladet/fotboll/a/5p8nw1/svenska-varningen-infor-fotbolls-vm-ak-inte-hit",
+          "title": "Person skottskadad i Botkyrka – stor polisinsats",
+          "url": "https://www.aftonbladet.se/nyheter/a/wr3r4A/insats-i-botkyrka-personer-bloder",
           "source": "Aftonbladet"
         },
         {
-          "title": "Olof Lundh: Svettig jakt på nya intäkter",
-          "url": "https://www.di.se/nyheter/svettig-jakt-pa-nya-intakter/",
+          "title": "Dieselpriset ökar",
+          "url": "https://www.expressen.se/nyheter/expressen-direkt/?post=a1cb1d5c-838a-4af3-b4c3-cdc2a65daad0",
+          "source": "Expressen"
+        },
+        {
+          "title": "Stor polisinsats i Botkyrka efter skottlossning",
+          "url": "https://www.svt.se/nyheter/lokalt/stockholm/stor-polisinsats-i-botkyrka-efter-skottlossning",
+          "source": "SVT Nyheter"
+        }
+      ],
+      "whyNow": "Person skottskadad i Botkyrka – stor polisinsats"
+    },
+    {
+      "topic": "filip larsson",
+      "source": "google-trends-rss",
+      "region": "SE",
+      "regionLabel": "Sweden",
+      "trendScoreRaw": 200,
+      "approxTraffic": "200+",
+      "timestamp": "2026-04-10T12:31:42.452Z",
+      "publishedAt": "Fri, 10 Apr 2026 04:30:00 -0700",
+      "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3kk1Tm5wvXG1Ii9CA5i3POBfq6EboFs56MsTU-I1j4CFYA1mPalgGHYequrk",
+      "pictureSource": "Aftonbladet",
+      "news": [
+        {
+          "title": "Blir kvar i SHL trots nedflyttningen",
+          "url": "https://www.aftonbladet.se/sportbladet/hockey/a/zOlAd1/malvakten-filip-larsson-lamnar-leksand-och-ar-klar-for-orebro",
+          "source": "Aftonbladet"
+        },
+        {
+          "title": "Bekräftat: Filip Larsson går till Örebro",
+          "url": "https://www.expressen.se/sport/hockey/shl/bekraftat-filip-larsson-gar-till-orebro/",
+          "source": "Expressen"
+        },
+        {
+          "title": "Stjärnmålvakten klar för Örebro",
+          "url": "https://www.na.se/sport/stjarnmalvakten-klar-for-orebro/",
+          "source": "Nerikes Allehanda"
+        }
+      ],
+      "whyNow": "Blir kvar i SHL trots nedflyttningen"
+    },
+    {
+      "topic": "nicklas danielsson",
+      "source": "google-trends-rss",
+      "region": "SE",
+      "regionLabel": "Sweden",
+      "trendScoreRaw": 200,
+      "approxTraffic": "200+",
+      "timestamp": "2026-04-10T12:31:42.452Z",
+      "publishedAt": "Fri, 10 Apr 2026 04:30:00 -0700",
+      "picture": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQu00AUO2leTnUj8vbZ5FJAbG2fhyCulXXsfLfxA26YUp6xUn6XCQZvso25iOw",
+      "pictureSource": "UNT",
+      "news": [
+        {
+          "title": "Sportchefen lämnar Almtuna: \"Inget enkelt beslut\"",
+          "url": "https://www.unt.se/sport/ishockey/artikel/sportchefen-nicklas-danielsson-lamnar-almtuna/r140q6xr",
+          "source": "UNT"
+        },
+        {
+          "title": "Dråpslaget: Hoppar av – efter starka säsongen",
+          "url": "https://hockeysverige.se/hockeyallsvenskan/nicklas-danielsson-lamnar-jobbet-som-sportchef-for-almtuna-is/",
+          "source": "hockeysverige.se"
+        }
+      ],
+      "whyNow": "Sportchefen lämnar Almtuna: \"Inget enkelt beslut\""
+    },
+    {
+      "topic": "mark rutte nato",
+      "source": "google-trends-rss",
+      "region": "SE",
+      "regionLabel": "Sweden",
+      "trendScoreRaw": 100,
+      "approxTraffic": "100+",
+      "timestamp": "2026-04-10T12:31:42.452Z",
+      "publishedAt": "Fri, 10 Apr 2026 04:30:00 -0700",
+      "picture": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQmGuB2r7PPm4MDdvPctnpcbYHWljkIEG6gjunycFtm4Lz_V4nAPQCuc8rXC2I",
+      "pictureSource": "Aftonbladet",
+      "news": [
+        {
+          "title": "Avslöjar Trumps vrede i rummet: ”Gick åt helvete”",
+          "url": "https://www.aftonbladet.se/nyheter/a/m0KPrE/avslojar-trumps-vrede-i-rummet-gick-at-helvete",
+          "source": "Aftonbladet"
+        },
+        {
+          "title": "ÖB: Så reagerade jag på Natochefens ordval",
+          "url": "https://www.di.se/nyheter/ob-sa-reagerade-jag-pa-natochefens-ordval/",
           "source": "DI"
         },
         {
-          "title": "Rusning efter biljetter till Sveriges VM-matcher",
-          "url": "https://www.gp.se/sport/fotboll/rusning-efter-svenska-vm-biljetter-fler-ansokningar-an-platser.f5c12f31-6aab-4dd9-9bf5-70e4ef169aff",
+          "title": "Försvarsministern om Trumps Nato-utspel: ”Ansträngande”",
+          "url": "https://www.sverigesradio.se/artikel/forsvarsministern-pal-jonson-om-trumps-nato-utspel-anstrangande",
+          "source": "Sveriges Radio"
+        }
+      ],
+      "whyNow": "Avslöjar Trumps vrede i rummet: ”Gick åt helvete”"
+    },
+    {
+      "topic": "kinnevik",
+      "source": "google-trends-rss",
+      "region": "SE",
+      "regionLabel": "Sweden",
+      "trendScoreRaw": 200,
+      "approxTraffic": "200+",
+      "timestamp": "2026-04-10T12:31:42.452Z",
+      "publishedAt": "Fri, 10 Apr 2026 04:00:00 -0700",
+      "picture": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQuOcp21juJ6_8DTgI6ROBKEO7L87y9BDdiSV--cBXtdqTZ0RfydZ8pPwylBeM",
+      "pictureSource": "EFN",
+      "news": [
+        {
+          "title": "Största ägaren säljer i Kinnevik efter raset",
+          "url": "https://efn.se/storsta-agaren-saljer-i-kinnevik-efter-raset",
+          "source": "EFN"
+        },
+        {
+          "title": "Pareto: Substansrabatten är lockande – köp Kinnevik",
+          "url": "https://www.di.se/live/pareto-substansrabatten-ar-lockande-kop-kinnevik/",
+          "source": "DI"
+        },
+        {
+          "title": "Riktkursen kapas – Stegra värderas till noll kronor",
+          "url": "https://efn.se/kinneviks-riktkurs-kapas-stegra-varderas-till-noll-kronor",
+          "source": "EFN"
+        }
+      ],
+      "whyNow": "Största ägaren säljer i Kinnevik efter raset"
+    },
+    {
+      "topic": "b",
+      "source": "google-trends-rss",
+      "region": "SE",
+      "regionLabel": "Sweden",
+      "trendScoreRaw": 100,
+      "approxTraffic": "100+",
+      "timestamp": "2026-04-10T12:31:42.452Z",
+      "publishedAt": "Fri, 10 Apr 2026 04:00:00 -0700",
+      "picture": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRTbNPJqrnZf8nbHI9CMNnGRc9IB9aZGJDBIXMaZ0MWmz5atJnu8dcWIKs80dk",
+      "pictureSource": "Tampa Bay Times",
+      "news": [
+        {
+          "title": "Money for Lightning, Yankees needed to meet Rays’ stadium ask: county",
+          "url": "https://www.tampabay.com/news/2026/04/09/tampa-bay-rays-stadium-baseball-mlb-hillsborough-county/",
+          "source": "Tampa Bay Times"
+        },
+        {
+          "title": "Rays reveal timeline, funding plan for proposed ballpark",
+          "url": "https://www.mlb.com/news/rays-propose-timeline-funding-plan-for-ballpark-at-hillsborough-college-site",
+          "source": "MLB.com"
+        },
+        {
+          "title": "Draft framework released for Rays stadium project in Tampa",
+          "url": "https://baynews9.com/fl/tampa/news/2026/04/09/draft-framework-released-for-rays-stadium-project-in-tampa",
+          "source": "Spectrum Bay News 9"
+        }
+      ],
+      "whyNow": "Money for Lightning, Yankees needed to meet Rays’ stadium ask: county"
+    },
+    {
+      "topic": "felicia eriksson",
+      "source": "google-trends-rss",
+      "region": "SE",
+      "regionLabel": "Sweden",
+      "trendScoreRaw": 200,
+      "approxTraffic": "200+",
+      "timestamp": "2026-04-10T12:31:42.452Z",
+      "publishedAt": "Fri, 10 Apr 2026 03:50:00 -0700",
+      "picture": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSdRG99jluv0dZr7OaXqOVKTeGq9yXTnS2s_a3DZGCDwgX7Oavv48CGWwbfYdM",
+      "pictureSource": "Aftonbladet",
+      "news": [
+        {
+          "title": "Mellovinnaren Felicia spelar Shakespeare i radio",
+          "url": "https://www.aftonbladet.se/nojesbladet/a/k0vweL/mellovinnaren-felicia-spelar-shakespeare-i-radio",
+          "source": "Aftonbladet"
+        },
+        {
+          "title": "Felicia Eriksson debuterar som skådespelare",
+          "url": "https://www.aftonbladet.se/nojesbladet/a/L430y4/felicia-eriksson-tolkar-shakespeare-i-sveriges-radios-nya-satsning-othello",
+          "source": "Aftonbladet"
+        },
+        {
+          "title": "Mellovinnaren Felicia spelar Shakespeare i radio",
+          "url": "https://www.eposten.se/kultur/radio/artikel/mellovinnaren-felicia-spelar-shakespeare-i-radio/r51g321j",
+          "source": "Enköpingsposten"
+        }
+      ],
+      "whyNow": "Mellovinnaren Felicia spelar Shakespeare i radio"
+    },
+    {
+      "topic": "frida karlsson",
+      "source": "google-trends-rss",
+      "region": "SE",
+      "regionLabel": "Sweden",
+      "trendScoreRaw": 2000,
+      "approxTraffic": "2000+",
+      "timestamp": "2026-04-10T12:31:42.452Z",
+      "publishedAt": "Fri, 10 Apr 2026 03:30:00 -0700",
+      "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQYfEi6hsKdzoXD4p07LiEIEzS6T_GhvQld5YISoMr8kk5mrhh47IaJgpBz88",
+      "pictureSource": "Expressen",
+      "news": [
+        {
+          "title": "Frida om avskedet: ”Kommer bli tomt”",
+          "url": "https://www.expressen.se/sport/langdskidor/frida-karlsson-om-avskedet-en-sista-dans/",
+          "source": "Expressen"
+        },
+        {
+          "title": "Solins sista lopp med Karlsson: ”Hon är klubben för mig”",
+          "url": "https://www.tidningenangermanland.se/sport/solins-sista-lopp-med-karlsson-hon-ar-klubben-for-mig/",
+          "source": "Tidningen Ångermanland"
+        },
+        {
+          "title": "Frida Karlssons aprilskämt: ”Svåraste beslutet jag tagit”",
+          "url": "https://www.gp.se/sport/frida-karlssons-aprilskamt-svaraste-beslutet-jag-tagit.08e64c11-2223-44cc-9ec9-dc27b0b485ce",
           "source": "GP"
         }
       ],
-      "whyNow": "SvFF:s varning till fansen: ”Åk inte hit!”"
+      "whyNow": "Frida om avskedet: ”Kommer bli tomt”"
+    },
+    {
+      "topic": "falu-kuriren",
+      "source": "google-trends-rss",
+      "region": "SE",
+      "regionLabel": "Sweden",
+      "trendScoreRaw": 200,
+      "approxTraffic": "200+",
+      "timestamp": "2026-04-10T12:31:42.452Z",
+      "publishedAt": "Fri, 10 Apr 2026 03:30:00 -0700",
+      "picture": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcT0IoNdw9BsxtxuBJ_3F86aJosq7499psan9Rf4jEViAG8GY5rSmhq1yNPVeQ4",
+      "pictureSource": "Falu-Kuriren",
+      "news": [
+        {
+          "title": "Klartecken för nya krogen i Falun",
+          "url": "https://www.falukuriren.se/falun/klartecken-for-nya-krogen/",
+          "source": "Falu-Kuriren"
+        },
+        {
+          "title": "GPS på fyrhjuling löste stöldhärva – nu åtalas åtta personer",
+          "url": "https://www.svt.se/nyheter/lokalt/dalarna/gps-pa-fyrhjuling-loste-stoldharva-nu-atalas-atta-personer",
+          "source": "SVT Nyheter"
+        },
+        {
+          "title": "Stal närmare 70 fordon – åtta personer åtalade",
+          "url": "https://www.sverigesradio.se/artikel/70-talet-motorcyklar-stals-atta-atalas",
+          "source": "Sveriges Radio"
+        }
+      ],
+      "whyNow": "Klartecken för nya krogen i Falun"
     }
   ]
 }

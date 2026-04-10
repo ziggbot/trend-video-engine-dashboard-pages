@@ -2,307 +2,291 @@
   "source": "https://trends.google.com/trending/rss?geo=US",
   "region": "US",
   "regionLabel": "USA",
-  "fetchedAt": "2026-04-09T17:07:25.137Z",
+  "fetchedAt": "2026-04-10T12:31:42.831Z",
   "trends": [
     {
-      "topic": "noah wyle",
+      "topic": "rob rausch",
       "source": "google-trends-rss",
       "region": "US",
       "regionLabel": "USA",
       "trendScoreRaw": 500,
       "approxTraffic": "500+",
-      "timestamp": "2026-04-09T17:07:25.134Z",
-      "publishedAt": "Thu, 9 Apr 2026 09:50:00 -0700",
-      "picture": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcR9qYINl3EtYJkpPsHhMPdweNDtcMonC2I3SVriILE1ragWWdBsrc1NOY4c2sc",
-      "pictureSource": "Variety",
-      "news": [
-        {
-          "title": "Noah Wyle on Negotiating With HBO Over ‘The Pitt’ ICE Storyline, Season 3’s Time Jump and Why Paramount Buying Warner Bros. Is ‘Not Good for Labor’",
-          "url": "https://variety.com/2026/tv/news/noah-wyle-the-pitt-ice-season-3-paramount-wb-sale-1236709707/",
-          "source": "Variety"
-        },
-        {
-          "title": "&apos;The Pitt&apos;s Season 3 Release Schedule Will Break Tradition",
-          "url": "https://www.imdb.com/news/ni65781488/?ref_=ttnw_art_perm",
-          "source": "IMDb"
-        },
-        {
-          "title": "&apos;The Pitt&apos; Season 3 Time Jump & Setting Details Revealed Ahead of Highly Anticipated Finale",
-          "url": "https://movieweb.com/the-pitt-season-3-time-jump/",
-          "source": "MovieWeb"
-        }
-      ],
-      "whyNow": "Noah Wyle on Negotiating With HBO Over ‘The Pitt’ ICE Storyline, Season 3’s Time Jump and Why Paramount Buying Warner Bros. Is ‘Not Good for Labor’"
+      "timestamp": "2026-04-10T12:31:42.828Z",
+      "publishedAt": "Fri, 10 Apr 2026 05:10:00 -0700",
+      "picture": "",
+      "pictureSource": "",
+      "news": [],
+      "whyNow": "Trending on Google USA right now."
     },
     {
-      "topic": "shemar moore",
-      "source": "google-trends-rss",
-      "region": "US",
-      "regionLabel": "USA",
-      "trendScoreRaw": 1000,
-      "approxTraffic": "1000+",
-      "timestamp": "2026-04-09T17:07:25.135Z",
-      "publishedAt": "Thu, 9 Apr 2026 09:50:00 -0700",
-      "picture": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTnigDFxflXE0W8QUSw46ZTYc7EKQvKJ1mAIzdxfDoCOhb8kJXgilY4TLWwJ9w",
-      "pictureSource": "TV Insider",
-      "news": [
-        {
-          "title": "&apos;Young and the Restless&apos; Reveals Holden Is Malcolm&apos;s Son: Nathan Owens Reacts (Exclusive)",
-          "url": "https://www.tvinsider.com/1256896/young-and-the-restless-malcolm-son-holden-nathan-owens-interview/",
-          "source": "TV Insider"
-        },
-        {
-          "title": "30 years in the making: Shemar Moore and Vivica A. Fox mark return to &apos;The Young and the Restless&apos; with proof their chemistry is still there",
-          "url": "https://thegrio.com/2026/04/08/shemar-moore-vivica-a-fox-young-and-the-restless-reunion-clips/",
-          "source": "TheGrio"
-        },
-        {
-          "title": "Y&R: Nathan Owens is &apos;Amped&apos; That Holden is Malcolm&apos;s Son",
-          "url": "https://www.soapoperadigest.com/content/the-young-and-the-restless-nathan-owens-is-amped-that-holden-is-malcolms-son/",
-          "source": "Soap Opera Digest"
-        }
-      ],
-      "whyNow": "&apos;Young and the Restless&apos; Reveals Holden Is Malcolm&apos;s Son: Nathan Owens Reacts (Exclusive)"
-    },
-    {
-      "topic": "ekaterina alexandrova",
-      "source": "google-trends-rss",
-      "region": "US",
-      "regionLabel": "USA",
-      "trendScoreRaw": 500,
-      "approxTraffic": "500+",
-      "timestamp": "2026-04-09T17:07:25.135Z",
-      "publishedAt": "Thu, 9 Apr 2026 09:50:00 -0700",
-      "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3APK1clyMA0H6mI28kJBTfSFYl6ymigQ-HarPLOJbyCx1Q_Xw3lnGdTA-q9k",
-      "pictureSource": "WTA Tennis",
-      "news": [
-        {
-          "title": "Pliskova through to second round in Linz",
-          "url": "https://www.wtatennis.com/videos/4483380/pliskova-through-to-second-round-in-linz",
-          "source": "WTA Tennis"
-        },
-        {
-          "title": "WTA Linz Day 4 Predictions Including Karolina Pliskova vs Ekaterina Alexandrova",
-          "url": "https://lastwordonsports.com/tennis/2026/04/09/wta-linz-day-4-predictions-pliskova-alexandrova/",
-          "source": "Last Word On Sports"
-        },
-        {
-          "title": "Sasnovich vs. Pliskova Odds & Predictions (Apr. 7, 2026)",
-          "url": "https://polymarket.com/sports/wta/wta-pliskov-sasnovi-2026-04-07",
-          "source": "Polymarket"
-        }
-      ],
-      "whyNow": "Pliskova through to second round in Linz"
-    },
-    {
-      "topic": "brian harman",
+      "topic": "crwv stock",
       "source": "google-trends-rss",
       "region": "US",
       "regionLabel": "USA",
       "trendScoreRaw": 200,
       "approxTraffic": "200+",
-      "timestamp": "2026-04-09T17:07:25.135Z",
-      "publishedAt": "Thu, 9 Apr 2026 09:50:00 -0700",
-      "picture": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRNYaapLymyUYZsDYRMxm5aKXSp9vU95bCgNgISlT85RL6C76jlEF5foNdiDfo",
-      "pictureSource": "People.com",
+      "timestamp": "2026-04-10T12:31:42.829Z",
+      "publishedAt": "Fri, 10 Apr 2026 05:10:00 -0700",
+      "picture": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRgbB0oPn8ZT5t1idKvadba2HbjMuEm0NWWvVdmW0VhAvoRQPNYwfKFJo2p1cQ",
+      "pictureSource": "Yahoo Finance UK",
       "news": [
         {
-          "title": "All About Golf Pro Brian Harman&apos;s 3 Kids, Cooper, Walter and Jack",
-          "url": "https://people.com/all-about-brian-harman-kids-11945458",
-          "source": "People.com"
+          "title": "Tech stocks today: Big Tech stocks point to strong open, AI industry seeks to allay fears",
+          "url": "https://uk.finance.yahoo.com/news/tech-stocks-today-nvidias-huang-kicks-of-gtc-monday-adobe-ceo-stepping-down-144220195.html",
+          "source": "Yahoo Finance UK"
         },
         {
-          "title": "All About Golf Pro Brian Harman&apos;s 3 Kids, Cooper, Walter and Jack",
-          "url": "https://www.aol.com/articles/golf-pro-brian-harmans-3-182233887.html",
-          "source": "AOL.com"
+          "title": "Meta commits to spending additional $21 billion with CoreWeave as AI costs keep rising",
+          "url": "https://www.cnbc.com/2026/04/09/meta-commits-to-spending-additional-21-billion-with-coreweave-.html",
+          "source": "CNBC"
         },
         {
-          "title": "Savannah native, longtime caddy looking to capture Green jacket",
-          "url": "https://sports.yahoo.com/articles/savannah-native-longtime-caddy-looking-224353755.html",
-          "source": "Yahoo Sports"
+          "title": "CoreWeave’s stock bounces back. Why investors are cheering the new Meta deal.",
+          "url": "https://www.marketwatch.com/story/coreweaves-stock-dips-as-the-hype-around-new-meta-deal-quickly-subsides-5208fa9c",
+          "source": "MarketWatch"
         }
       ],
-      "whyNow": "All About Golf Pro Brian Harman&apos;s 3 Kids, Cooper, Walter and Jack"
+      "whyNow": "Tech stocks today: Big Tech stocks point to strong open, AI industry seeks to allay fears"
     },
     {
-      "topic": "the punisher one last kill",
+      "topic": "oksana selekhmeteva",
       "source": "google-trends-rss",
       "region": "US",
       "regionLabel": "USA",
-      "trendScoreRaw": 500,
-      "approxTraffic": "500+",
-      "timestamp": "2026-04-09T17:07:25.135Z",
-      "publishedAt": "Thu, 9 Apr 2026 09:40:00 -0700",
-      "picture": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSi46lI20TGRRD1lsKmeV8d0PI1itz9lhrmEPuKmQuENZfKGI1xAUvw2PnOVpw",
-      "pictureSource": "Gizmodo",
+      "trendScoreRaw": 200,
+      "approxTraffic": "200+",
+      "timestamp": "2026-04-10T12:31:42.830Z",
+      "publishedAt": "Fri, 10 Apr 2026 05:10:00 -0700",
+      "picture": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSEccE5aALE1Q6n-g7i2cQEqDoUdOdFHQ9ISXFQmKTXgEzsyqodW8EO-_vipg",
+      "pictureSource": "Flashscore.com",
       "news": [
         {
-          "title": "‘The Punisher: One Last Kill’ Trailer Promises Many Kills, Actually",
-          "url": "https://gizmodo.com/the-punisher-one-last-kill-trailer-promises-many-kills-actually-2000744615",
-          "source": "Gizmodo"
+          "title": "Oksana Selekhmeteva v Polina Kudermetova (10/04/2026)",
+          "url": "https://www.flashscore.com/match/tennis/kudermetova-polina-8O9jYpK8/selekhmeteva-oksana-v7vDWRvO/",
+          "source": "Flashscore.com"
         },
         {
-          "title": "The Punisher Fans Are Saying the Same Thing About Frank’s Special Look",
-          "url": "https://www.yahoo.com/entertainment/tv/articles/punisher-fans-saying-same-thing-032428072.html",
-          "source": "Yahoo"
+          "title": "West Expands Dublin Facility to Support High-Volume Injectable Therapies, Including Diabetes and Obesity",
+          "url": "https://www.prnewswire.com/news-releases/west-expands-dublin-facility-to-support-high-volume-injectable-therapies-including-diabetes-and-obesity-302730303.html",
+          "source": "PR Newswire"
         },
         {
-          "title": "First look at Jon Bernthal as the Punisher in &apos;One Last Kill&apos; Disney+ special",
-          "url": "https://ew.com/first-look-jon-bernthal-the-punisher-one-last-kill-11945139",
-          "source": "Entertainment Weekly"
+          "title": "A Look At West Pharmaceutical Services (WST) Valuation After New Dublin Expansion For Injectable Treatments",
+          "url": "https://simplywall.st/stocks/us/pharmaceuticals-biotech/nyse-wst/west-pharmaceutical-services/news/a-look-at-west-pharmaceutical-services-wst-valuation-after-n",
+          "source": "Simply Wall Street"
         }
       ],
-      "whyNow": "‘The Punisher: One Last Kill’ Trailer Promises Many Kills, Actually"
+      "whyNow": "Oksana Selekhmeteva v Polina Kudermetova (10/04/2026)"
     },
     {
-      "topic": "nick taylor",
+      "topic": "sandisk stock",
       "source": "google-trends-rss",
       "region": "US",
       "regionLabel": "USA",
-      "trendScoreRaw": 500,
-      "approxTraffic": "500+",
-      "timestamp": "2026-04-09T17:07:25.135Z",
-      "publishedAt": "Thu, 9 Apr 2026 09:40:00 -0700",
-      "picture": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcR3bOx7zBpiukEEH7cydGv--jUNfZ1Hqpk7HPMxBWTdHjwD9blhz1FaRb8erkw",
-      "pictureSource": "Axios",
+      "trendScoreRaw": 200,
+      "approxTraffic": "200+",
+      "timestamp": "2026-04-10T12:31:42.830Z",
+      "publishedAt": "Fri, 10 Apr 2026 05:10:00 -0700",
+      "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbeEhd4-ELJ3F2kqBgG2tX2okU8d4FUp4wCc5sp5jsm07A26A4raKRRxHf6BU",
+      "pictureSource": "Yahoo Finance",
       "news": [
         {
-          "title": "UW alum Nick Taylor returns to the Masters",
-          "url": "https://www.axios.com/local/seattle/2026/04/09/uw-alum-nick-taylor-returns-to-the-masters",
-          "source": "Axios"
+          "title": "A Look At Sandisk (SNDK) Valuation After A Sharp Multi Month Share Price Move",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/look-sandisk-sndk-valuation-sharp-021517843.html",
+          "source": "Yahoo Finance"
         },
         {
-          "title": "&apos;Feeling good&apos;: Conners, Taylor eyeing breakthrough at the Masters",
-          "url": "https://www.sportsnet.ca/pga-tour/article/feeling-good-conners-taylor-eyeing-breakthrough-at-the-masters/",
-          "source": "Sportsnet"
+          "title": "Sandisk’s stock is up 2,000% in a year — and this analyst says it’s still being underestimated",
+          "url": "https://www.marketwatch.com/story/sandisks-stock-is-up-2-000-in-a-year-and-this-analyst-says-its-still-being-underestimated-01240893",
+          "source": "MarketWatch"
         },
         {
-          "title": "Golf Canada CEO optimistic about Canadian chances at Augusta",
-          "url": "https://www.theglobeandmail.com/sports/golf/article-golf-canada-ceo-optimistic-about-canadian-chances-at-augusta/",
-          "source": "The Globe and Mail"
+          "title": "Sandisk: I&apos;m Not Chasing This Cycle - Not Here (NASDAQ:SNDK)",
+          "url": "https://seekingalpha.com/article/4889388-sandisk-stock-not-chasing-this-cycle-not-here",
+          "source": "Seeking Alpha"
         }
       ],
-      "whyNow": "UW alum Nick Taylor returns to the Masters"
+      "whyNow": "A Look At Sandisk (SNDK) Valuation After A Sharp Multi Month Share Price Move"
     },
     {
-      "topic": "andrew mountbatten-windsor",
+      "topic": "satoshi",
       "source": "google-trends-rss",
       "region": "US",
       "regionLabel": "USA",
       "trendScoreRaw": 1000,
       "approxTraffic": "1000+",
-      "timestamp": "2026-04-09T17:07:25.135Z",
-      "publishedAt": "Thu, 9 Apr 2026 09:30:00 -0700",
-      "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSa9oKnxnHdHeWKzpBcFKuDxVnmxFaxk1NmkK-DQqxmM85izm8kqvW2mXaNTnE",
-      "pictureSource": "Yahoo",
+      "timestamp": "2026-04-10T12:31:42.830Z",
+      "publishedAt": "Fri, 10 Apr 2026 05:00:00 -0700",
+      "picture": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQyuC6kJsmorrQBQuV4jpa4yHuCTDMSGbqrcx8GIoYRfkCvrOPM_0QQwz2hKyU",
+      "pictureSource": "Yahoo Finance",
       "news": [
         {
-          "title": "Ex-Prince Andrew Moves into Permanent Sandringham Residence as Photos Show Him Alone With His Dog",
-          "url": "https://www.yahoo.com/entertainment/videos/ex-prince-andrew-moves-permanent-162200084.html",
+          "title": "The New York Times may have found bitcoin founder Satoshi Nakamoto. Here&apos;s what you need to know.",
+          "url": "https://finance.yahoo.com/markets/crypto/article/the-new-york-times-may-have-found-bitcoin-founder-satoshi-nakamoto-heres-what-you-need-to-know-193426720.html",
+          "source": "Yahoo Finance"
+        },
+        {
+          "title": "Adam Back Denies He Is Satoshi Nakamoto in Response to Times Investigation",
+          "url": "https://www.nytimes.com/2026/04/08/business/adam-back-satoshi-nakamoto-bitcoin.html",
+          "source": "The New York Times"
+        },
+        {
+          "title": "Did The NYT Identify Bitcoin&apos;s Creator? Morgan Stanley Launches ETF, Cryptos Rally.",
+          "url": "https://www.investors.com/news/bitcoin-price-satoshi-nakamoto-identity-nyt-investigation-adam-back-morgan-stanley-bitcoin-etf/",
+          "source": "Investor&apos;s Business Daily"
+        }
+      ],
+      "whyNow": "The New York Times may have found bitcoin founder Satoshi Nakamoto. Here&apos;s what you need to know."
+    },
+    {
+      "topic": "houston weather",
+      "source": "google-trends-rss",
+      "region": "US",
+      "regionLabel": "USA",
+      "trendScoreRaw": 500,
+      "approxTraffic": "500+",
+      "timestamp": "2026-04-10T12:31:42.830Z",
+      "publishedAt": "Fri, 10 Apr 2026 05:00:00 -0700",
+      "picture": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRKFnrMa0XfRaoub2zAhCcs2-Rp6mJyxbY2iBJmBeJi_2M18oUyyw6nnaBceuE",
+      "pictureSource": "KHOU",
+      "news": [
+        {
+          "title": "Weather Impact Alert issued for Friday as downpours across town are expected",
+          "url": "https://www.khou.com/article/weather/forecast/houston-texas-weather-impact/285-336bc012-0818-4fea-8861-72a040b77b59",
+          "source": "KHOU"
+        },
+        {
+          "title": "Houston weather: Downpours possible for Friday",
+          "url": "https://www.fox26houston.com/weather/houston-weather-downpours-possible-friday",
+          "source": "FOX 26 Houston"
+        },
+        {
+          "title": "LIVE RADAR: Heavy rain falling in areas SW of Houston",
+          "url": "https://www.click2houston.com/news/2026/04/09/live-radar-heavy-rain-falling-in-areas-sw-of-houston/",
+          "source": "Click2Houston"
+        }
+      ],
+      "whyNow": "Weather Impact Alert issued for Friday as downpours across town are expected"
+    },
+    {
+      "topic": "devil wears prada 2",
+      "source": "google-trends-rss",
+      "region": "US",
+      "regionLabel": "USA",
+      "trendScoreRaw": 500,
+      "approxTraffic": "500+",
+      "timestamp": "2026-04-10T12:31:42.830Z",
+      "publishedAt": "Fri, 10 Apr 2026 05:00:00 -0700",
+      "picture": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcS4sGY1FmKc7Ibko_lib7dH4QBY-EIZ9j9Ulr5juQ8QniGmIbm-_sFlnj-_-hI",
+      "pictureSource": "Deadline",
+      "news": [
+        {
+          "title": "‘The Devil Wears Prada 2’ Hits Tracking With Runway To $66M U.S. Opening – Box Office Early Look",
+          "url": "https://deadline.com/2026/04/devil-wears-prada-2-box-office-projection-1236786100/",
+          "source": "Deadline"
+        },
+        {
+          "title": "Calling All Vogue Book Club Members: We’re Hosting a Special Screening of The Devil Wears Prada 2",
+          "url": "https://www.vogue.com/article/the-devil-wears-prada-2-screening-announcement",
+          "source": "Vogue"
+        },
+        {
+          "title": "Lady Gaga and Doechii Release New Single, ‘Runway’",
+          "url": "https://variety.com/2026/film/news/lady-gaga-doechii-single-runway-devil-wears-prada-1236713028/",
+          "source": "Variety"
+        }
+      ],
+      "whyNow": "‘The Devil Wears Prada 2’ Hits Tracking With Runway To $66M U.S. Opening – Box Office Early Look"
+    },
+    {
+      "topic": "mandy moore",
+      "source": "google-trends-rss",
+      "region": "US",
+      "regionLabel": "USA",
+      "trendScoreRaw": 200,
+      "approxTraffic": "200+",
+      "timestamp": "2026-04-10T12:31:42.830Z",
+      "publishedAt": "Fri, 10 Apr 2026 05:00:00 -0700",
+      "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXV0JzQijww6DFhQb_Z-i_84cWzvBzi0pPuPyDzWc4dD6ng7tMChuOeJmKhmA",
+      "pictureSource": "People.com",
+      "news": [
+        {
+          "title": "Mandy Moore Shares Candid Footage from Her and Hilary Duff&apos;s Double Date at a Bruce Springsteen Concert",
+          "url": "https://people.com/mandy-moore-shares-double-date-video-hilary-duff-bruce-springsteen-concert-11947162",
+          "source": "People.com"
+        },
+        {
+          "title": "Bruce Springsteen concert: Mandy Moore and Hilary Duff enjoy a double date night with a musical twist",
+          "url": "https://timesofindia.indiatimes.com/entertainment/english/hollywood/news/bruce-springsteen-concert-mandy-moore-and-hilary-duff-enjoya-double-date-night-with-a-musical-twist/articleshow/130163454.cms",
+          "source": "The Times of India"
+        },
+        {
+          "title": "Famous birthdays for April 10: David Harbour, Sofia Carson",
+          "url": "https://www.yahoo.com/entertainment/celebrity/articles/famous-birthdays-april-10-david-070007628.html",
           "source": "Yahoo"
-        },
-        {
-          "title": "Of course Anne and Edward still care for Andrew. They’re only human",
-          "url": "https://www.telegraph.co.uk/news/2026/04/09/royal-family-loyal-to-andrew/",
-          "source": "The Telegraph"
-        },
-        {
-          "title": "Buckingham Palace’s New ‘Epstein Files’ Strategy For Andrew Is Weaponized Pity",
-          "url": "https://www.thedailybeast.com/buckingham-palaces-new-epstein-files-strategy-for-andrew-is-weaponized-pity/",
-          "source": "The Daily Beast"
         }
       ],
-      "whyNow": "Ex-Prince Andrew Moves into Permanent Sandringham Residence as Photos Show Him Alone With His Dog"
+      "whyNow": "Mandy Moore Shares Candid Footage from Her and Hilary Duff&apos;s Double Date at a Bruce Springsteen Concert"
     },
     {
-      "topic": "wrongful death lawyer",
+      "topic": "cpi",
       "source": "google-trends-rss",
       "region": "US",
       "regionLabel": "USA",
-      "trendScoreRaw": 2000,
-      "approxTraffic": "2000+",
-      "timestamp": "2026-04-09T17:07:25.135Z",
-      "publishedAt": "Thu, 9 Apr 2026 09:30:00 -0700",
-      "picture": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQvMt_sCChtf22HBhuIjnH_wr8IhKn25YhXgLvE07hU-O1E94e1FB3iBs7_HBk",
-      "pictureSource": "People.com",
+      "trendScoreRaw": 1000,
+      "approxTraffic": "1000+",
+      "timestamp": "2026-04-10T12:31:42.830Z",
+      "publishedAt": "Fri, 10 Apr 2026 04:50:00 -0700",
+      "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5StqJqDgj_19VACmahmdinEyIdJ9MxwQYfd4v6Rt0y9j2VJ18_Fu8vkCr6Fo",
+      "pictureSource": "The New York Times",
       "news": [
         {
-          "title": "&apos;Deadliest Catch&apos; Star Todd Meadows&apos; Cause of Death Revealed",
-          "url": "https://people.com/deadliest-catch-star-todd-meadows-cause-of-death-revealed-11943585",
-          "source": "People.com"
+          "title": "CPI Report Live Updates: Inflation Data to Show Price Effects of Iran War",
+          "url": "https://www.nytimes.com/live/2026/04/10/business/inflation-cpi-report",
+          "source": "The New York Times"
         },
         {
-          "title": "&apos;Deadliest Catch&apos; star Todd Meadows&apos; cause of death revealed",
-          "url": "https://www.usatoday.com/story/entertainment/tv/2026/04/06/todd-meadows-cause-of-death-deadliest-catch/89486397007/",
-          "source": "USA Today"
+          "title": "Trump’s war with Iran likely tripled US inflation last month",
+          "url": "https://www.cnn.com/2026/04/10/business/live-news/us-cpi-march-inflation-iran",
+          "source": "CNN"
         },
         {
-          "title": "&apos;Deadliest Catch&apos; Deckhand Todd Meadows Cause of Death Revealed",
-          "url": "https://www.tmz.com/2026/04/06/todd-meadows-cause-of-death/",
-          "source": "TMZ"
+          "title": "CPI Report Today: Dow Futures Waver as Investors Await Inflation Data — Live Updates",
+          "url": "https://www.wsj.com/livecoverage/cpi-inflation-data-stock-market-04-10-2026",
+          "source": "WSJ"
         }
       ],
-      "whyNow": "&apos;Deadliest Catch&apos; Star Todd Meadows&apos; Cause of Death Revealed"
+      "whyNow": "CPI Report Live Updates: Inflation Data to Show Price Effects of Iran War"
     },
     {
-      "topic": "olivia millar",
+      "topic": "eva longoria",
       "source": "google-trends-rss",
       "region": "US",
       "regionLabel": "USA",
       "trendScoreRaw": 500,
       "approxTraffic": "500+",
-      "timestamp": "2026-04-09T17:07:25.136Z",
-      "publishedAt": "Thu, 9 Apr 2026 09:30:00 -0700",
-      "picture": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQleyBFszHe9P5CMkRrXEIW_1kJLEBKn0a83mwSjLtbUgZMMYxsW7i1XcgN0zI",
-      "pictureSource": "People.com",
+      "timestamp": "2026-04-10T12:31:42.830Z",
+      "publishedAt": "Fri, 10 Apr 2026 04:50:00 -0700",
+      "picture": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRFoVB32aT-0h23UDnnxnieTs22GWfCvs7-8sbj9TMMBntU6uF8qzfXRK3mLl4",
+      "pictureSource": "AsatuNews.co.id",
       "news": [
         {
-          "title": "Jonah Hill Reveals He&apos;s Married and Quietly Welcomed Baby No. 2 with Wife Olivia Millar",
-          "url": "https://people.com/jonah-hill-reveals-he-married-and-quietly-welcomed-baby-no-2-11946295",
-          "source": "People.com"
+          "title": "Eva Longoria Balanced Headhunting with Early Acting Career",
+          "url": "https://www.asatunews.co.id/en/eva-longoria-headhunting-acting-career",
+          "source": "AsatuNews.co.id"
         },
         {
-          "title": "Jonah Hill is married, secretly welcomed baby No. 2 with wife Olivia Millar",
-          "url": "https://pagesix.com/2026/04/09/parents/jonah-hill-is-married-secretly-welcomed-baby-no-2-with-wife-olivia-millar/",
-          "source": "Page Six"
+          "title": "Eva Longoria says she refused to be a ‘struggling actor’—so she worked part time as a headhunter",
+          "url": "https://fortune.com/2026/04/10/actress-eva-longoria-worked-headhunter-wendys-gen-z-career-advice/",
+          "source": "Fortune"
         },
         {
-          "title": "Jonah Hill Secretly Wed Olivia Millar, Confirms They Welcomed Second Child",
-          "url": "https://www.justjared.com/2026/04/09/jonah-hill-secretly-wed-olivia-millar-confirms-they-welcomed-second-child/",
-          "source": "Just Jared"
+          "title": "Eva Longoria says she refused to be a ‘struggling actor’—so she worked part time as a headhunter, closing deals from her soap opera dressing room",
+          "url": "https://www.aol.com/articles/eva-longoria-says-she-refused-070900640.html",
+          "source": "AOL.com"
         }
       ],
-      "whyNow": "Jonah Hill Reveals He&apos;s Married and Quietly Welcomed Baby No. 2 with Wife Olivia Millar"
-    },
-    {
-      "topic": "hubert hurkacz",
-      "source": "google-trends-rss",
-      "region": "US",
-      "regionLabel": "USA",
-      "trendScoreRaw": 500,
-      "approxTraffic": "500+",
-      "timestamp": "2026-04-09T17:07:25.136Z",
-      "publishedAt": "Thu, 9 Apr 2026 09:30:00 -0700",
-      "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzBV8TWsvWGoLhNFAym2bg5tSjWhTvbASkbt-eTOtB9FIGueJt5eVvh2rcTKw",
-      "pictureSource": "Przegląd Sportowy",
-      "news": [
-        {
-          "title": "Hubert Hurkacz - Valentin Vacherot [RELACJA NA ŻYWO]",
-          "url": "https://przegladsportowy.onet.pl/tenis/hubert-hurkacz-valentin-vacherot-na-zywo-polak-po-cwiercfinal/1wsrc2w",
-          "source": "Przegląd Sportowy"
-        },
-        {
-          "title": "Monakijczyk sprawił wielką sensację. Teraz zagra z Hubertem Hurkaczem",
-          "url": "https://sportowefakty.wp.pl/tenis/1244085/monakijczyk-sprawil-wielka-sensacje-teraz-zagra-z-hubertem-hurkaczem",
-          "source": "SportoweFakty"
-        },
-        {
-          "title": "Deklasacja w meczu Hurkacza na ATP Monte Carlo. Finisz po 71 minutach",
-          "url": "https://sport.interia.pl/tenis/hubert-hurkacz/news-deklasacja-w-meczu-hurkacza-na-atp-monte-carlo-finisz-po-71,nId,23325143",
-          "source": "Sport Interia"
-        }
-      ],
-      "whyNow": "Hubert Hurkacz - Valentin Vacherot [RELACJA NA ŻYWO]"
+      "whyNow": "Eva Longoria Balanced Headhunting with Early Acting Career"
     }
   ]
 }
