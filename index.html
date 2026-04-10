@@ -306,7 +306,10 @@
         }).join('') : '<p class="loading">Inga approved topics i videokön ännu.</p>';
 
         const publishItems = publishLog.items || [];
-        document.getElementById('publishList').innerHTML = publishItems.length ? publishItems.map(item => `<div class="video-item"><h3><span class="number-pill">${item.rank}</span>${item.topic}</h3><div class="status-row"><span class="badge ${item.platforms.youtube.status === 'published' ? 'ok' : 'wait'}">YouTube: ${item.platforms.youtube.status}</span><span class="badge ${item.platforms.tiktok.status === 'published' ? 'ok' : 'todo'}">TikTok: ${item.platforms.tiktok.status}</span><span class="badge ${item.platforms.instagram.status === 'published' ? 'ok' : 'todo'}">Instagram: ${item.platforms.instagram.status}</span></div></div>`).join('') : '<p class="loading">Inga publiceringsposter ännu.</p>';
+        document.getElementById('publishList').innerHTML = publishItems.length ? publishItems.map(item => {
+          const rejected = reviewMap.get(item.rank) === 'rejected';
+          return `<div class="video-item ${rejected ? 'rejected' : ''}"><h3><span class="number-pill">${item.rank}</span>${item.topic}</h3><div class="status-row"><span class="badge ${rejected ? 'todo' : (item.platforms.youtube.status === 'published' ? 'ok' : 'wait')}">YouTube: ${rejected ? 'blocked' : item.platforms.youtube.status}</span><span class="badge ${rejected ? 'todo' : (item.platforms.tiktok.status === 'published' ? 'ok' : 'todo')}">TikTok: ${rejected ? 'blocked' : item.platforms.tiktok.status}</span><span class="badge ${rejected ? 'todo' : (item.platforms.instagram.status === 'published' ? 'ok' : 'todo')}">Instagram: ${rejected ? 'blocked' : item.platforms.instagram.status}</span></div><div class="status-row">${rejected ? '<span class="badge todo">rejected</span><span class="badge todo">Not advancing</span>' : '<span class="badge ok">eligible for publishing</span>'}</div></div>`;
+        }).join('') : '<p class="loading">Inga publiceringsposter ännu.</p>';
 
         document.getElementById('voiceList').innerHTML = queueItems.length ? queueItems.map(item => {
           const vid = (videoStatus.items || []).find(v => v.rank === item.rank) || { voice: 'queued' };
