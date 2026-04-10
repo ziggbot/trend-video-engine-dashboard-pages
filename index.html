@@ -168,6 +168,29 @@
       return `${index + 1}. ${item.topic} är ett lovande content-case för ${regionLabel} eftersom ämnet redan har publikintresse, en tydlig nyhetsvinkel och går att paketera snabbt i short-format. Fokus bör vara att förklara varför folk pratar om det nu och varför det spelar roll.`;
     }
 
+    function bindVoiceButtons() {
+      document.querySelectorAll('.generate-voice-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const topic = btn.dataset.topic;
+          btn.textContent = 'Backend later';
+          btn.disabled = true;
+          document.getElementById('runHint').textContent = `Voice generation requested for ${topic}. UI scaffold is ready, backend hook comes later.`;
+        });
+      });
+    }
+
+    function renderVoiceListFromQueue() {
+      const queueItems = [...document.querySelectorAll('#queueBox .queue-item strong')].map(el => {
+        const text = el.textContent.trim();
+        const match = text.match(/^#(\d+)\s+(.+)$/);
+        return match ? { rank: Number(match[1]), topic: match[2] } : null;
+      }).filter(Boolean);
+
+      document.getElementById('voiceList').innerHTML = queueItems.length ? queueItems.map(item => `<div class="video-item"><h3><span class="number-pill">${item.rank}</span>${item.topic}</h3><p>Voice status: queued</p><div class="status-row"><span class="badge wait">queued</span><button class="action-btn primary generate-voice-btn" data-rank="${item.rank}" data-topic="${item.topic}">Generate voice</button></div></div>`).join('') : '<p class="loading">Inga approved topics i voice-kön ännu.</p>';
+
+      bindVoiceButtons();
+    }
+
     async function loadRegion(region) {
       try {
         const [trendData, voice, reviewState, productionQueue, videoStatus, publishLog] = await Promise.all([
@@ -255,6 +278,7 @@
                 if (queueHtml.querySelector('.loading')) queueHtml.innerHTML = '';
                 queueHtml.appendChild(div);
               }
+              renderVoiceListFromQueue();
             } else {
               badge.className = 'badge todo';
               badge.textContent = 'rejected';
@@ -264,14 +288,7 @@
 
         document.getElementById('voiceBox').innerHTML = `<p><strong>Status:</strong> ${voice.status || '-'}</p><p><strong>Provider:</strong> ${voice.provider || '-'}</p><p><strong>Voice:</strong> ${voice.voiceId || voice.voice || '-'}</p><p><strong>Next action:</strong> ${voice.nextAction || voice.note || '-'}</p>`;
 
-        document.querySelectorAll('.generate-voice-btn').forEach(btn => {
-          btn.addEventListener('click', () => {
-            const topic = btn.dataset.topic;
-            btn.textContent = 'Backend later';
-            btn.disabled = true;
-            document.getElementById('runHint').textContent = `Voice generation requested for ${topic}. UI scaffold is ready, backend hook comes later.`;
-          });
-        });
+        bindVoiceButtons();
 
         document.getElementById('sourcesBox').innerHTML = ranked.slice(0, 10).map((r, i) => `<div class="source-card"><h3><span class="number-pill">${i + 1}</span>${r.topic}</h3><p>Trafik: ${r.approxTraffic || '-'} | Region: ${regionLabel}</p>${(r.sourceReferences || []).slice(0,3).map(ref => `<p><a href="${ref.url}" target="_blank" rel="noopener noreferrer">${ref.source}: ${ref.title}</a></p>`).join('') || '<p>Inga referenser sparade.</p>'}</div>`).join('');
 
