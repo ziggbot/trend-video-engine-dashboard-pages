@@ -178,16 +178,37 @@
       publishLog: { items: [] },
       latestRenderJob: null,
       topicScripts: { items: [] },
+      voiceArtifacts: { items: [] },
+      videoArtifacts: { items: [] },
       regionLabel: null
     };
 
     function bindVoiceButtons() {
       document.querySelectorAll('.generate-voice-btn').forEach(btn => {
         btn.addEventListener('click', () => {
+          const rank = Number(btn.dataset.rank);
           const topic = btn.dataset.topic;
-          btn.textContent = 'Backend later';
-          btn.disabled = true;
-          document.getElementById('runHint').textContent = `Voice generation requested for ${topic}. UI scaffold is ready, backend hook comes later.`;
+          const queueItem = dashboardState.productionQueue.queue.find(item => item.rank === rank);
+          const script = queueItem?.script || dashboardState.topicScripts.items.find(item => item.rank === rank)?.script || '';
+          upsertByRank(dashboardState.voiceArtifacts.items, { rank, topic, script, status: 'generated', previewUrl: './generated-voice-latest.mp3' });
+          upsertByRank(dashboardState.videoStatus.items, { rank, topic, status: 'script_ready', voice: 'generated', render: 'not_started', publish: 'not_started', script });
+          document.getElementById('runHint').textContent = `Voice generation requested for ${topic}. This topic now carries its own script into the voice step.`;
+          renderPersistentViews();
+        });
+      });
+    }
+
+    function bindVideoButtons() {
+      document.querySelectorAll('.generate-video-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const rank = Number(btn.dataset.rank);
+          const topic = btn.dataset.topic;
+          const queueItem = dashboardState.productionQueue.queue.find(item => item.rank === rank);
+          const script = queueItem?.script || dashboardState.topicScripts.items.find(item => item.rank === rank)?.script || '';
+          upsertByRank(dashboardState.videoArtifacts.items, { rank, topic, script, status: 'rendered', previewUrl: './generated-video-latest.mp4' });
+          upsertByRank(dashboardState.videoStatus.items, { rank, topic, status: 'rendered', voice: 'generated', render: 'rendered', publish: 'not_started', script });
+          document.getElementById('runHint').textContent = `Video generation requested for ${topic}. This topic now carries its own script into the video step.`;
+          renderPersistentViews();
         });
       });
     }
@@ -205,20 +226,24 @@
       const queueItems = dashboardState.productionQueue.queue || [];
       const videoItems = dashboardState.videoStatus.items || [];
       const publishItems = dashboardState.publishLog.items || [];
+      const voiceArtifacts = dashboardState.voiceArtifacts.items || [];
+      const videoArtifacts = dashboardState.videoArtifacts.items || [];
 
       document.getElementById('queueBox').innerHTML = queueItems.length ? queueItems.map(item => `<div class="queue-item ${reviewMap.get(item.rank) === 'rejected' ? 'rejected' : ''}"><strong>#${item.rank} ${item.topic}</strong><p>Status: ${reviewMap.get(item.rank) || item.status}</p><p>Next step: ${reviewMap.get(item.rank) === 'rejected' ? 'stopped' : item.nextStep}</p></div>`).join('') : '<p class="loading">Inga approved topics i kön ännu.</p>';
 
       document.getElementById('voiceList').innerHTML = queueItems.length ? queueItems.map(item => {
         const reviewStatus = reviewMap.get(item.rank) || 'approved';
         const vid = videoItems.find(v => v.rank === item.rank) || { voice: 'queued' };
+        const voiceArtifact = voiceArtifacts.find(v => v.rank === item.rank);
         const isRejected = reviewStatus === 'rejected';
-        return `<div class="video-item ${isRejected ? 'rejected' : ''}"><h3><span class="number-pill">${item.rank}</span>${item.topic}</h3><p>Voice status: ${isRejected ? 'disabled' : vid.voice}</p><p><strong>Script source:</strong> ${item.script ? 'shared canonical script' : 'missing'}</p><div class="status-row"><span class="badge ${isRejected ? 'todo' : 'wait'}">${reviewStatus}</span>${isRejected ? '<span class="badge todo">rejected</span>' : `<button class="action-btn primary generate-voice-btn" data-rank="${item.rank}" data-topic="${item.topic}">Generate voice</button>`}</div></div>`;
+        return `<div class="video-item ${isRejected ? 'rejected' : ''}"><h3><span class="number-pill">${item.rank}</span>${item.topic}</h3><p>Voice status: ${isRejected ? 'disabled' : vid.voice}</p><p><strong>Script source:</strong> ${item.script ? 'shared canonical script' : 'missing'}</p><p><strong>Bound artifact:</strong> ${voiceArtifact ? voiceArtifact.topic : 'none'}</p><div class="status-row"><span class="badge ${isRejected ? 'todo' : 'wait'}">${reviewStatus}</span>${isRejected ? '<span class="badge todo">rejected</span>' : `<button class="action-btn primary generate-voice-btn" data-rank="${item.rank}" data-topic="${item.topic}">Generate voice</button>`}</div></div>`;
       }).join('') : '<p class="loading">Inga approved topics i voice-kön ännu.</p>';
 
       document.getElementById('videoList').innerHTML = queueItems.length ? queueItems.map(item => {
         const vid = videoItems.find(v => v.rank === item.rank) || { status: 'queued', voice: 'queued', render: 'not_started', publish: 'not_started' };
+        const videoArtifact = videoArtifacts.find(v => v.rank === item.rank);
         const rejected = reviewMap.get(item.rank) === 'rejected';
-        return `<div class="video-item ${rejected ? 'rejected' : ''}"><h3><span class="number-pill">${item.rank}</span>${item.topic}</h3><p>Production status: ${rejected ? 'disabled' : vid.status}</p><p><strong>Script source:</strong> ${vid.script ? 'shared canonical script' : 'missing'}</p><div class="status-row"><span class="badge ${rejected ? 'todo' : (vid.voice === 'ready' ? 'ok' : 'wait')}">voice: ${rejected ? 'disabled' : vid.voice}</span><span class="badge ${rejected ? 'todo' : (vid.render === 'ready' ? 'ok' : 'wait')}">render: ${rejected ? 'disabled' : vid.render}</span><span class="badge ${rejected ? 'todo' : (vid.publish === 'published' ? 'ok' : 'todo')}">publish: ${rejected ? 'blocked' : vid.publish}</span></div><div class="status-row"><span class="badge ${rejected ? 'todo' : 'ok'}">${rejected ? 'Rejected' : 'YouTube'}</span><span class="badge ${rejected ? 'todo' : 'wait'}">${rejected ? 'Not advancing' : 'TikTok'}</span><span class="badge ${rejected ? 'todo' : 'wait'}">${rejected ? 'Not advancing' : 'Instagram'}</span></div></div>`;
+        return `<div class="video-item ${rejected ? 'rejected' : ''}"><h3><span class="number-pill">${item.rank}</span>${item.topic}</h3><p>Production status: ${rejected ? 'disabled' : vid.status}</p><p><strong>Script source:</strong> ${vid.script ? 'shared canonical script' : 'missing'}</p><p><strong>Bound artifact:</strong> ${videoArtifact ? videoArtifact.topic : 'none'}</p><div class="status-row"><span class="badge ${rejected ? 'todo' : (vid.voice === 'ready' ? 'ok' : 'wait')}">voice: ${rejected ? 'disabled' : vid.voice}</span><span class="badge ${rejected ? 'todo' : (vid.render === 'ready' ? 'ok' : 'wait')}">render: ${rejected ? 'disabled' : vid.render}</span><span class="badge ${rejected ? 'todo' : (vid.publish === 'published' ? 'ok' : 'todo')}">publish: ${rejected ? 'blocked' : vid.publish}</span></div><div class="status-row"><span class="badge ${rejected ? 'todo' : 'ok'}">${rejected ? 'Rejected' : 'YouTube'}</span><span class="badge ${rejected ? 'todo' : 'wait'}">${rejected ? 'Not advancing' : 'TikTok'}</span><span class="badge ${rejected ? 'todo' : 'wait'}">${rejected ? 'Not advancing' : 'Instagram'}</span>${rejected ? '' : `<button class="action-btn primary generate-video-btn" data-rank="${item.rank}" data-topic="${item.topic}">Generate video</button>`}</div></div>`;
       }).join('') : '<p class="loading">Inga approved topics i videokön ännu.</p>';
 
       document.getElementById('publishList').innerHTML = publishItems.length ? publishItems.map(item => {
@@ -227,11 +252,12 @@
       }).join('') : '<p class="loading">Inga publiceringsposter ännu.</p>';
 
       bindVoiceButtons();
+      bindVideoButtons();
     }
 
     async function loadRegion(region) {
       try {
-        const [trendData, voice, reviewState, productionQueue, videoStatus, publishLog, latestRenderJob, topicScripts] = await Promise.all([
+        const [trendData, voice, reviewState, productionQueue, videoStatus, publishLog, latestRenderJob, topicScripts, voiceArtifacts, videoArtifacts] = await Promise.all([
           loadJson(`./trends-${region}.json`),
           loadJson('./latest-voice-job.json'),
           loadJson('./review-status.json'),
@@ -239,7 +265,9 @@
           loadJson('./video-status.json'),
           loadJson('./publish-log.json'),
           loadJson('./latest-render-job.json'),
-          loadJson(`./topic-scripts-${region}.json`)
+          loadJson(`./topic-scripts-${region}.json`),
+          loadJson('./voice-artifacts.json'),
+          loadJson('./video-artifacts.json')
         ]);
 
         const ranked = (trendData.trends || []).map((item, index) => ({
@@ -250,7 +278,7 @@
         }));
         const top = ranked[0] || {};
         const regionLabel = trendData.regionLabel || region;
-        dashboardState = { trendData, voice, reviewState, productionQueue, videoStatus, publishLog, latestRenderJob, topicScripts, regionLabel };
+        dashboardState = { trendData, voice, reviewState, productionQueue, videoStatus, publishLog, latestRenderJob, topicScripts, voiceArtifacts, videoArtifacts, regionLabel };
 
         const fetchedAt = trendData.fetchedAt ? new Date(trendData.fetchedAt) : null;
         const now = new Date();
