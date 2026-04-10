@@ -54,6 +54,7 @@
     .todo { background:rgba(102,184,255,0.14); color:var(--blue); }
     table { width:100%; border-collapse:collapse; font-size:0.94rem; }
     th, td { text-align:left; padding:12px 10px; border-bottom:1px solid var(--line); vertical-align:top; }
+    .inline-links { display:flex; flex-direction:column; gap:6px; }
     th { color:var(--muted); font-size:0.84rem; text-transform:uppercase; letter-spacing:0.04em; }
     tr:last-child td { border-bottom:0; }
     .topic-score { height:10px; border-radius:999px; background:rgba(255,255,255,0.08); overflow:hidden; margin-top:6px; }
@@ -126,7 +127,7 @@
     </div>
 
     <section class="panel active" id="overview"><div class="layout"><div class="stack"><div class="card"><h2>Pipeline overview</h2><p class="sub">Snabb överblick av huvudstegen och aktuell status.</p><div class="pipeline-grid" id="pipelineGrid"></div></div><div class="card"><h2>Factory metrics</h2><p class="sub">Bra första KPI:er för att förstå hur fabriken mår.</p><div class="mini-grid"><div class="mini">Top trends<strong id="metricTrends">0</strong></div><div class="mini">Referenser<strong id="metricRefs">0</strong></div><div class="mini">Voice jobs<strong id="metricVoiceJobs">0</strong></div></div></div></div><div class="stack"><div class="card"><h2>Senaste valda ämne</h2><p class="sub">Det ämne som fabriken just nu tycker är bäst att paketera.</p><div class="draft" id="selectedTopicBox"><p class="loading">Laddar...</p></div></div><div class="card"><h2>Production queue</h2><p class="sub">Approved topics som bör gå vidare till nästa steg i fabriken.</p><div id="queueBox" class="queue-list"><p class="loading">Inga approved topics i kön ännu.</p></div></div></div></div></section>
-    <section class="panel" id="discovery"><div class="card"><h2>Trend discovery, senaste top 10</h2><p class="sub">Här visas de senaste trendämnena från vald region. Numreringen följer med till ranking och brief-vyn.</p><table><thead><tr><th>#</th><th>Ämne</th><th>Trafik</th><th>Nyhetsvinkel</th></tr></thead><tbody id="discoveryBody"></tbody></table></div></section>
+    <section class="panel" id="discovery"><div class="card"><h2>Trend discovery, senaste top 10</h2><p class="sub">Här visas de senaste trendämnena från vald region. Numreringen följer med till ranking och brief-vyn.</p><table><thead><tr><th>#</th><th>Ämne</th><th>Trafik</th><th>Nyhetsvinkel</th><th>Källor</th></tr></thead><tbody id="discoveryBody"></tbody></table></div></section>
     <section class="panel" id="ranking"><div class="layout"><div class="card"><h2>Trend ranking</h2><p class="sub">Top 10 rankas efter novelty, känsla, tydlighet, explainability, regional relevans, källstyrka och klickpotential.</p><table><thead><tr><th>#</th><th>Ämne</th><th>Total score</th><th>Varför högt rankad</th></tr></thead><tbody id="rankingBody"></tbody></table></div><div class="card"><h2>Rankinglogik</h2><p class="sub">Det här ska vara mer än en lista, det ska vara ett beslutslager.</p><ul style="margin:0; padding-left:18px; line-height:1.8; color:#dce6ff;"><li>Novelty</li><li>Emotion</li><li>Clarity</li><li>Explainability</li><li>Regional relevance</li><li>Source strength</li><li>CTR potential</li></ul></div></div></section>
     <section class="panel" id="briefs"><div class="card"><h2>Brief / scope för top 10</h2><p class="sub">Här får varje ämne en kort brieftext. Samma nummer som i discovery och ranking följer med så det är lätt att orientera sig.</p><div id="briefList"><p class="loading">Laddar...</p></div></div></section>
     <section class="panel" id="voice"><div class="layout"><div class="card"><h2>Voice production</h2><p class="sub">Approved topics syns här och kan få voice-generering när backend kopplas på.</p><div id="voiceList"><p class="loading">Inga approved topics i voice-kön ännu.</p></div></div><div class="card"><h2>Voice sample</h2><p class="sub">Provlyssna senaste sample och se hur voice-lagret ser ut just nu.</p><audio controls><source src="./sample-audio.mp3" type="audio/mpeg" /></audio><div class="draft" id="voiceBox" style="margin-top:12px;"><p class="loading">Laddar...</p></div></div></div></section>
@@ -250,7 +251,12 @@
         ];
         document.getElementById('pipelineGrid').innerHTML = pipelineItems.map(([name, text, klass]) => `<div class="step"><strong>${name}</strong>${text}<span class="badge ${klass}">${text}</span></div>`).join('');
 
-        document.getElementById('discoveryBody').innerHTML = ranked.map((r, i) => `<tr><td>${i + 1}</td><td>${r.topic}</td><td>${r.approxTraffic || r.trendScoreRaw || '-'}</td><td>${r.whyNow || '-'}</td></tr>`).join('');
+        document.getElementById('discoveryBody').innerHTML = ranked.map((r, i) => {
+          const trendsUrl = `https://trends.google.com/trends/explore?geo=${region}&q=${encodeURIComponent(r.topic)}`;
+          const refs = (r.sourceReferences || []).slice(0, 3);
+          const links = [`<a href="${trendsUrl}" target="_blank" rel="noopener noreferrer">Google Trends</a>`].concat(refs.map(ref => `<a href="${ref.url}" target="_blank" rel="noopener noreferrer">${ref.source}: ${ref.title}</a>`));
+          return `<tr><td>${i + 1}</td><td>${r.topic}</td><td>${r.approxTraffic || r.trendScoreRaw || '-'}</td><td>${r.whyNow || '-'}</td><td><div class="inline-links">${links.join('')}</div></td></tr>`;
+        }).join('');
         document.getElementById('rankingBody').innerHTML = ranked.map((r, i) => `<tr><td>${i + 1}</td><td>${r.topic}<div class="topic-score"><span style="width:${Math.min(100, Number(String(r.approxTraffic || '').replace(/\D/g,'')) || 30)}%"></span></div></td><td>${r.approxTraffic || r.trendScoreRaw || '-'}</td><td>${scoreReason(r)}</td></tr>`).join('');
 
         const reviewMap = new Map((reviewState.items || []).map(item => [item.rank, item.status]));
