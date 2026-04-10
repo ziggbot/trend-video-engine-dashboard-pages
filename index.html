@@ -70,6 +70,7 @@
     .status-row { display:flex; gap:8px; flex-wrap:wrap; margin-top:10px; }
     .action-btn { appearance:none; border:1px solid var(--line); background:rgba(255,255,255,0.03); color:var(--text); border-radius:12px; padding:10px 14px; cursor:pointer; font-weight:700; }
     .action-btn.primary { border-color: rgba(102,184,255,0.35); color: var(--blue); }
+    .script-box { margin-top:10px; padding:14px; border-radius:14px; border:1px solid var(--line); background:rgba(255,255,255,0.025); color:var(--muted); white-space:pre-wrap; display:none; }
     .draft h3, .source-card h3, .brief-item h3 { margin:0 0 8px; }
     .draft p, .source-card p, .brief-item p { margin:0 0 8px; color:var(--muted); line-height:1.5; }
     .mini-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px; }
@@ -169,6 +170,10 @@
       return `${index + 1}. ${item.topic} är ett lovande content-case för ${regionLabel} eftersom ämnet redan har publikintresse, en tydlig nyhetsvinkel och går att paketera snabbt i short-format. Fokus bör vara att förklara varför folk pratar om det nu och varför det spelar roll.`;
     }
 
+    function longScript(item, rank, regionLabel) {
+      return `Manus för ämne #${rank}: ${item.topic}\n\nHook:\n${item.topic} trendar hårt i ${regionLabel} just nu, och här är den snabba förklaringen till varför det här ämnet plötsligt är överallt.\n\nDel 1, vad händer:\n${item.whyNow || 'Det finns en tydlig nyhetsvinkel eller ett starkt publiktryck runt ämnet just nu.'}\n\nDel 2, varför folk bryr sig:\nDet här ämnet fångar uppmärksamhet eftersom det går att förstå snabbt, väcker känslor eller påverkar många direkt.\n\nDel 3, take-away:\nOm du bara ska ta med dig en sak så är det att ${item.topic} just nu har momentum, och därför är det ett starkt short-case.\n\nOutro:\nVill du ha fler snabba förklaringar på vad som trendar just nu, följ för nästa breakdown.`;
+    }
+
     function bindVoiceButtons() {
       document.querySelectorAll('.generate-voice-btn').forEach(btn => {
         btn.addEventListener('click', () => {
@@ -259,9 +264,21 @@
             <div class="review-actions">
               <button class="review-btn approve" data-action="approve" data-rank="${rank}">Approve</button>
               <button class="review-btn reject" data-action="reject" data-rank="${rank}">Reject</button>
+              <button class="action-btn show-script-btn" data-rank="${rank}">Visa långt manus</button>
             </div>
+            <div class="script-box" id="script-box-${rank}">${longScript(r, rank, regionLabel)}</div>
           </div>
         `}).join('');
+
+        document.querySelectorAll('.show-script-btn').forEach(btn => {
+          btn.addEventListener('click', () => {
+            const rank = btn.dataset.rank;
+            const box = document.getElementById(`script-box-${rank}`);
+            const open = box.style.display === 'block';
+            box.style.display = open ? 'none' : 'block';
+            btn.textContent = open ? 'Visa långt manus' : 'Dölj långt manus';
+          });
+        });
 
         document.querySelectorAll('.review-btn').forEach(btn => {
           btn.addEventListener('click', () => {
