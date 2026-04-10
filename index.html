@@ -305,6 +305,7 @@
             <p><strong>Brief / scope:</strong> ${briefText(r, i, regionLabel)}</p>
             <p><strong>Suggested angle:</strong> ${scoreReason(r)}</p>
             <p><strong>Buzz driver:</strong> ${r.whyNow || 'Starkt publikintresse just nu.'}</p>
+            <p><strong>Visual angle:</strong> ${/aktie|stock|börs|nasdaq|bitcoin|krypto|tesla|nvidia/i.test(`${r.topic} ${r.whyNow || ''}`) ? 'market reaction visual' : /film|serie|trailer|netflix|marvel|punisher|tv/i.test(`${r.topic} ${r.whyNow || ''}`) ? 'fandom / entertainment visual' : /död|kris|attack|skandal|avslöjar|kaos|mord|brott/i.test(`${r.topic} ${r.whyNow || ''}`) ? 'breaking news visual' : 'editorial trend visual'}</p>
             <p><strong>Hookidé:</strong> ${dynamicHook}</p>
             <span class="badge ${badgeClass}">${badgeText}</span>
             <div class="review-actions">
