@@ -299,7 +299,6 @@
         document.getElementById('sourcesBox').innerHTML = ranked.slice(0, 10).map((r, i) => `<div class="source-card"><h3><span class="number-pill">${i + 1}</span>${r.topic}</h3><p>Trafik: ${r.approxTraffic || '-'} | Region: ${regionLabel}</p>${(r.sourceReferences || []).slice(0,3).map(ref => `<p><a href="${ref.url}" target="_blank" rel="noopener noreferrer">${ref.source}: ${ref.title}</a></p>`).join('') || '<p>Inga referenser sparade.</p>'}</div>`).join('');
 
         const queueItems = productionQueue.queue || [];
-        const reviewMap = new Map((reviewState.items || []).map(item => [item.rank, item.status]));
         document.getElementById('videoList').innerHTML = queueItems.length ? queueItems.map(item => {
           const vid = (videoStatus.items || []).find(v => v.rank === item.rank) || { status: 'queued', voice: 'queued', render: 'not_started', publish: 'not_started' };
           const rejected = reviewMap.get(item.rank) === 'rejected';
