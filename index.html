@@ -163,6 +163,7 @@
     }
 
     function canonicalTopicScript(item, rank, regionLabel) {
+      if (item.canonicalScript) return item.canonicalScript;
       const dynamicHook = `Varför trendar ${item.topic} just nu? Här är den snabba förklaringen.`;
       const whyNow = item.whyNow || 'Det finns ett starkt nyhetsläge eller ett tydligt publikintresse som driver uppmärksamheten.';
       return `${dynamicHook} ${item.topic} är ett av de ämnen som trendar mest i ${regionLabel} just nu, och det finns en tydlig anledning till att folk pratar om det här överallt. ${whyNow} Det som driver uppmärksamheten är att många försöker förstå vad som faktiskt händer, varför ämnet plötsligt känns relevant och varför så många reagerar samtidigt. Det gör ${item.topic} starkt för kort video, eftersom det både går snabbt att förklara och känns aktuellt direkt för publiken.`;
@@ -239,10 +240,11 @@
           loadJson('./latest-render-job.json')
         ]);
 
-        const ranked = (trendData.trends || []).map((item) => ({
+        const ranked = (trendData.trends || []).map((item, index) => ({
           ...item,
           totalScore: item.trendScoreRaw || 0,
-          sourceReferences: item.news || []
+          sourceReferences: item.news || [],
+          canonicalScript: index === 0 && voice.script ? voice.script : null
         }));
         const top = ranked[0] || {};
         const regionLabel = trendData.regionLabel || region;
@@ -299,7 +301,7 @@
               <button class="review-btn reject" data-action="reject" data-rank="${rank}">Reject</button>
               <button class="action-btn show-script-btn" data-rank="${rank}">Visa långt manus</button>
             </div>
-            <div class="script-box" id="script-box-${rank}">${rank === 1 && dashboardState.voice?.script ? dashboardState.voice.script : canonicalTopicScript(r, rank, regionLabel)}</div>
+            <div class="script-box" id="script-box-${rank}">${canonicalTopicScript(r, rank, regionLabel)}</div>
           </div>
         `}).join('');
 
