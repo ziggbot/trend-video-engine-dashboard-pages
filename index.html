@@ -100,6 +100,8 @@
         </div>
         <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
           <div class="label">Trendkälla: Google Trends RSS</div>
+          <div class="label" id="lastRefreshLabel">Senaste refresh: laddar...</div>
+          <div class="label" id="dataAgeLabel">Data age: laddar...</div>
         </div>
       </div>
       <div class="stats">
@@ -222,6 +224,11 @@
 
         document.getElementById('statRegion').textContent = regionLabel;
         document.getElementById('statRun').textContent = trendData.fetchedAt?.slice(0, 10) || 'okänd';
+        const fetchedAt = trendData.fetchedAt ? new Date(trendData.fetchedAt) : null;
+        const now = new Date();
+        const ageMinutes = fetchedAt ? Math.max(0, Math.round((now - fetchedAt) / 60000)) : null;
+        document.getElementById('lastRefreshLabel').textContent = fetchedAt ? `Senaste refresh: ${fetchedAt.toISOString().replace('T', ' ').slice(0, 16)} UTC` : 'Senaste refresh: okänd';
+        document.getElementById('dataAgeLabel').textContent = ageMinutes === null ? 'Data age: okänd' : `Data age: ${ageMinutes} min`;
         document.getElementById('statTop').textContent = ranked.length;
         document.getElementById('statTopic').textContent = top.topic || '-';
         document.getElementById('statVoice').textContent = voice.status || '-';
