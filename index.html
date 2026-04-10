@@ -105,13 +105,6 @@
           <div class="label" id="dataAgeLabel">Data age: laddar...</div>
         </div>
       </div>
-      <div class="stats">
-        <div class="stat"><div class="label">Region</div><strong id="statRegion">Sverige</strong></div>
-        <div class="stat"><div class="label">Senaste körning</div><strong id="statRun">Laddar...</strong></div>
-        <div class="stat"><div class="label">Top trends idag</div><strong id="statTop">-</strong></div>
-        <div class="stat"><div class="label">Valt ämne</div><strong id="statTopic">-</strong></div>
-        <div class="stat"><div class="label">Voice status</div><strong id="statVoice">-</strong></div>
-      </div>
       <div class="label" id="runHint" style="margin-top:10px;">Välj region för att se discovery, ranking, briefs och referenser för just den marknaden.</div>
     </section>
 
@@ -269,16 +262,11 @@
         const regionLabel = trendData.regionLabel || region;
         dashboardState = { trendData, voice, reviewState, productionQueue, videoStatus, publishLog, latestRenderJob, regionLabel };
 
-        document.getElementById('statRegion').textContent = regionLabel;
-        document.getElementById('statRun').textContent = trendData.fetchedAt?.slice(0, 10) || 'okänd';
         const fetchedAt = trendData.fetchedAt ? new Date(trendData.fetchedAt) : null;
         const now = new Date();
         const ageMinutes = fetchedAt ? Math.max(0, Math.round((now - fetchedAt) / 60000)) : null;
         document.getElementById('lastRefreshLabel').textContent = fetchedAt ? `Senaste refresh: ${fetchedAt.toISOString().replace('T', ' ').slice(0, 16)} UTC` : 'Senaste refresh: okänd';
         document.getElementById('dataAgeLabel').textContent = ageMinutes === null ? 'Data age: okänd' : `Data age: ${ageMinutes} min`;
-        document.getElementById('statTop').textContent = ranked.length;
-        document.getElementById('statTopic').textContent = top.topic || '-';
-        document.getElementById('statVoice').textContent = voice.status || '-';
         document.getElementById('metricTrends').textContent = ranked.length;
         document.getElementById('metricRefs').textContent = ranked.reduce((sum, r) => sum + (r.sourceReferences?.length || 0), 0);
         document.getElementById('metricVoiceJobs').textContent = 1;
