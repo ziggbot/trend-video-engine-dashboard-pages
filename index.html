@@ -239,7 +239,7 @@
           loadJson('./video-status.json'),
           loadJson('./publish-log.json'),
           loadJson('./latest-render-job.json'),
-          loadJson('./topic-scripts.json')
+          loadJson(`./topic-scripts-${region}.json`)
         ]);
 
         const ranked = (trendData.trends || []).map((item, index) => ({
