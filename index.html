@@ -162,24 +162,10 @@
       return `${index + 1}. ${item.topic} är ett lovande content-case för ${regionLabel} eftersom ämnet redan har publikintresse, en tydlig nyhetsvinkel och går att paketera snabbt i short-format. Fokus bör vara att förklara varför folk pratar om det nu och varför det spelar roll.`;
     }
 
-    function longScript(item, rank, regionLabel) {
-      const topic = item.topic;
+    function canonicalTopicScript(item, rank, regionLabel) {
+      const dynamicHook = `Varför trendar ${item.topic} just nu? Här är den snabba förklaringen.`;
       const whyNow = item.whyNow || 'Det finns ett starkt nyhetsläge eller ett tydligt publikintresse som driver uppmärksamheten.';
-      const lower = `${topic} ${whyNow}`.toLowerCase();
-
-      if (/aktie|stock|börs|nasdaq|bitcoin|krypto|tesla|nvidia/.test(lower)) {
-        return `Det finns en tydlig anledning till att ${topic} trendar i ${regionLabel} just nu, och det verkar handla om hur marknaden reagerar i realtid. ${whyNow} När ett ämne får den här typen av fart betyder det ofta att folk försöker avgöra om det här är en kort spike eller början på något större. Det är därför just ${topic} blir intressant, för det handlar inte bara om rubriker, utan om att människor försöker förstå vart det här är på väg.`;
-      }
-
-      if (/film|serie|trailer|netflix|marvel|punisher|tv/.test(lower)) {
-        return `${topic} har blivit ett riktigt buzz-ämne i ${regionLabel}, men det som driver intresset verkar inte bara vara själva nyheten utan publikens reaktion. ${whyNow} När fans börjar analysera detaljer, dela teorier och reagera känslomässigt får ett ämne snabbt ett eget momentum. Det är därför ${topic} känns så starkt just nu, för det är inte bara något som släppts, det är något folk aktivt pratar vidare om.`;
-      }
-
-      if (/död|kris|attack|skandal|avslöjar|kaos|mord|brott/.test(lower)) {
-        return `${topic} trendar kraftigt i ${regionLabel} just nu eftersom ämnet bär tydligt nyhetsvärde och väcker stark reaktion direkt. ${whyNow} När folk upplever att något stort eller allvarligt precis har hänt går sökningarna snabbt upp, både av nyfikenhet och för att människor vill förstå läget så fort som möjligt. Det är precis den kombinationen som skapar buzz runt ${topic} nu.`;
-      }
-
-      return `${topic} är ett av de ämnen som trendar mest i ${regionLabel} just nu, och det finns en tydlig anledning till att folk pratar om det här överallt. ${whyNow} Det som driver uppmärksamheten är att många försöker förstå vad som faktiskt händer, varför ämnet plötsligt känns relevant och varför så många reagerar samtidigt. Det gör ${topic} starkt för kort video, eftersom det både går snabbt att förklara och känns aktuellt direkt för publiken.`;
+      return `${dynamicHook} ${item.topic} är ett av de ämnen som trendar mest i ${regionLabel} just nu, och det finns en tydlig anledning till att folk pratar om det här överallt. ${whyNow} Det som driver uppmärksamheten är att många försöker förstå vad som faktiskt händer, varför ämnet plötsligt känns relevant och varför så många reagerar samtidigt. Det gör ${item.topic} starkt för kort video, eftersom det både går snabbt att förklara och känns aktuellt direkt för publiken.`;
     }
 
     let dashboardState = {
@@ -224,13 +210,13 @@
         const reviewStatus = reviewMap.get(item.rank) || 'approved';
         const vid = videoItems.find(v => v.rank === item.rank) || { voice: 'queued' };
         const isRejected = reviewStatus === 'rejected';
-        return `<div class="video-item ${isRejected ? 'rejected' : ''}"><h3><span class="number-pill">${item.rank}</span>${item.topic}</h3><p>Voice status: ${isRejected ? 'disabled' : vid.voice}</p><div class="status-row"><span class="badge ${isRejected ? 'todo' : 'wait'}">${reviewStatus}</span>${isRejected ? '<span class="badge todo">rejected</span>' : `<button class="action-btn primary generate-voice-btn" data-rank="${item.rank}" data-topic="${item.topic}">Generate voice</button>`}</div></div>`;
+        return `<div class="video-item ${isRejected ? 'rejected' : ''}"><h3><span class="number-pill">${item.rank}</span>${item.topic}</h3><p>Voice status: ${isRejected ? 'disabled' : vid.voice}</p><p><strong>Script source:</strong> ${item.script ? 'shared canonical script' : 'missing'}</p><div class="status-row"><span class="badge ${isRejected ? 'todo' : 'wait'}">${reviewStatus}</span>${isRejected ? '<span class="badge todo">rejected</span>' : `<button class="action-btn primary generate-voice-btn" data-rank="${item.rank}" data-topic="${item.topic}">Generate voice</button>`}</div></div>`;
       }).join('') : '<p class="loading">Inga approved topics i voice-kön ännu.</p>';
 
       document.getElementById('videoList').innerHTML = queueItems.length ? queueItems.map(item => {
         const vid = videoItems.find(v => v.rank === item.rank) || { status: 'queued', voice: 'queued', render: 'not_started', publish: 'not_started' };
         const rejected = reviewMap.get(item.rank) === 'rejected';
-        return `<div class="video-item ${rejected ? 'rejected' : ''}"><h3><span class="number-pill">${item.rank}</span>${item.topic}</h3><p>Production status: ${rejected ? 'disabled' : vid.status}</p><div class="status-row"><span class="badge ${rejected ? 'todo' : (vid.voice === 'ready' ? 'ok' : 'wait')}">voice: ${rejected ? 'disabled' : vid.voice}</span><span class="badge ${rejected ? 'todo' : (vid.render === 'ready' ? 'ok' : 'wait')}">render: ${rejected ? 'disabled' : vid.render}</span><span class="badge ${rejected ? 'todo' : (vid.publish === 'published' ? 'ok' : 'todo')}">publish: ${rejected ? 'blocked' : vid.publish}</span></div><div class="status-row"><span class="badge ${rejected ? 'todo' : 'ok'}">${rejected ? 'Rejected' : 'YouTube'}</span><span class="badge ${rejected ? 'todo' : 'wait'}">${rejected ? 'Not advancing' : 'TikTok'}</span><span class="badge ${rejected ? 'todo' : 'wait'}">${rejected ? 'Not advancing' : 'Instagram'}</span></div></div>`;
+        return `<div class="video-item ${rejected ? 'rejected' : ''}"><h3><span class="number-pill">${item.rank}</span>${item.topic}</h3><p>Production status: ${rejected ? 'disabled' : vid.status}</p><p><strong>Script source:</strong> ${vid.script ? 'shared canonical script' : 'missing'}</p><div class="status-row"><span class="badge ${rejected ? 'todo' : (vid.voice === 'ready' ? 'ok' : 'wait')}">voice: ${rejected ? 'disabled' : vid.voice}</span><span class="badge ${rejected ? 'todo' : (vid.render === 'ready' ? 'ok' : 'wait')}">render: ${rejected ? 'disabled' : vid.render}</span><span class="badge ${rejected ? 'todo' : (vid.publish === 'published' ? 'ok' : 'todo')}">publish: ${rejected ? 'blocked' : vid.publish}</span></div><div class="status-row"><span class="badge ${rejected ? 'todo' : 'ok'}">${rejected ? 'Rejected' : 'YouTube'}</span><span class="badge ${rejected ? 'todo' : 'wait'}">${rejected ? 'Not advancing' : 'TikTok'}</span><span class="badge ${rejected ? 'todo' : 'wait'}">${rejected ? 'Not advancing' : 'Instagram'}</span></div></div>`;
       }).join('') : '<p class="loading">Inga approved topics i videokön ännu.</p>';
 
       document.getElementById('publishList').innerHTML = publishItems.length ? publishItems.map(item => {
@@ -313,7 +299,7 @@
               <button class="review-btn reject" data-action="reject" data-rank="${rank}">Reject</button>
               <button class="action-btn show-script-btn" data-rank="${rank}">Visa långt manus</button>
             </div>
-            <div class="script-box" id="script-box-${rank}">${longScript(r, rank, regionLabel)}</div>
+            <div class="script-box" id="script-box-${rank}">${rank === 1 && dashboardState.voice?.script ? dashboardState.voice.script : canonicalTopicScript(r, rank, regionLabel)}</div>
           </div>
         `}).join('');
 
@@ -338,10 +324,11 @@
             if (action === 'approve') {
               badge.className = 'badge ok';
               badge.textContent = 'approved';
+              const canonicalScript = rank === 1 && dashboardState.voice?.script ? dashboardState.voice.script : canonicalTopicScript({ topic, whyNow: item.querySelector('p strong') ? (item.querySelectorAll('p')[0]?.textContent.replace('Why now:', '').trim() || '') : '' }, rank, dashboardState.regionLabel || currentRegion);
               upsertByRank(dashboardState.reviewState.items, { rank, status: 'approved' });
-              upsertByRank(dashboardState.productionQueue.queue, { rank, topic, status: 'approved', nextStep: 'script/voice/video' });
-              upsertByRank(dashboardState.videoStatus.items, { rank, topic, status: 'script_ready', voice: 'queued', render: 'not_started', publish: 'not_started' });
-              upsertByRank(dashboardState.publishLog.items, { rank, topic, platforms: { youtube: { status: 'queued', url: '' }, tiktok: { status: 'planned', url: '' }, instagram: { status: 'planned', url: '' } } });
+              upsertByRank(dashboardState.productionQueue.queue, { rank, topic, status: 'approved', nextStep: 'script/voice/video', script: canonicalScript });
+              upsertByRank(dashboardState.videoStatus.items, { rank, topic, status: 'script_ready', voice: 'queued', render: 'not_started', publish: 'not_started', script: canonicalScript });
+              upsertByRank(dashboardState.publishLog.items, { rank, topic, script: canonicalScript, platforms: { youtube: { status: 'queued', url: '' }, tiktok: { status: 'planned', url: '' }, instagram: { status: 'planned', url: '' } } });
               renderPersistentViews();
             } else {
               badge.className = 'badge todo';
