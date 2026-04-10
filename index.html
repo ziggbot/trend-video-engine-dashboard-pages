@@ -66,6 +66,7 @@
     .queue-list { display:grid; gap:10px; }
     .queue-item { border:1px solid var(--line); border-radius:16px; padding:14px; background:rgba(255,255,255,0.02); }
     .video-item { border:1px solid var(--line); border-radius:18px; padding:16px; background:rgba(255,255,255,0.02); margin-bottom:12px; }
+    .video-item.rejected { opacity:0.5; filter:grayscale(0.35); }
     .status-row { display:flex; gap:8px; flex-wrap:wrap; margin-top:10px; }
     .action-btn { appearance:none; border:1px solid var(--line); background:rgba(255,255,255,0.03); color:var(--text); border-radius:12px; padding:10px 14px; cursor:pointer; font-weight:700; }
     .action-btn.primary { border-color: rgba(102,184,255,0.35); color: var(--blue); }
@@ -180,13 +181,17 @@
     }
 
     function renderVoiceListFromQueue() {
-      const queueItems = [...document.querySelectorAll('#queueBox .queue-item strong')].map(el => {
-        const text = el.textContent.trim();
-        const match = text.match(/^#(\d+)\s+(.+)$/);
-        return match ? { rank: Number(match[1]), topic: match[2] } : null;
-      }).filter(Boolean);
+      const items = [...document.querySelectorAll('.brief-item')].map(item => {
+        const rank = Number(item.dataset.rank);
+        const topic = item.querySelector('h3').textContent.replace(/^\s*\d+\s*/, '').trim();
+        const status = item.querySelector('.badge')?.textContent?.trim() || 'pending';
+        return { rank, topic, status };
+      }).filter(item => item.status === 'approved' || item.status === 'rejected');
 
-      document.getElementById('voiceList').innerHTML = queueItems.length ? queueItems.map(item => `<div class="video-item"><h3><span class="number-pill">${item.rank}</span>${item.topic}</h3><p>Voice status: queued</p><div class="status-row"><span class="badge wait">queued</span><button class="action-btn primary generate-voice-btn" data-rank="${item.rank}" data-topic="${item.topic}">Generate voice</button></div></div>`).join('') : '<p class="loading">Inga approved topics i voice-kön ännu.</p>';
+      document.getElementById('voiceList').innerHTML = items.length ? items.map(item => {
+        const isRejected = item.status === 'rejected';
+        return `<div class="video-item ${isRejected ? 'rejected' : ''}"><h3><span class="number-pill">${item.rank}</span>${item.topic}</h3><p>Voice status: ${isRejected ? 'disabled' : 'queued'}</p><div class="status-row"><span class="badge ${isRejected ? 'todo' : 'wait'}">${item.status}</span>${isRejected ? '<span class="badge todo">rejected</span>' : `<button class="action-btn primary generate-voice-btn" data-rank="${item.rank}" data-topic="${item.topic}">Generate voice</button>`}</div></div>`;
+      }).join('') : '<p class="loading">Inga approved topics i voice-kön ännu.</p>';
 
       bindVoiceButtons();
     }
@@ -282,6 +287,7 @@
             } else {
               badge.className = 'badge todo';
               badge.textContent = 'rejected';
+              renderVoiceListFromQueue();
             }
           });
         });
@@ -293,9 +299,11 @@
         document.getElementById('sourcesBox').innerHTML = ranked.slice(0, 10).map((r, i) => `<div class="source-card"><h3><span class="number-pill">${i + 1}</span>${r.topic}</h3><p>Trafik: ${r.approxTraffic || '-'} | Region: ${regionLabel}</p>${(r.sourceReferences || []).slice(0,3).map(ref => `<p><a href="${ref.url}" target="_blank" rel="noopener noreferrer">${ref.source}: ${ref.title}</a></p>`).join('') || '<p>Inga referenser sparade.</p>'}</div>`).join('');
 
         const queueItems = productionQueue.queue || [];
+        const reviewMap = new Map((reviewState.items || []).map(item => [item.rank, item.status]));
         document.getElementById('videoList').innerHTML = queueItems.length ? queueItems.map(item => {
           const vid = (videoStatus.items || []).find(v => v.rank === item.rank) || { status: 'queued', voice: 'queued', render: 'not_started', publish: 'not_started' };
-          return `<div class="video-item"><h3><span class="number-pill">${item.rank}</span>${item.topic}</h3><p>Production status: ${vid.status}</p><div class="status-row"><span class="badge ${vid.voice === 'ready' ? 'ok' : 'wait'}">voice: ${vid.voice}</span><span class="badge ${vid.render === 'ready' ? 'ok' : 'wait'}">render: ${vid.render}</span><span class="badge ${vid.publish === 'published' ? 'ok' : 'todo'}">publish: ${vid.publish}</span></div><div class="status-row"><span class="badge ok">YouTube</span><span class="badge wait">TikTok</span><span class="badge wait">Instagram</span></div></div>`;
+          const rejected = reviewMap.get(item.rank) === 'rejected';
+          return `<div class="video-item ${rejected ? 'rejected' : ''}"><h3><span class="number-pill">${item.rank}</span>${item.topic}</h3><p>Production status: ${rejected ? 'disabled' : vid.status}</p><div class="status-row"><span class="badge ${rejected ? 'todo' : (vid.voice === 'ready' ? 'ok' : 'wait')}">voice: ${rejected ? 'disabled' : vid.voice}</span><span class="badge ${rejected ? 'todo' : (vid.render === 'ready' ? 'ok' : 'wait')}">render: ${rejected ? 'disabled' : vid.render}</span><span class="badge ${rejected ? 'todo' : (vid.publish === 'published' ? 'ok' : 'todo')}">publish: ${rejected ? 'blocked' : vid.publish}</span></div><div class="status-row"><span class="badge ${rejected ? 'todo' : 'ok'}">${rejected ? 'Rejected' : 'YouTube'}</span><span class="badge ${rejected ? 'todo' : 'wait'}">${rejected ? 'Not advancing' : 'TikTok'}</span><span class="badge ${rejected ? 'todo' : 'wait'}">${rejected ? 'Not advancing' : 'Instagram'}</span></div></div>`;
         }).join('') : '<p class="loading">Inga approved topics i videokön ännu.</p>';
 
         const publishItems = publishLog.items || [];
