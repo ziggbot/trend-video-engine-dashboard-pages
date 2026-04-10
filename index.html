@@ -123,7 +123,6 @@
       <button class="tab" data-tab="voice">Voice</button>
       <button class="tab" data-tab="video">Video</button>
       <button class="tab" data-tab="publish">Publish / Log</button>
-      <button class="tab" data-tab="sources">Referenser</button>
     </div>
 
     <section class="panel active" id="overview"><div class="layout"><div class="stack"><div class="card"><h2>Pipeline overview</h2><p class="sub">Snabb överblick av huvudstegen och aktuell status.</p><div class="pipeline-grid" id="pipelineGrid"></div></div><div class="card"><h2>Factory metrics</h2><p class="sub">Bra första KPI:er för att förstå hur fabriken mår.</p><div class="mini-grid"><div class="mini">Top trends<strong id="metricTrends">0</strong></div><div class="mini">Referenser<strong id="metricRefs">0</strong></div><div class="mini">Voice jobs<strong id="metricVoiceJobs">0</strong></div></div></div></div><div class="stack"><div class="card"><h2>Senaste valda ämne</h2><p class="sub">Det ämne som fabriken just nu tycker är bäst att paketera.</p><div class="draft" id="selectedTopicBox"><p class="loading">Laddar...</p></div></div><div class="card"><h2>Production queue</h2><p class="sub">Approved topics som bör gå vidare till nästa steg i fabriken.</p><div id="queueBox" class="queue-list"><p class="loading">Inga approved topics i kön ännu.</p></div></div></div></div></section>
@@ -133,7 +132,6 @@
     <section class="panel" id="voice"><div class="layout"><div class="card"><h2>Voice production</h2><p class="sub">Approved topics syns här och kan få voice-generering när backend kopplas på.</p><div id="voiceList"><p class="loading">Inga approved topics i voice-kön ännu.</p></div></div><div class="card"><h2>Voice preview</h2><p class="sub">Provlyssna senaste genererade voicefil och se hur voice-lagret ser ut just nu.</p><audio controls id="voicePreviewPlayer"><source src="./sample-audio.mp3" type="audio/mpeg" /></audio><div class="draft" id="voiceBox" style="margin-top:12px;"><p class="loading">Laddar...</p></div></div></div></section>
     <section class="panel" id="video"><div class="layout"><div class="card"><h2>Video production status</h2><p class="sub">Här ser du approved topics, deras render-status och vilka plattformar de är tänkta för.</p><div id="videoList"><p class="loading">Inga approved topics i videokön ännu.</p></div></div><div class="card"><h2>Latest video preview</h2><p class="sub">Provspela senaste genererade videon.</p><video controls style="width:100%; border-radius:18px; border:1px solid var(--line); background:#000;"><source src="./generated-video-latest.mp4" type="video/mp4" /></video><div class="draft" id="videoMetaBox" style="margin-top:12px;"><p class="loading">Laddar...</p></div></div></div></section>
     <section class="panel" id="publish"><div class="layout"><div class="card"><h2>Publish / Log</h2><p class="sub">Här ser du vilket content som ska publiceras var. YouTube först, TikTok och Instagram senare.</p><div id="publishList"><p class="loading">Inga publiceringsposter ännu.</p></div></div><div class="card"><h2>Platform strategy</h2><p class="sub">Nuvarande plattformsupplägg.</p><div class="draft"><p><strong>YouTube:</strong> första aktiva kanal</p><p><strong>TikTok:</strong> planerad</p><p><strong>Instagram:</strong> planerad</p><p><strong>Mål:</strong> samma content item ska kunna gå till flera plattformar.</p></div></div></div></section>
-    <section class="panel" id="sources"><div class="layout"><div class="card refs"><h2>Referensbibliotek</h2><p class="sub">Var systemet hittade datan för toppämnena i vald region.</p><div id="sourcesBox"><p class="loading">Laddar...</p></div></div><div class="card"><h2>Källstrategi framåt</h2><p class="sub">Så vi gör referensbiblioteket mer robust.</p><ul style="margin:0; padding-left:18px; line-height:1.8; color:#dce6ff;"><li>spara källa per ämne automatiskt</li><li>visa 1-3 referenser per trendkort</li><li>markera källtyp, nyhet, trendfeed, egen research</li><li>lägga till timestamp och confidence</li></ul></div></div></section>
   </div>
 
   <script>
@@ -358,8 +356,6 @@
         }
 
         bindVoiceButtons();
-
-        document.getElementById('sourcesBox').innerHTML = ranked.slice(0, 10).map((r, i) => `<div class="source-card"><h3><span class="number-pill">${i + 1}</span>${r.topic}</h3><p>Trafik: ${r.approxTraffic || '-'} | Region: ${regionLabel}</p>${(r.sourceReferences || []).slice(0,3).map(ref => `<p><a href="${ref.url}" target="_blank" rel="noopener noreferrer">${ref.source}: ${ref.title}</a></p>`).join('') || '<p>Inga referenser sparade.</p>'}</div>`).join('');
 
         const queueItems = productionQueue.queue || [];
         document.getElementById('videoList').innerHTML = queueItems.length ? queueItems.map(item => {
