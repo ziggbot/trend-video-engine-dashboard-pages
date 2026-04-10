@@ -3,8 +3,9 @@
   "status": "queued",
   "provider": "not-configured",
   "voiceId": "default",
-  "script": "Alla pratar om crwv stock just nu, men här är varför det faktiskt betyder något. crwv stock trendar just nu, och det handlar inte bara om att många söker, utan om att ämnet träffar något som folk redan känner eller oroar sig för. Tech stocks today: Big Tech stocks point to strong open, AI industry seeks to allay fears Förklara snabbt varför folk pratar om detta och varför det spelar roll. Det här är exakt typen av ämne som exploderar i kortformat när det paketeras tydligt och snabbt. Vill du ha fler snabba förklaringar av det som trendar just nu, följ för nästa video.",
+  "script": "Alla pratar om crwv stock just nu, men h\u00e4r \u00e4r varf\u00f6r det faktiskt betyder n\u00e5got. crwv stock trendar just nu, och det handlar inte bara om att m\u00e5nga s\u00f6ker, utan om att \u00e4mnet tr\u00e4ffar n\u00e5got som folk redan k\u00e4nner eller oroar sig f\u00f6r. Tech stocks today: Big Tech stocks point to strong open, AI industry seeks to allay fears F\u00f6rklara snabbt varf\u00f6r folk pratar om detta och varf\u00f6r det spelar roll. Det h\u00e4r \u00e4r exakt typen av \u00e4mne som exploderar i kortformat n\u00e4r det paketeras tydligt och snabbt. Vill du ha fler snabba f\u00f6rklaringar av det som trendar just nu, f\u00f6lj f\u00f6r n\u00e4sta video.",
   "scriptLength": 574,
   "note": "No TTS credentials detected yet. This is a provider-ready scaffold.",
-  "nextAction": "Set TTS_PROVIDER and provider API key in environment."
+  "nextAction": "Set TTS_PROVIDER and provider API key in environment.",
+  "previewUrl": "./generated-voice-latest.mp3"
 }
